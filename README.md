@@ -1,10 +1,10 @@
 # CS252Lab6
-##Names:
+## Names:
 * Kai Hoffman - hoffm154@purdue.edu
 * Katarine Gregurich - kgregur@purdue.edu
 * Nirali Rai - rai15@purdue.edu
 
-##Project: Where'd It Go?!
+## Project: Where'd It Go?!
 * Tracks budget by taking money spent and max budget as input then give user an overview of spending habits
 
 ## Technologies:
