@@ -1,21 +1,71 @@
+<!--
+  References:
+    - Bootstrap
+      http://getbootstrap.com/docs/4.0/getting-started/introduction/
+      https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-get-started.php
+    - Login formatting
+      https://forums.adobe.com/thread/2444344
+      https://www.kirupa.com/html5/naming_via_class_id_name.htm
+//-->
 
-<div class="row" id="mainDiv">
-	<div class="medium-12 medium-centered column" id="welcomeDiv">
-    <!-- <p id="welcome">Welcome to Connec+</p> -->
-    <div class="medium-6 column" id="messageDiv">
-        <p class="unselectable" id="message">Connect with the world around you</p>
-        
-    </div>
-    <div class="medium-6 column">
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      <p id="firstTitle">How it Works</p>
-      <!-- <button class="button" id="downButton">⇩</button> -->
-      
-      <p id="connectMessage" >Join the fun!</p>
-      
-    
-      
-      
-</div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Stuff we actually wrote -->
+    <title>Where'd It Go?!</title>
+    <link rel="stylesheel" href="signup.component.css">
+  </head>
+
+  <body id="body-signup">
+    <div class="container center-block">
+      <!-- Signup form -->
+      <form id="signup-form" method="post">
+        <h1>Signup</h1>
+
+        <!-- Form input -->
+        <div id="div-input-fields">
+          <!-- Name -->
+          <div class="div-signup div-firstname">
+            <label for="firstname" class="signup-input-title">First Name: </label>
+            <input type="text" name="firstname" placeholder="Enter first name" required>
+          </div>
+          
+          <div class="div-signup div-lastname">
+            <label for="lastname" class="signup-input-title">Last Name: </label>
+            <input type="text" name="lastname" placeholder="Enter last name" required>
+          </div>
+
+          <!-- Username -->
+          <div class="div-signup div-username">
+            <label for="username" class="signup-input-title">Username: </label>
+            <input type="text" name="username" placeholder="Enter username" required>
+          </div>
+
+          <!-- Password -->
+          <div class="div-signup div-password">
+            <label for="password" class="signup-input-title">Password: </label>
+            <input type="password" name="password" placeholder="Enter password" required>
+          </div>
+
+          <div class="div-signup div-password">
+            <label for="password2" class="signup-input-title">Re-enter Password</label>
+            <input type="password" name="password2" placeholder="Re-enter password" required>
+          </div>
+        </div>
+
+        <!-- Signup button -->
+        <div id="div-button-button">
+          <input type="submit" name="submit" value="Signup" (click)="onSubmit()">
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
