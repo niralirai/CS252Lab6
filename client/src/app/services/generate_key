@@ -1,0 +1,2 @@
+TOKEN=$(echo -n "$1:$2" | openssl base64 -A)
+curl --verbose "https://api.twitter.com/oauth2/token" --header "Authorization: Basic $TOKEN" --header "Content-Type: application/x-www-form-urlencoded;charset=UTF-8" -d "grant_type=client_credentials"
