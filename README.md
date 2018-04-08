@@ -1,7 +1,7 @@
 # CS252Lab6
 ## Names:
 * Kai Hoffman - hoffm154@purdue.edu
-* Katarine Gregurich - kgregur@purdue.edu
+* Katarina Gregurich - kgregur@purdue.edu
 * Nirali Rai - rai15@purdue.edu
 
 ## Project: Where'd It Go?!
