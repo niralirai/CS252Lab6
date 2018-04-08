@@ -1,0 +1,32 @@
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#login-form {
+  background-color: #BFE8F5;
+  min-width: 210px;
+  max-width: 430px;
+  padding: 5%;
+
+  /* Center the form */
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  margin-bottom: 1ch;
+  text-align: center;
+}
+
+.div-login {
+  margin-bottom: 2ch;
+}
+
+.login-input-title {
+  margin-bottom: 0ch;
+}

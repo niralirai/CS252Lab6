@@ -13,4 +13,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(): void {
+    console.log("Login button pressed")
+  }
+
 }
