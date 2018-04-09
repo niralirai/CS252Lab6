@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = 3030;
+var port = 4200;
 //express is better for handling routing
 
 var bodyParser = require('body-parser');
