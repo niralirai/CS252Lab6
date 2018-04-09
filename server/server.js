@@ -3,16 +3,32 @@ var app = express();
 var port = 4200;
 //express is better for handling routing
 
+var path = require('path');
+
+
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.json()); //parses as json and puts object into req.body
 app.use(bodyParser.urlencoded({extended: true}));//https://github.com/expressjs/body-parser
 
-//serves the main page, TODO will need to change to html file
+// Send GET request and route to splash page
 app.get('/', function(request, response) {
-  response.send('WheredItGo?!');
+  response.sendFile("client/src/app/splash/splash.component.html", {'root': '../'});
   console.log(request.headers);
 });
+
+// TODO Send POST request (for security) and route to login page
+app.get('/login', function(request, response) {
+  response.sendFile("client/src/app/login/login.component.html", {'root': '../'});
+  console.log(request.headers);
+});
+
+// TODO Send POST request (for security) and route to signup page
+app.get('/signup', function(request, response) {
+  response.sendFile("client/src/app/signup/signup.component.html", {'root': '../'});
+  console.log(request.headers);
+});
+
 //TODO other html pages
 //app.get('other.html',function(request,response){
 

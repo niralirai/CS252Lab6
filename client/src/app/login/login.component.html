@@ -22,12 +22,48 @@
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
     <link rel="stylesheel" href="login.component.css">
+
+    <!-- Styling -->
+    <style>
+      .center-block {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      #login-form {
+        background-color: #BFE8F5;
+        min-width: 210px;
+        max-width: 430px;
+        padding: 5%;
+      
+        /* Center the form */
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      h1 {
+        margin-bottom: 1ch;
+        text-align: center;
+      }
+      
+      .div-login {
+        margin-bottom: 2ch;
+      }
+      
+      .login-input-title {
+        margin-bottom: 0ch;
+      }
+    </style>
   </head>
 
   <body id="body-login">
     <div class="container center-block">
       <!-- Login form -->
-      <form id="login-form" method="post">
+      <form id="login-form" method="get">
         <h1>Login</h1>
 
         <!-- Username -->
