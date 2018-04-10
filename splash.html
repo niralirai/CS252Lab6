@@ -11,28 +11,40 @@
 
     <!-- Styling -->
     <style>
-      .middle {
-        background-color: black;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        color: white;
-        transform: translate(-50%, -50%);
-        text-align: center;
-      }
-      .whole {
-        background-color: black;
-      }
-    </style>
+.parallax {
+    /* The image used */
+    background-image: url("splash.jpg");
+
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
   </head>
 
   <body>
-    <div class="whole">
-      <div class="middle">
-        <h1>COMING SOON</h1>
-        <hr>
-        <p>35 days left</p>
-      </div>
-    </div>
+    <body>
+
+        <p>Scroll Up and Down this page to see the parallax scrolling effect.</p>
+
+        <div class="parallax">
+          
+            <img src="splash.png">
+
+        </div>
+
+        <div style="height:1000px;background-color:red;font-size:36px">
+        Scroll Up and Down this page to see the parallax scrolling effect.
+        This div is just here to enable scrolling.
+        Tip: Try to remove the background-attachment property to remove the scrolling effect.
+        </div>
+
+</body>
   </body>
 </html>
+
