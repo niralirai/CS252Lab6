@@ -1,9 +1,9 @@
-var firebase = require("firebase/app");
-require("firebase/auth");
-require("firebase/database");
-require("firebase/firestore");
-require("firebase/messaging");
-require("firebase/functions");
+// var firebase = require("firebase/app");
+// require("firebase/auth");
+// require("firebase/database");
+// require("firebase/firestore");
+// require("firebase/messaging");
+// require("firebase/functions");
 
 var config = {
     apiKey: "AIzaSyAKfbDYJM_6rEnYqBgGbQrR5lNqtffjYR0",
