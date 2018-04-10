@@ -9,7 +9,7 @@
 //-->
 
 <!DOCTYPE html>
-
+<!-- Firebase cripts -->
 <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
@@ -20,16 +20,16 @@
     // Initialize Firebase
     var config = {
       apiKey: "AIzaSyAKfbDYJM_6rEnYqBgGbQrR5lNqtffjYR0",
-    authDomain: "cs252lab6-7604e.firebaseapp.com",
-    databaseURL: "https://cs252lab6-7604e.firebaseio.com",
-    projectId: "cs252lab6-7604e",
-    storageBucket: "cs252lab6-7604e.appspot.com",
-    messagingSenderId: "454352118655"
+      authDomain: "cs252lab6-7604e.firebaseapp.com",
+      databaseURL: "https://cs252lab6-7604e.firebaseio.com",
+      projectId: "cs252lab6-7604e",
+      storageBucket: "cs252lab6-7604e.appspot.com",
+      messagingSenderId: "454352118655"
     };
     firebase.initializeApp(config);
 </script>
+<script  src="./signup.js"></script>
 
-     <script  src="./signup.js"></script>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -42,7 +42,7 @@
 
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
-    <link rel="stylesheel" href="signup.css">
+    <link rel="stylesheet" href="signup.css">
     <script src="signup.js"></script>
 
     <!-- Styling -->
