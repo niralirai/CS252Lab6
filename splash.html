@@ -11,40 +11,34 @@
 
     <!-- Styling -->
     <style>
-.parallax {
-    /* The image used */
-    background-image: url("splash.jpg");
+    .parallax {
+      /* The image used */
+      background-image: url("splash.jpg");
 
-    /* Set a specific height */
-    min-height: 500px; 
+      /* Set a specific height */
+      min-height: 500px; 
 
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-</style>
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    </style>
   </head>
 
   <body>
-    <body>
+    <p>Scroll Up and Down this page to see the parallax scrolling effect.</p>
 
-        <p>Scroll Up and Down this page to see the parallax scrolling effect.</p>
+    <div class="parallax">
+      <img src="splash.png">
+    </div>
 
-        <div class="parallax">
-          
-            <img src="splash.png">
-
-        </div>
-
-        <div style="height:1000px;background-color:red;font-size:36px">
-        Scroll Up and Down this page to see the parallax scrolling effect.
-        This div is just here to enable scrolling.
-        Tip: Try to remove the background-attachment property to remove the scrolling effect.
-        </div>
-
-</body>
+    <div style="height:1000px;background-color:red;font-size:36px">
+      Scroll Up and Down this page to see the parallax scrolling effect.
+      This div is just here to enable scrolling.
+      Tip: Try to remove the background-attachment property to remove the scrolling effect.
+    </div>
   </body>
 </html>
 
