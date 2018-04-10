@@ -9,6 +9,27 @@
 //-->
 
 <!DOCTYPE html>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAKfbDYJM_6rEnYqBgGbQrR5lNqtffjYR0",
+    authDomain: "cs252lab6-7604e.firebaseapp.com",
+    databaseURL: "https://cs252lab6-7604e.firebaseio.com",
+    projectId: "cs252lab6-7604e",
+    storageBucket: "cs252lab6-7604e.appspot.com",
+    messagingSenderId: "454352118655"
+    };
+    firebase.initializeApp(config);
+</script>
+
+     <script  src="./signup.js"></script>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -21,8 +42,7 @@
 
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
-    <link rel="stylesheel" href="signup.component.css">
-     <script  src="./signup.js"></script>
+    <link rel="stylesheel" href="signup.css">
 
     <!-- Styling -->
     <style>
@@ -61,6 +81,7 @@
     </style>
   </head>
 
+
   <body id="body-signup">
     <div class="container center-block">
       <!-- Signup form -->
@@ -72,37 +93,38 @@
           <!-- Name -->
           <div class="div-signup div-firstname">
             <label for="firstname" class="signup-input-title">First Name: </label>
-            <input type="text" name="firstname" placeholder="Enter first name"  required>
+            <input type="text" id="firstname" placeholder="Enter first name"  required>
           </div>
           
           <div class="div-signup div-lastname">
             <label for="lastname" class="signup-input-title">Last Name: </label>
-            <input type="text" name="lastname" placeholder="Enter last name" required>
+            <input type="text" id="lastname" placeholder="Enter last name" required>
           </div>
 
           <!-- Email -->
           <div class="div-signup div-email">
             <label for="email" class="signup-input-title">Email: </label>
-            <input type="text" name="email" placeholder="Enter email"  required>
+            <input type="text" id="emailn" placeholder="Enter email"  required>
           </div>
 
           <!-- Password -->
           <div class="div-signup div-password">
             <label for="password" class="signup-input-title">Password: </label>
-            <input type="password" name="password" placeholder="Enter password"  required>
+            <input type="password" id="password" placeholder="Enter password"  required>
           </div>
 
           <div class="div-signup div-password">
             <label for="password2" class="signup-input-title">Re-enter Password</label>
-            <input type="password" name="password2" placeholder="Re-enter password" required>
+            <input type="password" id="password2" placeholder="Re-enter password" required>
           </div>
         </div>
 
         <!-- Signup button -->
         <div id="div-button-button">
-          <input type="submit" name="submit" value="Signup" onclick="onSubmit()">
+          <input type="submit" id="submit" value="Signup" onclick="signUp()">
         </div>
       </form>
     </div>
+
   </body>
 </html>

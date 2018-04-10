@@ -22,7 +22,7 @@
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
     <link rel="stylesheel" href="login.component.css">
-
+    <script  src="./login.js"></script>
     <!-- Styling -->
     <style>
       .center-block {
@@ -70,19 +70,19 @@
         <div id="div-input-fields">
           <div class="div-login div-username">
             <label for="username" class="login-input-title">Username: </label>
-            <input type="text" name="username" placeholder="Enter username" required>
+            <input type="text" id="username" placeholder="Enter username" required>
           </div>
 
           <!-- Password -->
           <div class="div-login div-password">
             <label for="password" class="login-input-title">Password: </label>
-            <input type="password" name="password" placeholder="Enter password" required>
+            <input type="password" id="password" placeholder="Enter password" required>
           </div>
         </div>
 
         <!-- Login button -->
         <div id="div-button-button">
-          <input type="submit" name="submit" value="Login" (click)="onSubmit()">
+          <input type="submit" name="submit" value="Login" (click)="login()">
         </div>
       </form>
     </div>
