@@ -1,3 +1,9 @@
+<!--
+  References:
+    - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
+//-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,10 +17,65 @@
 
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="main.css">
   </head>
 
-  <body>
-    <h1>This can be our main page! Yay!!!</h1>
+  <body id="body-main">
+    <h1>Don't know where it all went?</h1>
+    <h2>Let's find out!</h2>
+
+    <div class="container center-block">
+        <!-- Budget form -->
+        <form id="main-form" method="POST">
+          <div id="div-input-fields">
+            <!-- Rent -->
+            <div class="div-main">
+              <label for="rent" class="main-input-title">Mortgage/Rent</label>
+              <input type="number" name="rent" placeholder="0">
+            </div>
+
+            <!-- Utilities -->
+            <div class="div-main">
+              <label for="utilities" class="main-input-title">Utilities</label>
+              <input type="number" name="utilities" placeholder="0">
+            </div>
+
+            <!-- Cards -->
+            <div class="div-main">
+              <label for="cards" class="main-input-title">Credit Cards</label>
+              <input type="number" name="cards" placeholder="0">
+            </div>
+
+            <!-- Auto -->
+            <div class="div-main">
+              <label for="auto" class="main-input-title">Auto Insurance</label>
+              <input type="number" name="auto" placeholder="0">
+            </div>
+
+            <!-- Internet -->
+            <div class="div-main">
+              <label for="internet" class="main-input-title">Internet Services</label>
+              <input type="number" name="internet" placeholder="0">
+            </div>
+              
+            <!-- Food -->
+            <div class="div-main">
+              <label for="food" class="main-input-title">Food</label>
+              <input type="number" name="food" placeholder="0">
+            </div>
+
+            <!-- Clothing -->
+            <div class="div-main">
+              <label for="clothing" class="main-input-title">Clothing</label>
+              <input type="number" name="clothing" placeholder="0">
+            </div>
+          </div>
+  
+          <!-- Calculate button -->
+          <div id="div-button">
+            <button type="submit" id="submit">Calculate!</button>
+          </div>
+        </form>
+      </div>
   </body>
 </html>

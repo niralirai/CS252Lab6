@@ -99,6 +99,7 @@ app.get('/signup', function(request, response) {
 
 /**
  * POST requests sent when submitting a form (ref 3)
+ *  - /main
  *  - /login
  *  - /signup
  * TODO - reroute to correct pages and make sure URL follows suit
@@ -106,6 +107,24 @@ app.get('/signup', function(request, response) {
  * https://github.com/mysqljs/mysql#performing-queries
  * https://github.com/mysqljs/mysql#escaping-query-values
  */
+
+app.post('/main', function(request, response) {
+  console.log("POST /login");
+  console.log(request.body);
+  console.log(request.headers);
+  console.log("\n");
+
+  // Get form field values
+  let rent = Number(request.body.rent == '' ? '0' : request.body.rent);
+  let utilities = Number(request.body.utilities == '' ? '0' : request.body.utilities);
+  let cards = Number(request.body.cards == '' ? '0' : request.body.cards);
+  let auto = Number(request.body.auto == '' ? '0' : request.body.auto);
+  let internet = Number(request.body.internet == '' ? '0' : request.body.internet);
+  let food = Number(request.body.food == '' ? '0' : request.body.food);
+  let clothing = Number(request.body.clothing == '' ? '0' : request.body.clothing);
+
+  response.send("Successfully got all values as type Number. Create page that can show results.");
+});
 
 app.post('/login', function(request, response) {
   console.log("POST /login");
