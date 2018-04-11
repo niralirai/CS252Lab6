@@ -20,6 +20,7 @@ connection.connect(function(error) {
         // If error (else success)
         if (e3) { throw e3; }
         console.log("Database created!");
+        connection.end();
       });
     });
   });
