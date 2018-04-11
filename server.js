@@ -1,13 +1,18 @@
 /**
  * References:
- *  - https://github.com/expressjs/body-parser
- *  - https://stackoverflow.com/questions/13337288/expressjs-sending-a-file-from-parent-directory/22336660
- *  - https://stackoverflow.com/questions/5710358/how-to-retrieve-post-query-parameters
- *  - https://expressjs.com/en/advanced/developing-template-engines.html
- *  - https://github.com/mysqljs/mysql
- *  - https://dev.mysql.com/doc/refman/5.7/en/tutorial.html
+ *  1. https://github.com/expressjs/body-parser
+ *  2. https://expressjs.com/en/advanced/developing-template-engines.html
+ *  3. https://github.com/mysqljs/mysql
+ *  4. https://dev.mysql.com/doc/refman/5.7/en/tutorial.html
  * 
- * Database (whered_it_go) table (users) format: `USE users; DESCRIBE users;`
+ * Database (whered_it_go) tables format: `SHOW TABLES;`
+ *    +-------------------------+
+ *    | Tables_in_whered_it_go  |
+ *    +-------------------------+
+ *    | users                   |
+ *    +-------------------------+
+ * 
+ * Database (whered_it_go) table (users) format: `USE whered_it_go; DESCRIBE users;`
  *    +------------+---------------+
  *    | Field      | Type          |
  *    +------------+---------------+
@@ -26,30 +31,31 @@ var express = require('express');
 var app = express();
 var port = 4200;
 
-// Parses as json and puts object into req.body
+// Parses as json and puts object into req.body (ref 1)
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname));
 
-// Set up mysql and create connection (ref 5)
+/**
+ * Set up mysql, declare connection, and try to connect (ref 3)
+ * https://github.com/mysqljs/mysql#establishing-connections
+ * https://github.com/mysqljs/mysql#connection-options
+ */
 var mysql = require('mysql');
 var connection = mysql.createConnection({
   host: 'localhost',
-  // port: port,
   user: 'root',
-  password: 'A2purple?!',
+  password: 'A2purple?!', // May need to change password for general use
   database: 'whered_it_go'
-});  // TODO - don't make hardcoded
-
-// Attempt to connect to database
+});
 connection.connect(function(error) {
-  if (error) throw error;
+  if (error) { throw error; }
   console.log('connected as id ' + connection.threadId);
 });
 
-// Set views directory and template engine
+// Set views directory and template engine (ref 2)
 app.set('views', './views');
 app.set('view engine', 'ejs')
 
@@ -91,10 +97,13 @@ app.get('/signup', function(request, response) {
 });
 
 /**
- * POST requests sent when submitting a form
+ * POST requests sent when submitting a form (ref 3)
  *  - /login
  *  - /signup
  * TODO - reroute to correct pages and make sure URL follows suit
+ * 
+ * https://github.com/mysqljs/mysql#performing-queries
+ * https://github.com/mysqljs/mysql#escaping-query-values
  */
 
 app.post('/login', function(request, response) {
@@ -112,17 +121,37 @@ app.post('/signup', function(request, response) {
   console.log(request.headers);
   console.log("\n");
 
+  // Get form field values
   let firstname = request.body.firstname;
   let lastname = request.body.lastname;
   let email = request.body.email;
   let password = request.body.password;
   let password2 = request.body.password2;
 
-  if (password === password2) {
-    response.redirect("login");
-  } else {
-    response.send("Password and re-typed password do not match! Reroute accordingly. :(");
-  }
+  /**
+   * Create MySQL requests to check email
+   *  - 'results' stores MySQL "return value" as array of strings (entires from table)
+   *  - 'fields' stores metadata for each result
+   */
+  var checkEmail = "SELECT * FROM users WHERE email = ?";
+  connection.query(checkEmail, [email], function (error, results, fields) {
+    // If error (else if email already used, else if passwords don't match, else save and redirect)
+    if (error) {
+      throw error;
+    } else if (results.length > 0) {
+      console.log("This email is already being used. Create error message that can be displayed on signup page");
+      response.redirect("signup");
+    } else if (password !== password2) {
+      response.send("Passwords don't match");
+    } else {
+      var addUser = "INSERT INTO users VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "');";
+      connection.query(addUser, function (e, r, f) {
+        if (e) throw e;
+        response.redirect("login");
+        // TODO - keep them signed in!!!!
+      }); 
+    }
+  });
 });
 
 app.listen(port);
