@@ -44,10 +44,11 @@ app.use(express.static(__dirname));
  * https://github.com/mysqljs/mysql#connection-options
  */
 var mysql = require('mysql');
+var p = process.argv[2];
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'A2purple?!', // May need to change password for general use
+  password: p,
   database: 'whered_it_go'
 });
 connection.connect(function(error) {
