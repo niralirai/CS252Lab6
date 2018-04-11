@@ -4,6 +4,21 @@
  *  - https://stackoverflow.com/questions/13337288/expressjs-sending-a-file-from-parent-directory/22336660
  *  - https://stackoverflow.com/questions/5710358/how-to-retrieve-post-query-parameters
  *  - https://expressjs.com/en/advanced/developing-template-engines.html
+ *  - https://github.com/mysqljs/mysql
+ *  - https://dev.mysql.com/doc/refman/5.7/en/tutorial.html
+ * 
+ * Database (whered_it_go) table (users) format: `USE users; DESCRIBE users;`
+ *    +------------+---------------+
+ *    | Field      | Type          |
+ *    +------------+---------------+
+ *    | firstname  | varchar(35)   |
+ *    +------------+---------------+
+ *    | lastname   | varchar(35)   |
+ *    +------------+---------------+
+ *    | email      | varchar(254)  |
+ *    +------------+---------------+
+ *    | password   | varchar(20)   |
+ *    +------------+---------------+
  */
 
 // Express is better for handling routing
@@ -17,6 +32,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname));
+
+// Set up mysql and create connection (ref 5)
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host: 'localhost',
+  // port: port,
+  user: 'root',
+  password: 'A2purple?!',
+  database: 'whered_it_go'
+});  // TODO - don't make hardcoded
+
+// Attempt to connect to database
+connection.connect(function(error) {
+  if (error) throw error;
+  console.log('connected as id ' + connection.threadId);
+});
 
 // Set views directory and template engine
 app.set('views', './views');
@@ -72,7 +103,7 @@ app.post('/login', function(request, response) {
   console.log(request.headers);
   console.log("\n");
 
-  response.send("Check credentials in the database.");
+  response.redirect("main");
 });
 
 app.post('/signup', function(request, response) {
@@ -88,7 +119,7 @@ app.post('/signup', function(request, response) {
   let password2 = request.body.password2;
 
   if (password === password2) {
-    response.send("Password and re-typed password match! Reroute accordingly. :)");
+    response.redirect("login");
   } else {
     response.send("Password and re-typed password do not match! Reroute accordingly. :(");
   }
