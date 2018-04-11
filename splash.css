@@ -12,3 +12,9 @@
 .whole {
     background-color: black;
 }
+#mockup{
+    width: 50%;
+    height: auto;
+    position: absolute;
+    bottom: 0px;
+}
