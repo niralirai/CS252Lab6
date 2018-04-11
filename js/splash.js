@@ -1,10 +1,24 @@
-function onSubmit() {
-
-var username = document.getElementById("email").value;
-var password = document.getElementById("password").value;
 
 
-console.log(username,  " ", password);
+
+
+
+
+
+function signup() {
+
+ window.location.href = "signup.html";
+
+}
+
+
+
+
+
+function login() {
+
+
+ window.location.href = "login.html";
 
 
 }
