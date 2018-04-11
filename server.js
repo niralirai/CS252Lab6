@@ -112,7 +112,31 @@ app.post('/login', function(request, response) {
   console.log(request.headers);
   console.log("\n");
 
-  response.redirect("main");
+  // Get form field values
+  let email = request.body.email;
+  let password = request.body.password;
+
+  /**
+   * Create MySQL requests to check email
+   *  - 'results' stores MySQL "return value" as object of strings (table entries), length = 1
+   *  - 'fields' stores metadata for each result
+   */
+  var checkEmail = "SELECT * FROM users WHERE email = ?";
+  connection.query(checkEmail, [email], function (error, results, fields) {
+    // If error (else if email not found, else if passwords don't match, else redirect)
+    if (error) {
+      throw error;
+    } else if (results.length <= 0) {
+      console.log("This email is was not found. Create error message that can be displayed on login page");
+      response.redirect("login");
+    } else if (results[0].password !== password) {
+      console.log("This password was incorrect. Create error message that can be displayed on login page");
+      response.redirect("login");
+    } else {
+      response.redirect("main");
+      // TODO - customize page for person?
+    }
+  });
 });
 
 app.post('/signup', function(request, response) {
@@ -128,11 +152,7 @@ app.post('/signup', function(request, response) {
   let password = request.body.password;
   let password2 = request.body.password2;
 
-  /**
-   * Create MySQL requests to check email
-   *  - 'results' stores MySQL "return value" as array of strings (entires from table)
-   *  - 'fields' stores metadata for each result
-   */
+  // Create MySQL requests to check email
   var checkEmail = "SELECT * FROM users WHERE email = ?";
   connection.query(checkEmail, [email], function (error, results, fields) {
     // If error (else if email already used, else if passwords don't match, else save and redirect)
@@ -142,7 +162,8 @@ app.post('/signup', function(request, response) {
       console.log("This email is already being used. Create error message that can be displayed on signup page");
       response.redirect("signup");
     } else if (password !== password2) {
-      response.send("Passwords don't match");
+      console.log("Re-typed password doesn't match. Create error message that can be displayed on signup page");
+      response.redirect("signup");
     } else {
       var addUser = "INSERT INTO users VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "');";
       connection.query(addUser, function (e, r, f) {
