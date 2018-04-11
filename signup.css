@@ -9,9 +9,8 @@
   min-width: 210px;
   max-width: 430px;
   padding: 5%;
-  
-  /* Center the form */
   position: absolute;
+  top: 20%;
   left: 10%;
   right: 10%;
   margin-left: auto;
@@ -30,35 +29,3 @@ h1 {
 .signup-input-title {
   margin-bottom: 0ch;
 }
-      .center-block {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-        
-      #signup-form {
-        background-color: #BFE8F5;
-        min-width: 210px;
-        max-width: 430px;
-        padding: 5%;
-        
-        /* Center the form */
-        position: absolute;
-        left: 10%;
-        right: 10%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-        
-      h1 {
-        margin-bottom: 1ch;
-        text-align: center;
-      }
-        
-      .div-signup {
-        margin-bottom: 2ch;
-      }
-        
-      .signup-input-title {
-        margin-bottom: 0ch;
-      }
