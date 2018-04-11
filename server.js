@@ -10,11 +10,10 @@ var express = require('express');
 var app = express();
 var port = 4200;
 
-var path = require('path');
-
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());  // Parses as json and puts object into req.body
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname));
 
 // TODO - other html pages as needed
 
