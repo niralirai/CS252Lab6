@@ -10,6 +10,13 @@ var config = {
 };
 firebase.initializeApp(config);
 
+firebase.auth()onAuthStateChanged(function(user) {
+  if(user) { //user is loged in 
+
+  } else {
+
+ }
+});
 function login() {
      let email = document.getElementById('email').value;
     let pass = document.getElementById('passowrd').value;
