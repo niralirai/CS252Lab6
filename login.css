@@ -9,9 +9,8 @@
   min-width: 210px;
   max-width: 430px;
   padding: 5%;
-
-  /* Center the form */
   position: absolute;
+  top: 20%;
   left: 10%;
   right: 10%;
   margin-left: auto;
