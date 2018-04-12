@@ -4,6 +4,7 @@
  *  2. https://expressjs.com/en/advanced/developing-template-engines.html
  *  3. https://github.com/mysqljs/mysql
  *  4. https://dev.mysql.com/doc/refman/5.7/en/tutorial.html
+ *  5. https://www.npmjs.com/package/client-sessions
  * 
  * Database (whered_it_go) tables format: `SHOW TABLES;`
  *    +-------------------------+
@@ -56,6 +57,28 @@ connection.connect(function(error) {
   console.log('connected as id ' + connection.threadId);
 });
 
+// Set up session cookies for users (ref 5)
+var sessions = require('client-sessions');
+app.use(sessions({
+  cookieName: 'mySession',
+  secret: 'iaraniratakilarinniakamffohhcirugerg',
+  duration: 30 * 60 * 1000,
+  cookie: {
+    ephemeral: true,
+  }
+}));
+
+// Make function(s) to check user authentication
+function loggedIn(request, response, next) {
+  // If there is not a user for this session (else continue)
+  if (!request.mySession.user) {
+    request.mySession.reset();
+    response.redirect("login");
+  } else {
+    next();
+  }
+}
+
 // Set views directory and template engine (ref 2)
 app.set('views', './views');
 app.set('view engine', 'ejs')
@@ -63,7 +86,7 @@ app.set('view engine', 'ejs')
 /**
  * GET requests sent when routing to the page
  *  - / --> splash.ejs
- *  - /main --> main.ejs
+ *  - /main --> main.ejs (must be logged in)
  *  - /login --> login.ejs
  *  - /signup --> signup.ejs
  */
@@ -76,7 +99,7 @@ app.get('/', function(request, response) {
   console.log("\n");
 });
 
-app.get('/main', function(request, response) {
+app.get('/main', loggedIn, function(request, response) {
   response.render("main");
   console.log("GET /main");
   console.log(request.headers);
@@ -102,10 +125,10 @@ app.get('/signup', function(request, response) {
  *  - /main
  *  - /login
  *  - /signup
- * TODO - reroute to correct pages and make sure URL follows suit
  * 
  * https://github.com/mysqljs/mysql#performing-queries
  * https://github.com/mysqljs/mysql#escaping-query-values
+ * https://expressjs.com/en/api.html#app.locals
  */
 
 app.post('/main', function(request, response) {
@@ -153,6 +176,8 @@ app.post('/login', function(request, response) {
       console.log("This password was incorrect. Create error message that can be displayed on login page");
       response.redirect("login");
     } else {
+      // Set cookieName: mySession attribute for request and app.locals for response, then redirect
+      request.mySession.user = email;
       response.redirect("main");
       // TODO - customize page for person?
     }

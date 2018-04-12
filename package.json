@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "chai": "^4.1.2",
+    "client-sessions": "^0.8.0",
     "ejs": "^2.5.8",
     "express": "^4.16.3",
     "firebase": "^4.12.1",
