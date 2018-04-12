@@ -27,3 +27,8 @@ function login() {
         alert(error.message);
     });
 }
+
+
+function login() {
+  window.location.href = "splash.html";
+}

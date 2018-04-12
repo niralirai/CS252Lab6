@@ -6,42 +6,42 @@
     - Login formatting
       https://forums.adobe.com/thread/2444344
       https://www.kirupa.com/html5/naming_via_class_id_name.htm
--->
+    -->
 
-<!DOCTYPE html>
-<!-- Firebase scripts -->
-<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <!DOCTYPE html>
+    <!-- Firebase scripts -->
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
 
-<script type="text/javascript" src="js/signup.js"></script>
+    <script type="text/javascript" src="js/signup.js"></script>
 
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <html lang="en">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <!-- Stuff we actually wrote -->
-    <title>Where'd It Go?!</title>
-    <link rel="stylesheet" href="signup.css">
-    <script src="js/signup.js"></script>
+      <!-- Stuff we actually wrote -->
+      <title>Where'd It Go?!</title>
+      <link rel="stylesheet" href="signup.css">
+      <script src="js/signup.js"></script>
 
-    <!-- Styling -->
-    <style>
+      <!-- Styling -->
+      <style>
       .center-block {
         display: block;
         margin-left: auto;
         margin-right: auto;
       }
-        
+
       #signup-form {
         background-color: #BFE8F5;
         min-width: 210px;
@@ -55,66 +55,132 @@
         margin-left: auto;
         margin-right: auto;
       }
-        
+
       h1 {
         margin-bottom: 1ch;
         text-align: center;
       }
-        
+
       .div-signup {
         margin-bottom: 2ch;
       }
-        
+
       .signup-input-title {
         margin-bottom: 0ch;
       }
     </style>
+
+
+
+
+    <!DOCTYPE html>
+    <html class="no-js"> 
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>signupPage</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+
+      <script type="text/javascript" src="js/signup.js"></script>
+      <link rel="stylesheet" href="signup.css">
+      <script src="helper_files/vendor/modernizr-2.7.1.min.js"></script>
+      <style type="text/css">
+      body {
+        font-family: 'Open Sans', sans-serif;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        width: 100%;
+        height: 100%;
+        min-width: 1000px;
+        min-height: 1000px;
+        overflow: hidden
+      }
+      
+      html {
+        overflow: hidden
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+      }
+    </style>
   </head>
+  <body class="loading">
 
 
-  <body id="body-signup">
-    <div class="container center-block">
-      <!-- Signup form -->
-      <form id="signup-form" method="get">
-        <h1>Signup</h1>
+    <div id="preload">
+      <img src="assets/Snowy.jpg">
 
-        <!-- Form input -->
-        <div id="div-input-fields">
-          <!-- Name -->
-          <div class="div-signup div-firstname">
-            <label for="firstname" class="signup-input-title">First Name: </label>
-            <input type="text" id="firstname" placeholder="Enter first name"  required>
-          </div>
-          
-          <div class="div-signup div-lastname">
-            <label for="lastname" class="signup-input-title">Last Name: </label>
-            <input type="text" id="lastname" placeholder="Enter last name" required>
-          </div>
 
-          <!-- Email -->
-          <div class="div-signup div-email">
-            <label for="email" class="signup-input-title">Email: </label>
-            <input type="text" id="emailn" placeholder="Enter email"  required>
-          </div>
-
-          <!-- Password -->
-          <div class="div-signup div-password">
-            <label for="password" class="signup-input-title">Password: </label>
-            <input type="password" id="password" placeholder="Enter password"  required>
-          </div>
-
-          <div class="div-signup div-password">
-            <label for="password2" class="signup-input-title">Re-enter Password</label>
-            <input type="password" id="password2" placeholder="Re-enter password" required>
-          </div>
-        </div>
-
-        <!-- Signup button -->
-        <div id="div-button-button">
-          <input type="submit" id="submit" value="Signup" onclick="signUp()">
-        </div>
-      </form>
     </div>
 
+    <main>
+
+      <section id="slide-1" class="homeSlide">
+        <div class="bcg">
+          <div class="hsContainer">
+            <div class="hsContent">
+              <h4>
+                <label>Sign Up</label>
+
+                <div id="div-input-fields">
+
+                  <!-- Name -->
+                  <div class="div-signup div-firstname">
+                    <label for="firstname" class="signup-input-title">First Name: </label>
+                    <input type="text" id="firstname" placeholder="Enter first name"  required>
+                  </div>
+
+                  <div class="div-signup div-lastname">
+                    <label for="lastname" class="signup-input-title">Last Name: </label>
+                    <input type="text" id="lastname" placeholder="Enter last name" required>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="div-signup div-email">
+                    <label for="email" class="signup-input-title">Email: </label>
+                    <input type="text" id="emailn" placeholder="Enter email"  required>
+                  </div>
+
+                  <!-- Password -->
+                  <div class="div-signup div-password">
+                    <label for="password" class="signup-input-title">Password: </label>
+                    <input type="password" id="password" placeholder="Enter password"  required>
+                  </div>
+
+                  <div class="div-signup div-password">
+                    <label for="password2" class="signup-input-title">Re-enter Password</label>
+                    <input type="password" id="password2" placeholder="Re-enter password" required>
+                  </div>
+                </div>
+
+
+
+
+              </h4>
+              <div>
+                <button type="button" class="button" onclick="signup()">Sign Up</button>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <script>window.jQuery || document.write('<script src="helper_files/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+    <script src="helper_files/imagesloaded.js"></script>
+    <script src="helper_files/_main.js"></script>
+
   </body>
-</html>
+  </html>
+
+
+
+
+

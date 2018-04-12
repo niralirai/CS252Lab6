@@ -28,3 +28,9 @@ function signUp() {
   });
     window.location.href = "login.html";
 }
+
+
+function signup() {
+  window.location.href = "login.html";
+}
+
