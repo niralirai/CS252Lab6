@@ -4,3 +4,25 @@
   float:left;
   margin-right:15px;
 }
+.bcg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.hsContainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hsContent {
+  max-width: 1000px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}

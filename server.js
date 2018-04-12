@@ -45,7 +45,7 @@ app.use(express.static(__dirname));
  */
 var mysql = require('mysql');
 var p = process.argv[2];
-var connection = mysql.createConnection({
+/*var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: p,
@@ -55,7 +55,7 @@ connection.connect(function(error) {
   if (error) { throw error; }
   console.log('connected as id ' + connection.threadId);
 });
-
+*/
 // Set views directory and template engine (ref 2)
 app.set('views', './views');
 app.set('view engine', 'ejs')
