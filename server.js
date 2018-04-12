@@ -142,21 +142,30 @@ app.get('/signup', needsNotLoggedIn, function(request, response) {
  */
 
 app.post('/main', function(request, response) {
-  console.log("POST /login");
+  console.log("POST /main");
   console.log(request.body);
   console.log(request.headers);
   console.log("\n");
 
-  // Get form field values
-  let rent = Number(request.body.rent == '' ? '0' : request.body.rent);
-  let utilities = Number(request.body.utilities == '' ? '0' : request.body.utilities);
-  let cards = Number(request.body.cards == '' ? '0' : request.body.cards);
-  let auto = Number(request.body.auto == '' ? '0' : request.body.auto);
-  let internet = Number(request.body.internet == '' ? '0' : request.body.internet);
-  let food = Number(request.body.food == '' ? '0' : request.body.food);
-  let clothing = Number(request.body.clothing == '' ? '0' : request.body.clothing);
+  /**
+   * Can POST with calculate or logout; logout body is empty
+   * If body is empty (else Calculate button was pressed)
+   */
+  if (Object.keys(request.body).length === 0) {
+    request.mySession.reset();
+    response.redirect("/");
+  } else {
+    // Get form field values
+    let rent = Number(request.body.rent == '' ? '0' : request.body.rent);
+    let utilities = Number(request.body.utilities == '' ? '0' : request.body.utilities);
+    let cards = Number(request.body.cards == '' ? '0' : request.body.cards);
+    let auto = Number(request.body.auto == '' ? '0' : request.body.auto);
+    let internet = Number(request.body.internet == '' ? '0' : request.body.internet);
+    let food = Number(request.body.food == '' ? '0' : request.body.food);
+    let clothing = Number(request.body.clothing == '' ? '0' : request.body.clothing);
 
-  response.send("Successfully got all values as type Number. Create page that can show results.");
+    response.send("Successfully got all values as type Number. Create page that can show results.");
+  }
 });
 
 app.post('/login', function(request, response) {
