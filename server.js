@@ -69,11 +69,20 @@ app.use(sessions({
 }));
 
 // Make function(s) to check user authentication
-function loggedIn(request, response, next) {
+function needsLoggedIn(request, response, next) {
   // If there is not a user for this session (else continue)
   if (!request.mySession.user) {
     request.mySession.reset();
     response.redirect("login");
+  } else {
+    next();
+  }
+}
+
+function needsNotLoggedIn(request, response, next) {
+  // If there is a user for this session (else continue)
+  if (request.mySession.user) {
+    response.redirect("main");
   } else {
     next();
   }
@@ -87,8 +96,8 @@ app.set('view engine', 'ejs')
  * GET requests sent when routing to the page
  *  - / --> splash.ejs
  *  - /main --> main.ejs (must be logged in)
- *  - /login --> login.ejs
- *  - /signup --> signup.ejs
+ *  - /login --> login.ejs (must NOT be logged in)
+ *  - /signup --> signup.ejs (must NOT be logged in)
  */
 
 // TODO - other html pages as needed
@@ -99,21 +108,22 @@ app.get('/', function(request, response) {
   console.log("\n");
 });
 
-app.get('/main', loggedIn, function(request, response) {
+app.get('/main', needsLoggedIn, function(request, response) {
   response.render("main");
   console.log("GET /main");
   console.log(request.headers);
+  console.log(request.mySession.user);
   console.log("\n");
 });
 
-app.get('/login', function(request, response) {
+app.get('/login', needsNotLoggedIn, function(request, response) {
   response.render("login");
   console.log("GET /login");
   console.log(request.headers);
   console.log("\n");
 });
 
-app.get('/signup', function(request, response) {
+app.get('/signup', needsNotLoggedIn, function(request, response) {
   response.render("signup");
   console.log("GET /signup");
   console.log(request.headers);
