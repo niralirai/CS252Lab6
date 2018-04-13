@@ -25,6 +25,13 @@ body {
 input {
   background-color: #85b9e9;
 }
-  
-  
+
+.input-options {
+  padding: 1ch;
+
+  /* https://simplestepscode.com/css-glass-button-tutorial/ */
+  background-color: green;
+  background-image: linear-gradient(green,lightgreen);
+  border-radius: 12px;
+}  
   

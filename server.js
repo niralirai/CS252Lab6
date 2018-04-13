@@ -149,11 +149,13 @@ app.post('/main', function(request, response) {
 
   /**
    * Can POST with calculate or logout; logout body is empty
-   * If body is empty (else Calculate button was pressed)
+   * If body is empty (else if again, else Calculate button was pressed)
    */
   if (Object.keys(request.body).length === 0) {
     request.mySession.reset();
     response.redirect("/");
+  } else if (Object.keys(request.body) == 'again') {
+    response.redirect("main");
   } else {
     // Get form field values
     let budget = Number(request.body.budget);

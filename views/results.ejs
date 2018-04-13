@@ -13,7 +13,7 @@
 
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
-    <!--<link rel="stylesheet" href="main.css"-->
+    <link rel="stylesheet" href="results.css">
   </head>
 
   <body id="body-main" background = "https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/QwIr88a/epic-aerial-flight-through-mountain-clouds-towards-sunrise-beautiful-morning-peaks-inspirational-motivational-nature-background-uhd-4k_edmp6fynl__F0000.png">
@@ -25,23 +25,28 @@
 
     <div class="container center-block">
       <!-- Budget results -->
-      <div id="page2-div" method="POST">
-          <!-- Budget -->
-          <div class="form-group">
-            <p><i>Your budget was $<%= budget %></i></p>
-          </div>
-
-          <!-- What you actually spent -->
-          <div class="form-group">
-            <p><i>You actually spent $<%= spent %></i></p>
-          </div>
-
-          <!-- Over or under -->
-          <div class="form-group">
-            <p><i>You have <%= diff %> remaining</i></p>
-            <p><%= msg %></p>
-          </div>
+      <div id="page2-div">
+        <!-- Budget -->
+        <div class="form-group">
+          <p><i>Your budget was $<%= budget %></i></p>
         </div>
+
+        <!-- What you actually spent -->
+        <div class="form-group">
+          <p><i>You actually spent $<%= spent %></i></p>
+        </div>
+
+        <!-- Over or under -->
+        <div class="form-group">
+          <p><i>You have <%= diff %> remaining</i></p>
+          <p><%= msg %></p>
+        </div>
+
+        <!-- Again -->
+        <form id="options-form" method="POST">
+          <input type="submit" class="input-options" name="again" value="Calculate another budget">
+        </form>
+      </div>
     </div>  
   </body>
 </html>
