@@ -3,6 +3,7 @@
     - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
     - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
     - https://getbootstrap.com/docs/4.0/components/navbar/
+    - http://ejs.co
 //-->
 
 <!DOCTYPE html>
@@ -23,13 +24,7 @@
 
   <body id="body-main" background = "https://caitflanders.com/wp-content/uploads/2016/03/inspiration-expiration.jpg">
     <!-- Bootstrap navbar -->
-    <nav class="navbar navbar-light bg-light justify-content-between">
-      <a href="main" class="navbar-brand">Where'd It Go?!</a>
-      <form class="form-inline" method="POST">
-        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-      </form>
-    </nav>
+    <%- include partials/navbar %>
 
     <h1 align="center" style="font-family:georgia;"><strong>Don't know where it all went?</strong></h1>
     <h2 align="center" style="font-family:georgia;"><i>Let's find out!</i></h2>
