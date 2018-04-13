@@ -1,0 +1,37 @@
+#page2-div {
+  background-color: #C0C0C0;
+  background:rgba(255,255,255,0.5);
+  min-width: 210px;
+  max-width: 430px;
+  padding: 5%;
+    
+  /* Center the form */
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.div-main {
+  text-align: center;
+  clear: both;
+  float:left;
+  margin-right:15px;
+}
+body {
+  text-align: center;
+}
+input {
+  background-color: #85b9e9;
+}
+
+.input-options {
+  padding: 1ch;
+
+  /* https://simplestepscode.com/css-glass-button-tutorial/ */
+  background-color: green;
+  background-image: linear-gradient(green,lightgreen);
+  border-radius: 12px;
+}  
+  

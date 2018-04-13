@@ -108,11 +108,10 @@ app.get('/', function(request, response) {
   console.log("\n");
 });
 
-app.get('/main', needsLoggedIn, function(request, response) {
-  response.render("main");
-  console.log("GET /main");
+app.get('/signup', needsNotLoggedIn, function(request, response) {
+  response.render("signup");
+  console.log("GET /signup");
   console.log(request.headers);
-  console.log(request.mySession.user);
   console.log("\n");
 });
 
@@ -123,10 +122,11 @@ app.get('/login', needsNotLoggedIn, function(request, response) {
   console.log("\n");
 });
 
-app.get('/signup', needsNotLoggedIn, function(request, response) {
-  response.render("signup");
-  console.log("GET /signup");
+app.get('/main', needsLoggedIn, function(request, response) {
+  response.render("main");
+  console.log("GET /main");
   console.log(request.headers);
+  console.log(request.mySession.user);
   console.log("\n");
 });
 
@@ -149,13 +149,16 @@ app.post('/main', function(request, response) {
 
   /**
    * Can POST with calculate or logout; logout body is empty
-   * If body is empty (else Calculate button was pressed)
+   * If body is empty (else if again, else Calculate button was pressed)
    */
   if (Object.keys(request.body).length === 0) {
     request.mySession.reset();
     response.redirect("/");
+  } else if (Object.keys(request.body) == 'again') {
+    response.redirect("main");
   } else {
     // Get form field values
+    let budget = Number(request.body.budget);
     let rent = Number(request.body.rent == '' ? '0' : request.body.rent);
     let utilities = Number(request.body.utilities == '' ? '0' : request.body.utilities);
     let cards = Number(request.body.cards == '' ? '0' : request.body.cards);
@@ -164,7 +167,13 @@ app.post('/main', function(request, response) {
     let food = Number(request.body.food == '' ? '0' : request.body.food);
     let clothing = Number(request.body.clothing == '' ? '0' : request.body.clothing);
 
-    response.send("Successfully got all values as type Number. Create page that can show results.");
+    const total = rent + utilities + cards + auto + internet + food + clothing;
+    const spent = total;
+    const diff = budget - spent;
+    let dollarDiff = (diff > 0 ? "$" + diff : "-$" + (diff * -1));
+    let msg = (diff > 0 ? "You're right on track! :)" : "You overspent this term. :(");
+
+    response.render("results", {spent: spent, budget: budget, diff: dollarDiff, msg: msg})
   }
 });
 
