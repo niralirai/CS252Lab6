@@ -12,51 +12,161 @@
     - Don't need to link login.js; form submittion handled in server.js
 //-->
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!--
+  References:
+    - Bootstrap
+      http://getbootstrap.com/docs/4.0/getting-started/introduction/
+      https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-get-started.php
+    - Login formatting
+      https://forums.adobe.com/thread/2444344
+      https://www.kirupa.com/html5/naming_via_class_id_name.htm
+    -->
 
-    <!-- Stuff we actually wrote -->
-    <title>Where'd It Go?! | Login</title>
-    <link rel="stylesheet" href="login.css">
+    <!DOCTYPE html>
+   
+
+    <script type="text/javascript" src="js/login.js"></script>
+
+    <html lang="en">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+      <!-- Stuff we actually wrote -->
+      <title>Where'd It Go?!</title>
+      <link rel="stylesheet" href="login.css">
+      <script src="js/login.js"></script>
+
+      <!-- Styling -->
+      <style>
+      .center-block {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #signup-form {
+        background-color: #BFE8F5;
+        min-width: 210px;
+        max-width: 430px;
+        padding: 5%;
+        
+        /* Center the form */
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      h1 {
+        margin-bottom: 1ch;
+        text-align: center;
+      }
+
+      .div-signup {
+        margin-bottom: 2ch;
+      }
+
+      .signup-input-title {
+        margin-bottom: 0ch;
+      }
+    </style>
+
+
+
+
+
+    <html class="no-js"> 
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>login</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+
+      <script type="text/javascript" src="js/login.js"></script>
+      <link rel="stylesheet" href="login.css">
+      <script src="helper_files/vendor/modernizr-2.7.1.min.js"></script>
+      <style type="text/css">
+      body {
+        font-family: 'Open Sans', sans-serif;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        width: 100%;
+        height: 100%;
+        min-width: 1000px;
+        min-height: 1000px;
+        overflow: hidden
+      }
+      
+      html {
+        overflow: hidden
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+      }
+    </style>
   </head>
+  <body class="loading">
 
-  <body id="body-login">
-    <div class="container center-block">
-      <!-- Login form -->
-      <form id="login-form" method="POST">
-        <h1>Login</h1>
+    <div id="preload">
+      <img src="assets/WaterfallForest.jpg">
 
-        <!-- Email -->
+    </div>
+
+    <main>
+
+      <section id="slide-1" class="homeSlide">
+        <div class="bcg">
+          <div class="hsContainer">
+            <div class="hsContent">
+            <form id="login-form" method="POST">
+              <h4>
+
+                 <label>Login</label>
+
+        <!-- Username -->
         <div id="div-input-fields">
-          <div class="div-login div-email">
-            <label for="email" class="login-input-title">Email: </label>
-            <input type="text" name="email" placeholder="Enter email" required>
+          <div class="div-login div-username">
+            <label for="username" class="login-input-title">Username: </label>
+            <input type="text" id="username" placeholder="Enter username" required>
           </div>
 
           <!-- Password -->
           <div class="div-login div-password">
             <label for="password" class="login-input-title">Password: </label>
-            <input type="password" name="password" placeholder="Enter password" required>
+            <input type="password" id="password" placeholder="Enter password" required>
           </div>
         </div>
+              </h4>
+              <div>
+                <button type="button" class="button" onclick="login()">Login</button>
+              </div>
+              </form>
+            </div>
 
-        <!-- Login button -->
-        <div id="div-button">
-          <button type="submit" id="submit">Login!</button>
+          </div>
         </div>
+      </section>
 
-        <!-- Login link -->
-        <a href="signup">Don't have an account yet?</a>
-      </form>
-    </div>
+    </main>
+
+    <script>window.jQuery || document.write('<script src="helper_files/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+    <script src="helper_files/imagesloaded.js"></script>
+    <script src="helper_files/_main.js"></script>
+
   </body>
-</html>
+  </html>
+
+
+
