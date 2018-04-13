@@ -239,5 +239,13 @@ app.post('/signup', function(request, response) {
   });
 });
 
+app.get('/page2', needsLoggedIn, function(request, response) {
+  response.render("page2", {msg: ''});
+  console.log("GET /page2");
+  console.log(request.headers);
+  console.log("\n");
+});
+
+
 app.listen(port);
 console.log("Server started on port " + port);
