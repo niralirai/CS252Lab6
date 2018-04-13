@@ -164,7 +164,7 @@ app.post('/main', function(request, response) {
     let food = Number(request.body.food == '' ? '0' : request.body.food);
     let clothing = Number(request.body.clothing == '' ? '0' : request.body.clothing);
 
-    response.send("Successfully got all values as type Number. Create page that can show results.");
+    response.redirect("page2")
   }
 });
 

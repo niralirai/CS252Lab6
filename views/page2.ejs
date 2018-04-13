@@ -36,12 +36,21 @@
 
     <div class="container center-block">
       <!-- Budget form -->
-      <form id="main-form" method="POST">
+      <form id="page2-form" method="POST">
           <!-- Rent -->
           <div class="form-group">
-            <!--<label for="rent" class="col-form-label"><i>Mortgage/Rent</i></label>-->
+            <label for="budget" class="col-lg-2 control-label"><i>Your Budget:</i></label>
+            <p><%= msg %></p>
           </div>
-        <p><%= msg %></p>
+          <div class="form-group">
+            <label for="spent" class="col-lg-2 control-label"><i>Actually Spent:</i></label>
+            <p><%= msg %></p>
+          </div>
+          <div class="form-group">
+            <label for="difference" class="col-lg-2 control-label"><i>Difference:</i></label>
+            <p><%= msg %></p>
+          </div>
       </form>
+    </div>  
   </body>
 </html>
