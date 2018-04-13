@@ -130,13 +130,6 @@ app.get('/main', needsLoggedIn, function(request, response) {
   console.log("\n");
 });
 
-app.get('/page2', needsLoggedIn, function(request, response) {
-  response.render("page2", {msg: ''});
-  console.log("GET /page2");
-  console.log(request.headers);
-  console.log("\n");
-});
-
 /**
  * POST requests sent when submitting a form (ref 3)
  *  - /main
@@ -175,9 +168,10 @@ app.post('/main', function(request, response) {
     const total = rent + utilities + cards + auto + internet + food + clothing;
     const spent = total;
     const diff = budget - spent;
+    let dollarDiff = (diff > 0 ? "$" + diff : "-$" + (diff * -1));
     let msg = (diff > 0 ? "You're right on track! :)" : "You overspent this term. :(");
 
-    response.render("page2", {total: total, budget: budget, spent: spent, diff: diff, msg: msg})
+    response.render("results", {spent: spent, budget: budget, diff: dollarDiff, msg: msg})
   }
 });
 
