@@ -108,11 +108,10 @@ app.get('/', function(request, response) {
   console.log("\n");
 });
 
-app.get('/main', needsLoggedIn, function(request, response) {
-  response.render("main");
-  console.log("GET /main");
+app.get('/signup', needsNotLoggedIn, function(request, response) {
+  response.render("signup");
+  console.log("GET /signup");
   console.log(request.headers);
-  console.log(request.mySession.user);
   console.log("\n");
 });
 
@@ -123,9 +122,17 @@ app.get('/login', needsNotLoggedIn, function(request, response) {
   console.log("\n");
 });
 
-app.get('/signup', needsNotLoggedIn, function(request, response) {
-  response.render("signup");
-  console.log("GET /signup");
+app.get('/main', needsLoggedIn, function(request, response) {
+  response.render("main");
+  console.log("GET /main");
+  console.log(request.headers);
+  console.log(request.mySession.user);
+  console.log("\n");
+});
+
+app.get('/page2', needsLoggedIn, function(request, response) {
+  response.render("page2", {msg: ''});
+  console.log("GET /page2");
   console.log(request.headers);
   console.log("\n");
 });
@@ -156,6 +163,7 @@ app.post('/main', function(request, response) {
     response.redirect("/");
   } else {
     // Get form field values
+    let budget = Number(request.body.budget);
     let rent = Number(request.body.rent == '' ? '0' : request.body.rent);
     let utilities = Number(request.body.utilities == '' ? '0' : request.body.utilities);
     let cards = Number(request.body.cards == '' ? '0' : request.body.cards);
@@ -164,7 +172,12 @@ app.post('/main', function(request, response) {
     let food = Number(request.body.food == '' ? '0' : request.body.food);
     let clothing = Number(request.body.clothing == '' ? '0' : request.body.clothing);
 
-    response.redirect("page2")
+    const total = rent + utilities + cards + auto + internet + food + clothing;
+    const spent = total;
+    const diff = budget - spent;
+    let msg = (diff > 0 ? "You're right on track! :)" : "You overspent this term. :(");
+
+    response.render("page2", {total: total, budget: budget, spent: spent, diff: diff, msg: msg})
   }
 });
 
@@ -238,14 +251,6 @@ app.post('/signup', function(request, response) {
     }
   });
 });
-
-app.get('/page2', needsLoggedIn, function(request, response) {
-  response.render("page2", {msg: ''});
-  console.log("GET /page2");
-  console.log(request.headers);
-  console.log("\n");
-});
-
 
 app.listen(port);
 console.log("Server started on port " + port);
