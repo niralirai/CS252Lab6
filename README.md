@@ -16,7 +16,15 @@
 * `node setup.js <your_mysql_password>`
 
 ## Run the server
-* Can run either
-`npm start <your_mysql_password>`
-or
-`node server.js <your_mysql_password>`
+* Can run either `npm start <your_mysql_password>` or `node server.js <your_mysql_password>`
+
+## Other useful commands
+### MySQL (in terminal)
+* Start MySQL server (need to run this first): `sudo service mysql start`
+* See all local databases: `SHOW DATABASES;`
+* Select a database to use/reference (need to do this before viewing tables): `USE <database_name>;`
+* See tables in selected database: `SHOW TABLES;`
+* See format of a table in selected database: `DESCRIBE <table_name>;`
+* See all entries of a table: `SELECT * FROM  <table_name>;`
+* See all entries of a table matching a certain criteria: `SELECT * FROM <table_name> WHERE <field_name> = "<desired_value>";`
+* Example using "users" table: `SELECT * FROM users WHERE firstname = "Kai";`
