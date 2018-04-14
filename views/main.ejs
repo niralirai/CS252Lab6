@@ -13,15 +13,18 @@
 
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
   </head>
 
-  <body id="body-main" background = "https://caitflanders.com/wp-content/uploads/2016/03/inspiration-expiration.jpg">
+  <body id="body-main">
     <!-- Bootstrap navbar -->
     <%- include partials/navbar %>
 
-    <h1 align="center" style="font-family:georgia;"><strong>Don't know where it all went?</strong></h1>
-    <h2 align="center" style="font-family:georgia;"><i>Let's find out!</i></h2>
+    <div id="hdrs">
+      <h3 align="center" style="font-family:georgia;">Welcome back, <%= name %>!</h3>
+      <h1 align="center" style="font-family:georgia;"><strong>Don't know where it all went?</strong></h1>
+      <h2 align="center" style="font-family:georgia;"><i>Let's find out!</i></h2>
+    </div>
 
     <div class="container center-block">
       <!-- Budget form -->

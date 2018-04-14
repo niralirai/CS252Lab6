@@ -13,265 +13,46 @@
 //-->
 
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-      <!--       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<html lang="en">
+  <head>
+    <%- include partials/head %>
 
-      <!-- Stuff we actually wrote -->
-      <title>Where'd It Go?!</title>
-      <link rel="stylesheet" href="login.css">
-      <script type="text/javascript" src="../js/login.js"></script>
-      <script src="../helper_files/vendor/modernizr-2.7.1.min.js"></script>
-
-      <style type="text/css">
-
-
-
-
-
-    <!-- Styling -->
-    <style>
-     
-      body {
-        font-family: 'Open Sans', sans-serif;
-        top:0;
-        bottom:0;
-        left:0;
-        right:0;
-        width: 100%;
-        height: 100%;
-        min-width: 1000px;
-        min-height: 1000px;
-        overflow: hidden
-      }
-      
-      html {
-        overflow: hidden
-        top:0;
-        bottom:0;
-        left:0;
-        right:0;
-      }
-
-    h1 {
-      margin-bottom: 1ch;
-      text-align: center;
-    }
-
-    .div-login {
-      margin-bottom: 2ch;
-    }
-
-    .login-input-title {
-      margin-bottom: 0ch;
-    }
-    textarea {
-        resize: vertical;
-    }
-
-    .chromeframe {
-        margin: 0.2em 0;
-        background: #ccc;
-        color: #000;
-        padding: 0.2em 0;
-    }
-
-    body, html {
-      height: 100%;
-      min-height: 100%;
-      background-color: #000000;
-    }
-    body {
-      
-    }
-    .no-js {
-      padding-top: 106px;
-    }
-    h2 {
-      margin-top: 0;
-    }
-    .loading {
-      background: url('../img/ico_loading.gif') no-repeat center center;
-    }
-    section {
-      min-width: 960px;
-      opacity: 0;
-    }
-
-    main {
-      overflow-x: hidden;
-    overflow: hidden
-    }
-    #preload {
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    .bcg {
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-      height: 100%;
-      width: 100%;
-    }
-
-    .hsContainer {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hsContent {
-      max-width: 1000px;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-    }
-      
-     .hsContent h4  {
-        color: #fff8de;
-        background-color: rgba(0,0,0,0.5);
-        padding: 10px 5px;
-        
-        margin-bottom: 12px;
-        text-align: center;
-    }
-  .hsContent p {
-    width: 300px;
-
-        color: #fff8de;
-        background-color: rgba(0,0,0,0.5);
-        padding: 10px 5px;
-        font-size: 18px;
-        line-height: 24px;
-        margin-bottom: 12px;
-        text-align: center;
-  }
-  .hsContent a {
-    color: #b2b2b2;
-    text-decoration: underline;
-  }
-
-    /* Slide 1 */
-    #slide-1 .bcg {background-image:url('../WaterfallForest.jpg')}
-    #slide-1 .hsContent {
-
-      margin-left: -200px;
-        bottom: 200px;
-        top: auto;
-    }
-
-    .button {
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 36px;
-      cursor: pointer;
-      position:relative;
-      color: #fff8de;
-      background-color: rgba(0,0,0,0.75);
-      padding: 1.0rem;
-      border: 2px ;
-      width: 45%;
-      margin: 1rem;
-      margin-left: 7.5rem;
-       
-    }
-
-
-  
-
-   
-    img {
-        max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </style>
+    <!-- Stuff we actually wrote -->
+    <title>Where'd It Go?! | Login</title>
+    <link rel="stylesheet" href="css/login.css">
   </head>
-  <body class="loading">
 
-    <div id="preload">
-      <img src="../assets/WaterfallForest.jpg">
-    </div>
-    <main>
-      <section id="slide-1" class="homeSlide">
-        <div class="bcg">
-          <div class="hsContainer">
-            <div class="hsContent">
-              <form method="POST">
-                <h4>
-                  <label>Login</label>
-                  <!-- Username -->
-                  <div id="div-input-fields">
-                    <div class="div-login div-username">
-                      <label for="username" class="login-input-title">Username: </label>
-                      <input type="text" id="username" placeholder="Enter username" required>
-                    </div>
-                    <!-- Password -->
-                    <div class="div-login div-password">
-                      <label for="password" class="login-input-title">Password: </label>
-                      <input type="password" id="password" placeholder="Enter password" required>
-                    </div>
-                  </div>
-                </h4>
-                <div>
-                   <button type="button" class="button" onclick="login()">Login</button>
-                </div>
-              </form>
-            </div>
+  <body id="body-login">
+    <div class="container center-block">
+      <!-- Login form -->
+      <form id="login-form" method="POST">
+        <h1>Login</h1>
+
+        <!-- Email -->
+        <div id="div-input-fields">
+          <div class="div-login div-email">
+            <label for="email" class="login-input-title">Email: </label>
+            <input type="text" name="email" placeholder="Enter email" required>
+          </div>
+
+          <!-- Password -->
+          <div class="div-login div-password">
+            <label for="password" class="login-input-title">Password: </label>
+            <input type="password" name="password" placeholder="Enter password" required>
           </div>
         </div>
-      </section>
-    </main>
-    <script>window.jQuery || document.write('<script src="../helper_files/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-    <script src="../helper_files/imagesloaded.js"></script>
-    <script src="../helper_files/_main.js"></script>
+
+        <!-- Login button -->
+        <div id="div-button">
+          <button type="submit" id="submit">Go!</button>
+        </div>
+
+        <!-- Login link -->
+        <a href="signup">Don't have an account yet?</a>
+
+        <!-- Error message -->
+        <p class="errorMsg"><%= errorMsg %></p>
+      </form>
+    </div>
   </body>
 </html>
-
-
-

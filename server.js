@@ -109,21 +109,21 @@ app.get('/', function(request, response) {
 });
 
 app.get('/signup', needsNotLoggedIn, function(request, response) {
-  response.render("signup");
+  response.render("signup", {errorMsg: ''});
   console.log("GET /signup");
   console.log(request.headers);
   console.log("\n");
 });
 
 app.get('/login', needsNotLoggedIn, function(request, response) {
-  response.render("login");
+  response.render("login", {errorMsg: ''});
   console.log("GET /login");
   console.log(request.headers);
   console.log("\n");
 });
 
 app.get('/main', needsLoggedIn, function(request, response) {
-  response.render("main");
+  response.render("main", {name: request.mySession.firstname});
   console.log("GET /main");
   console.log(request.headers);
   console.log(request.mySession.user);
@@ -192,21 +192,27 @@ app.post('/login', function(request, response) {
    *  - 'results' stores MySQL "return value" as object of strings (table entries), length = 1
    *  - 'fields' stores metadata for each result
    */
-  var checkEmail = "SELECT * FROM users WHERE email = ?";
+  var checkEmail = "SELECT * FROM users WHERE email = ?;";
   connection.query(checkEmail, [email], function (error, results, fields) {
     // If error (else if email not found, else if passwords don't match, else redirect)
     if (error) {
       throw error;
     } else if (results.length <= 0) {
-      console.log("This email is was not found. Create error message that can be displayed on login page");
-      response.redirect("login");
+      response.render("login", {errorMsg: "Email not registered"});
     } else if (results[0].password !== password) {
-      console.log("This password was incorrect. Create error message that can be displayed on login page");
-      response.redirect("login");
+      response.render("login", {errorMsg: "Incorrect password"});
     } else {
       // Set cookieName: mySession attribute for request and app.locals for response, then redirect
       request.mySession.user = email;
-      response.redirect("main");
+
+      // Get user's name
+      const getName = "SELECT firstname, lastname FROM users WHERE email = \"" + email + "\";";
+      connection.query(getName, [email], function (e, r, f) {
+        if (e) { throw e; }
+        request.mySession.firstname = r[0].firstname;
+        request.mySession.lastname = r[0].lastname;
+        response.redirect("main");
+      })
       // TODO - customize page for person?
     }
   });
@@ -226,17 +232,15 @@ app.post('/signup', function(request, response) {
   let password2 = request.body.password2;
 
   // Create MySQL requests to check email
-  var checkEmail = "SELECT * FROM users WHERE email = ?";
+  var checkEmail = "SELECT * FROM users WHERE email = ?;";
   connection.query(checkEmail, [email], function (error, results, fields) {
     // If error (else if email already used, else if passwords don't match, else save and redirect)
     if (error) {
       throw error;
     } else if (results.length > 0) {
-      console.log("This email is already being used. Create error message that can be displayed on signup page");
-      response.redirect("signup");
+      response.render("signup", {errorMsg: "Email already in use"});
     } else if (password !== password2) {
-      console.log("Re-typed password doesn't match. Create error message that can be displayed on signup page");
-      response.redirect("signup");
+      response.render("signup", {errorMsg: "Re-typed password doesn't match"});
     } else {
       var addUser = "INSERT INTO users VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "');";
       connection.query(addUser, function (e, r, f) {
