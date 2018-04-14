@@ -1,15 +1,39 @@
+html { 
+  background: url('https://caitflanders.com/wp-content/uploads/2016/03/inspiration-expiration.jpg') no-repeat center center fixed;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body{
+  text-align: center;
+}
+
+#hdrs {
+  background-color: #f2e0c6;
+  padding-top: 1ch;
+  padding-bottom: 1ch;
+}
+
 #main-form{
   background-color: #C0C0C0;
   background:rgba(255,255,255,0.5);
   min-width: 210px;
   max-width: 430px;
-  padding: 5%;
+  padding-top: 2ch;
+  padding-left: 5%;
+  padding-bottom: 2ch;
+  padding-right: 5%;
     
   /* Center the form */
   position: absolute;
   left: 10%;
   right: 10%;
+  margin-top: 2ch;
   margin-left: auto;
+  margin-bottom: 2ch;
   margin-right: auto;
 }
 
@@ -19,6 +43,7 @@
   float:left;
   margin-right:15px;
 }
+
 #bg { /*https://css-tricks.com/perfect-full-page-background-image*/
   position: fixed;
   top: -50%;
@@ -26,11 +51,7 @@
   width: 200%;
   height: 200%;  
 }
-body{
-  text-align: center;
-}
+
 input {
   background-color: #85b9e9;
 }
-
-
