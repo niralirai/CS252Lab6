@@ -30,7 +30,7 @@
 // Express is better for handling routing
 var express = require('express');
 var app = express();
-var port = 4200;
+var port = process.env.PORT || 4200;
 
 // Parses as json and puts object into req.body (ref 1)
 var bodyParser = require('body-parser');
