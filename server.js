@@ -6,14 +6,14 @@
  *  4. https://dev.mysql.com/doc/refman/5.7/en/tutorial.html
  *  5. https://www.npmjs.com/package/client-sessions
  * 
- * Database (whered_it_go) tables format: `SHOW TABLES;`
- *    +-------------------------+
- *    | Tables_in_whered_it_go  |
- *    +-------------------------+
- *    | users                   |
- *    +-------------------------+
+ * Database (heroku_01db060d2e70e87) tables format: `SHOW TABLES;`
+ *    +-----------------------------------+
+ *    | Tables in heroku_01db060d2e70e87  |
+ *    +-----------------------------------+
+ *    | users                             |
+ *    +-----------------------------------+
  * 
- * Database (whered_it_go) table (users) format: `USE whered_it_go; DESCRIBE users;`
+ * Database (heroku_01db060d2e70e87) table (users) format: `USE heroku_01db060d2e70e87; DESCRIBE users;`
  *    +------------+---------------+
  *    | Field      | Type          |
  *    +------------+---------------+
@@ -43,6 +43,7 @@ app.use(express.static(__dirname));
  * Set up mysql, declare connection, and try to connect (ref 3)
  * https://github.com/mysqljs/mysql#establishing-connections
  * https://github.com/mysqljs/mysql#connection-options
+ * https://github.com/mysqljs/mysql#pooling-connections
  */
 var mysql = require('mysql');
 // var p = process.argv[2];
@@ -56,6 +57,16 @@ var pool = mysql.createPool({
 pool.getConnection(function(error, connection) {
   if (error) { throw error; }
   console.log('connected as id ' + connection.threadId);
+
+  /**
+   * POST requests sent when submitting a form (ref 3)
+   *  - /login (in pool connection)
+   *  - /signup (in pool connection)
+   * 
+   * https://github.com/mysqljs/mysql#performing-queries
+   * https://github.com/mysqljs/mysql#escaping-query-values
+   * https://expressjs.com/en/api.html#app.locals
+   */
   app.post('/login', function(request, response) {
     console.log("POST /login");
     console.log(request.body);
@@ -92,7 +103,6 @@ pool.getConnection(function(error, connection) {
           request.mySession.lastname = r[0].lastname;
           response.redirect("main");
         })
-        // TODO - customize page for person?
       }
     });
   });
@@ -131,8 +141,6 @@ pool.getConnection(function(error, connection) {
     });
   });
 });
-
-/* var connection = mysql.createConnection('mysql://bbb29a8be86d32:03394565@us-cdbr-iron-east-05.cleardb.net/heroku_01db060d2e70e87?reconnect=true'); */
 
 // Set up session cookies for users (ref 5)
 var sessions = require('client-sessions');
@@ -176,8 +184,6 @@ app.set('view engine', 'ejs')
  *  - /login --> login.ejs (must NOT be logged in)
  *  - /signup --> signup.ejs (must NOT be logged in)
  */
-
-// TODO - other html pages as needed
 app.get('/', function(request, response) {
   response.render("splash");
   console.log("GET /");
@@ -210,14 +216,11 @@ app.get('/main', needsLoggedIn, function(request, response) {
 /**
  * POST requests sent when submitting a form (ref 3)
  *  - /main
- *  - /login
- *  - /signup
  * 
  * https://github.com/mysqljs/mysql#performing-queries
  * https://github.com/mysqljs/mysql#escaping-query-values
  * https://expressjs.com/en/api.html#app.locals
  */
-
 app.post('/main', function(request, response) {
   console.log("POST /main");
   console.log(request.body);
@@ -253,8 +256,6 @@ app.post('/main', function(request, response) {
     response.render("results", {spent: spent, budget: budget, diff: dollarDiff, msg: msg})
   }
 });
-
-
 
 app.listen(port);
 console.log("Server started on port " + port);
