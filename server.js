@@ -53,6 +53,11 @@ var connection = mysql.createConnection({
   password: '03394565',
   database: 'heroku_01db060d2e70e87'
 });
+*/
+
+var connection = mysql.createConnection('mysql://bbb29a8be86d32:03394565@us-cdbr-iron-east-05.cleardb.net/heroku_01db060d2e70e87?reconnect=true');
+
+/*
 connection.connect(function(error) {
   if (error) { throw error; }
   console.log('connected as id ' + connection.threadId);
