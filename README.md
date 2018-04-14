@@ -31,3 +31,12 @@
 * See certain columns given a certain criteria: `SELECT <col 1>, <col 2>... FROM <table_name> WHERE <field_name> = "<desired_value>";`
 * Example using "users" table: `SELECT firstname FROM users WHERE lastname = "Rai";`
 >>>>>>> 92f44cf611748b50e9279f47e3bd927072550a5f
+
+### Heroku (in terminal)
+* Log into your heroku: `heroku login`
+* Log out of your heroku: `heroku logout`
+* Push to heroku branch for app deployment: `git push heroku master`
+* Note: git add and commit work the same way
+* See processes/dynos running: `heroku ps`
+* Start app to run on n servers: `heroku ps:scale web=n`
+* Start app to run on 1 server: `heroku ps:scale web=1`
