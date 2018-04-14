@@ -45,12 +45,12 @@ app.use(express.static(__dirname));
  * https://github.com/mysqljs/mysql#connection-options
  */
 var mysql = require('mysql');
-var p = process.argv[2];
+// var p = process.argv[2];
 var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: p,
-  database: 'whered_it_go'
+  host: 'us-cdbr-iron-east-05.cleardb.net',
+  user: 'bbb29a8be86d32',
+  password: '03394565',
+  database: 'heroku_01db060d2e70e87'
 });
 connection.connect(function(error) {
   if (error) { throw error; }
