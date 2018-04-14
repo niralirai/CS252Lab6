@@ -123,7 +123,7 @@ app.get('/login', needsNotLoggedIn, function(request, response) {
 });
 
 app.get('/main', needsLoggedIn, function(request, response) {
-  response.render("main");
+  response.render("main", {name: request.mySession.firstname});
   console.log("GET /main");
   console.log(request.headers);
   console.log(request.mySession.user);
@@ -192,7 +192,7 @@ app.post('/login', function(request, response) {
    *  - 'results' stores MySQL "return value" as object of strings (table entries), length = 1
    *  - 'fields' stores metadata for each result
    */
-  var checkEmail = "SELECT * FROM users WHERE email = ?";
+  var checkEmail = "SELECT * FROM users WHERE email = ?;";
   connection.query(checkEmail, [email], function (error, results, fields) {
     // If error (else if email not found, else if passwords don't match, else redirect)
     if (error) {
@@ -204,7 +204,15 @@ app.post('/login', function(request, response) {
     } else {
       // Set cookieName: mySession attribute for request and app.locals for response, then redirect
       request.mySession.user = email;
-      response.redirect("main");
+
+      // Get user's name
+      const getName = "SELECT firstname, lastname FROM users WHERE email = \"" + email + "\";";
+      connection.query(getName, [email], function (e, r, f) {
+        if (e) { throw e; }
+        request.mySession.firstname = r[0].firstname;
+        request.mySession.lastname = r[0].lastname;
+        response.redirect("main");
+      })
       // TODO - customize page for person?
     }
   });
@@ -224,7 +232,7 @@ app.post('/signup', function(request, response) {
   let password2 = request.body.password2;
 
   // Create MySQL requests to check email
-  var checkEmail = "SELECT * FROM users WHERE email = ?";
+  var checkEmail = "SELECT * FROM users WHERE email = ?;";
   connection.query(checkEmail, [email], function (error, results, fields) {
     // If error (else if email already used, else if passwords don't match, else save and redirect)
     if (error) {
