@@ -46,6 +46,7 @@ app.use(express.static(__dirname));
  */
 var mysql = require('mysql');
 // var p = process.argv[2];
+/*
 var connection = mysql.createConnection({
   host: 'us-cdbr-iron-east-05.cleardb.net',
   user: 'bbb29a8be86d32',
@@ -56,6 +57,7 @@ connection.connect(function(error) {
   if (error) { throw error; }
   console.log('connected as id ' + connection.threadId);
 });
+*/
 
 // Set up session cookies for users (ref 5)
 var sessions = require('client-sessions');
