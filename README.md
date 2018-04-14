@@ -21,6 +21,8 @@
 ## Other useful commands
 ### MySQL (in terminal)
 * Start MySQL server (need to run this first): `sudo service mysql start`
+* Start MySQL on localhost as root: `mysql -u root -p` or `mysql -h localhost -u root -p`
+* Start MySQL given a host and user: `mysql -h <host> -u <user> -p`
 * See all local databases: `SHOW DATABASES;`
 * Select a database to use/reference (need to do this before viewing tables): `USE <database_name>;`
 * See tables in selected database: `SHOW TABLES;`
