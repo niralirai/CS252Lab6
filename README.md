@@ -16,12 +16,6 @@
 * `node setup.js <your_mysql_password>`
 
 ## Run the server
-
-* Can run either
-`npm start <your_mysql_password>`
-or
-`node server.js <your_mysql_password>`
-
 * Can run either `npm start <your_mysql_password>` or `node server.js <your_mysql_password>`
 
 ## Other useful commands
@@ -34,4 +28,6 @@ or
 * See all entries of a table: `SELECT * FROM  <table_name>;`
 * See all entries of a table matching a certain criteria: `SELECT * FROM <table_name> WHERE <field_name> = "<desired_value>";`
 * Example using "users" table: `SELECT * FROM users WHERE firstname = "Kai";`
+* See certain columns given a certain criteria: `SELECT <col 1>, <col 2>... FROM <table_name> WHERE <field_name> = "<desired_value>";`
+* Example using "users" table: `SELECT firstname FROM users WHERE lastname = "Rai";`
 >>>>>>> 92f44cf611748b50e9279f47e3bd927072550a5f
