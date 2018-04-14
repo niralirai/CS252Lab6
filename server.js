@@ -109,14 +109,14 @@ app.get('/', function(request, response) {
 });
 
 app.get('/signup', needsNotLoggedIn, function(request, response) {
-  response.render("signup");
+  response.render("signup", {errorMsg: ''});
   console.log("GET /signup");
   console.log(request.headers);
   console.log("\n");
 });
 
 app.get('/login', needsNotLoggedIn, function(request, response) {
-  response.render("login");
+  response.render("login", {errorMsg: ''});
   console.log("GET /login");
   console.log(request.headers);
   console.log("\n");
@@ -198,11 +198,9 @@ app.post('/login', function(request, response) {
     if (error) {
       throw error;
     } else if (results.length <= 0) {
-      console.log("This email is was not found. Create error message that can be displayed on login page");
-      response.redirect("login");
+      response.render("login", {errorMsg: "Email not registered"});
     } else if (results[0].password !== password) {
-      console.log("This password was incorrect. Create error message that can be displayed on login page");
-      response.redirect("login");
+      response.render("login", {errorMsg: "Incorrect password"});
     } else {
       // Set cookieName: mySession attribute for request and app.locals for response, then redirect
       request.mySession.user = email;
@@ -232,11 +230,9 @@ app.post('/signup', function(request, response) {
     if (error) {
       throw error;
     } else if (results.length > 0) {
-      console.log("This email is already being used. Create error message that can be displayed on signup page");
-      response.redirect("signup");
+      response.render("signup", {errorMsg: "Email already in use"});
     } else if (password !== password2) {
-      console.log("Re-typed password doesn't match. Create error message that can be displayed on signup page");
-      response.redirect("signup");
+      response.render("signup", {errorMsg: "Re-typed password doesn't match"});
     } else {
       var addUser = "INSERT INTO users VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "');";
       connection.query(addUser, function (e, r, f) {
