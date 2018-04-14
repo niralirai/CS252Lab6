@@ -12,11 +12,11 @@
 * Node.js: `sudo apt install node`
 * MySQL: `sudo apt install mysql-server`
 
-## Initialize Where'd It Go?! database
-* `node setup.js <your_mysql_password>`
+## Initialize Where'd It Go?! database (only done once, already done)
+* `node setup.js`
 
 ## Run the server
-* Can run either `npm start <your_mysql_password>` or `node server.js <your_mysql_password>`
+* Can run either `npm start` or `node server.js`
 
 ## Other useful commands
 ### MySQL (in terminal)
