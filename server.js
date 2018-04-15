@@ -163,6 +163,9 @@ app.set('view engine', 'ejs')
  *  - /main --> main.ejs (must be logged in)
  *  - /login --> login.ejs (must NOT be logged in)
  *  - /signup --> signup.ejs (must NOT be logged in)
+ *  - /account
+ *  - /history
+ *  - /logout
  */
 app.get('/', function(request, response) {
   response.render("splash");
@@ -194,6 +197,28 @@ app.get('/main', needsLoggedIn, function(request, response) {
   console.log("\n");
 });
 
+app.get('/account', needsLoggedIn, function(request, response) {
+  console.log("GET /account");
+  console.log(request.headers);
+  console.log("\n");
+  response.send("Make html page for account where users can change name, password, or delete account");
+});
+
+app.get('/history', needsLoggedIn, function(request, response) {
+  console.log("GET /history");
+  console.log(request.headers);
+  console.log("\n");
+  response.send("Make html page for history where users can see previous budget forms");
+});
+
+app.get('/logout', needsLoggedIn, function(request, response) {
+  console.log("GET /logout");
+  console.log(request.headers);
+  console.log("\n");
+  request.mySession.reset();
+  response.redirect("/");
+});
+
 /**
  * POST requests sent when submitting a form (ref 3)
  *  - /main
@@ -208,14 +233,7 @@ app.post('/main', function(request, response) {
   console.log(request.headers);
   console.log("\n");
 
-  /**
-   * Can POST with calculate or logout; logout body is empty
-   * If body is empty (else if again, else Calculate button was pressed)
-   */
-  if (Object.keys(request.body).length === 0) {
-    request.mySession.reset();
-    response.redirect("/");
-  } else if (Object.keys(request.body) == 'again') {
+  if (Object.keys(request.body) == 'again') {
     response.redirect("main");
   } else {
     // Get form field values

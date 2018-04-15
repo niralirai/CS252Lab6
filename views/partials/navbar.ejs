@@ -1,7 +1,24 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
+<!--
+  https://getbootstrap.com/docs/4.0/components/navbar/
+  https://www.w3schools.com/bootstrap/bootstrap_navbar.asp
+  https://www.youtube.com/watch?v=qpWlaOeGZ_4
+-->
+
+<nav class="navbar navbar-dark bg-dark justify-content-between">
+  <!-- Main link; don't want it to be collapsable -->
   <a href="main" class="navbar-brand">Where'd It Go?!</a>
-  <form class="form-inline" method="POST">
-    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-  </form>
+
+  <!-- Button deals with element with id in data-target -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsable material (else on navbar) -->
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="account">Account</a>
+      <a class="nav-item nav-link" href="history">History</a>
+      <a class="nav-item nav-link" href="logout">Logout</a>
+    </div>
+  </div>
 </nav>
