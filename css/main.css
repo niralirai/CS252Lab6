@@ -19,9 +19,9 @@ body{
 
 #main-form{
   background-color: #C0C0C0;
-  background:rgba(255,255,255,0.5);
-  min-width: 210px;
-  max-width: 430px;
+  background:#ffffff80;
+  min-width: 430px;
+  max-width: 860px;
   padding-top: 2ch;
   padding-left: 5%;
   padding-bottom: 2ch;
@@ -44,6 +44,15 @@ body{
   margin-right:15px;
 }
 
+.first-column {
+  width: 40%;
+  float: left;
+}
+
+.second-column {
+  width: 40%;
+  float: right;  
+}
 #bg { /*https://css-tricks.com/perfect-full-page-background-image*/
   position: fixed;
   top: -50%;
