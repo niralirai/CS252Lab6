@@ -5,6 +5,14 @@
  *  3. https://github.com/mysqljs/mysql
  *  4. https://dev.mysql.com/doc/refman/5.7/en/tutorial.html
  *  5. https://www.npmjs.com/package/client-sessions
+ * 
+ * request.mySession {
+ *  user: "email@email.com",
+ *  password: "password",
+ *  firstname: "fname",
+ *  lastname: "lname",
+ *  newUser: true/false
+ * }
  */
 
 // Express is better for handling routing
@@ -71,8 +79,10 @@ pool.getConnection(function(error, connection) {
       } else if (results[0].password !== password) {
         response.render("login", {errorMsg: "Incorrect password"});
       } else {
-        // Set cookieName: mySession attribute for request and app.locals for response, then redirect
+        // Set cookieName: mySession attributes then redirect
         request.mySession.user = email;
+        request.mySession.password = password;
+        request.mySession.newUser = false;
   
         // Get user's name
         const getName = "SELECT firstname, lastname FROM users WHERE email = \"" + email + "\";";
@@ -139,7 +149,24 @@ pool.getConnection(function(error, connection) {
     } else if (Object.keys(request.body).length === 2) {
       response.send("Change name was pressed");
     } else {
-      response.send("Change password was pressed");
+      // Get form field values
+      let oldpassword = request.body.oldpassword;
+      let password = request.body.password;
+      let password2 = request.body.password2;
+
+      // If old password is not correct (else if passwords don't match, else save and render)
+      if (oldpassword !== request.mySession.password) {
+        response.render("account", {passwordMsg: "Old password is incorrect"});
+      } else if (password !== password2) {
+        response.render("account", {passwordMsg: "Re-typed password doesn't match"});
+      } else {
+        var changePassword = "UPDATE users SET password = ? WHERE email = ?;";
+        connection.query(changePassword, [password, request.mySession.user], function(error, results, fields) {
+          if (error) { throw error; }
+          request.mySession.password = password;
+          response.render("account", {passwordMsg: "Password successfully updated"});
+        });
+      }
     }
   });
 });
@@ -223,7 +250,7 @@ app.get('/account', needsLoggedIn, function(request, response) {
   console.log("GET /account");
   console.log(request.headers);
   console.log("\n");
-  response.render("account");
+  response.render("account", {passwordMsg: ''});
 });
 
 app.get('/history', needsLoggedIn, function(request, response) {

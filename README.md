@@ -26,13 +26,16 @@
 * See all local databases: `SHOW DATABASES;`
 * Select a database to use/reference (need to do this before viewing tables): `USE <database_name>;`
 * See tables in selected database: `SHOW TABLES;`
-* See format of a table in selected database: `DESCRIBE <table_name>;`
-* See all entries of a table: `SELECT * FROM  <table_name>;`
-* See all entries of a table matching a certain criteria: `SELECT * FROM <table_name> WHERE <field_name> = "<desired_value>";`
+* See format of a table in selected database: `DESCRIBE <table>;`
+* See all entries of a table: `SELECT * FROM  <table>;`
+* See all entries of a table matching a certain criteria: `SELECT * FROM <table> WHERE <field> = "<value>";`
 * Example using "users" table: `SELECT * FROM users WHERE firstname = "Kai";`
-* See certain columns given a certain criteria: `SELECT <col 1>, <col 2>... FROM <table_name> WHERE <field_name> = "<desired_value>";`
+* See certain columns given a certain criteria: `SELECT <col 1>, <col 2>... FROM <table> WHERE <field> = "<value>";`
 * Example using "users" table: `SELECT firstname FROM users WHERE lastname = "Rai";`
->>>>>>> 92f44cf611748b50e9279f47e3bd927072550a5f
+* Delete entry from a table matching a certain criteria: `DELETE FROM <table> WHERE <field> = "<value>";`
+* Example using "users" table: `DELETE FROM users WHERE email = "kgregur@purdue.edu";`
+* Update a table entry matching a certain criteria: `UPDATE <table> SET <field> = "<new_val> WHERE <field> = "<value>";`
+* Example using "users" table: `UPDATE users SET password = "newpassword" WHERE email = "email@email.com";`
 
 ### Heroku (in terminal)
 * Log into your heroku: `heroku login`
