@@ -12,32 +12,24 @@
     - Don't need to link signup.js; form submittion handled in server.js
 -->
 
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <%- include partials/head %>
 
     <!-- Stuff we actually wrote -->
-    <title>Where'd It Go?! | Login</title>
+    <title>Where'd It Go?! | Signup</title>
     <link rel="stylesheet" href="../css/signup.css">
   </head>
 
   <body id="body-signup">
     <div class="container center-block">
-      <!-- Login form -->
+      <!-- Signup form -->
       <form id="signup-form" method="POST">
-        <h1>SignUp</h1>
+        <h1>Sign Up</h1>
 
-       <div id="div-input-fields">
+        <!-- Form input -->
+        <div id="div-input-fields">
           <!-- Name -->
           <div class="div-signup div-firstname">
             <label for="firstname" class="signup-input-title">First Name: </label>
@@ -67,14 +59,13 @@
           </div>
         </div>
 
-
-        <!-- Login button -->
+        <!-- Signup button -->
         <div id="div-button">
-          <button type="submit" id="submit">Go!</button>
+          <button type="submit" id="submit">Sign up!</button>
         </div>
 
         <!-- Login link -->
-        <a href="signup">Don't have an account yet?</a>
+        <a href="login">Already have an account?</a>
 
         <!-- Error message -->
         <p class="errorMsg"><%= errorMsg %></p>
