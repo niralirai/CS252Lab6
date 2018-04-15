@@ -1,11 +1,23 @@
+
+
+html { 
+  background: url('../Snowy.jpg') no-repeat center center fixed;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-  
+
 #signup-form {
-  background-color: #BFE8F5;
+  color: #fff8de;
+  background-color: rgba(0,0,0,0.5);
   min-width: 210px;
   max-width: 430px;
   padding-right: 5%;
@@ -16,27 +28,41 @@
   top: 50%;
   left:50%;
   transform: translate(-50%, -50%);
+   font-size: 16px;
 }
-  
+
 h1 {
   margin-bottom: 1ch;
   text-align: center;
 }
-  
+
 .div-signup {
   margin-bottom: 2ch;
-}
-  
-.signup-input-title {
-  margin-bottom: 0ch;
+  font-size: 16px;
 }
 
+.signup-input-title {
+  margin-bottom: 0ch;
+  font-size: 16px;
+}
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.70);
+    font-size: 14px;
+}
 #div-button {
   margin-bottom: 2ch;
+   margin: auto;
+    
 }
-  
+
 #submit {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.70);
   color: #fff8de;
   display: inline-block;
   cursor: pointer;
@@ -47,6 +73,16 @@ h1 {
   -webkit-transition-duration: 0.2s;
   -moz-transition-duration: 0.2s;
   transition-duration: 0.2s;
+   text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    position:center;
+    padding: 0.75rem; 
+    width: 45%;
+    margin: 0.5rem;
+    margin-left: 5.25rem; 
+    font-size: 16px;
 }
 
 #submit:hover, #submit:focus {

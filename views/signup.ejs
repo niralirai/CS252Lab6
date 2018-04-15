@@ -12,25 +12,32 @@
     - Don't need to link signup.js; form submittion handled in server.js
 -->
 
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <%- include partials/head %>
 
     <!-- Stuff we actually wrote -->
-    <title>Where'd It Go?! | Signup</title>
-    <link rel="stylesheet" href="css/signup.css">
+    <title>Where'd It Go?! | Login</title>
+    <link rel="stylesheet" href="../css/signup.css">
   </head>
-
 
   <body id="body-signup">
     <div class="container center-block">
-      <!-- Signup form -->
+      <!-- Login form -->
       <form id="signup-form" method="POST">
-        <h1>Signup</h1>
+        <h1>SignUp</h1>
 
-        <!-- Form input -->
-        <div id="div-input-fields">
+       <div id="div-input-fields">
           <!-- Name -->
           <div class="div-signup div-firstname">
             <label for="firstname" class="signup-input-title">First Name: </label>
@@ -38,7 +45,7 @@
           </div>
           
           <div class="div-signup div-lastname">
-            <label for="lastname" class="signup-input-title">Last Name: </label>
+            <label id="title" for="lastname" class="signup-input-title">Last Name: </label>
             <input type="text" name="lastname" id="lastname" placeholder="Enter last name" required>
           </div>
 
@@ -60,13 +67,14 @@
           </div>
         </div>
 
-        <!-- Signup button -->
+
+        <!-- Login button -->
         <div id="div-button">
-          <button type="submit" id="submit">Sign up!</button>
+          <button type="submit" id="submit">Go!</button>
         </div>
 
         <!-- Login link -->
-        <a href="login">Already have an account?</a>
+        <a href="signup">Don't have an account yet?</a>
 
         <!-- Error message -->
         <p class="errorMsg"><%= errorMsg %></p>
