@@ -4,91 +4,98 @@
     - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
     - https://getbootstrap.com/docs/4.0/components/navbar/
     - http://ejs.co
-//-->
+    //-->
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <%- include partials/head %>
 
-    <!-- Stuff we actually wrote -->
-    <title>Where'd It Go?!</title>
-    <link rel="stylesheet" href="../css/main.css">
-  </head>
 
-  <body id="body-main">
-    <!-- Bootstrap navbar -->
-    <%- include partials/navbar %>
 
-    <div id="hdrs">
-      <h3 align="center" style="font-family:georgia;">Welcome back, <%= name %>!</h3>
-      <h1 align="center" style="font-family:georgia;"><strong>Don't know where it all went?</strong></h1>
-      <h2 align="center" style="font-family:georgia;"><i>Let's find out!</i></h2>
-    </div>
 
-    <div class="container center-block">
-      <!-- Budget form -->
-      <form id="main-form" method="POST">
-        <div id="div-input-fields">
-          <!-- Budget -->
-          <div class="form-group">
-            <label for="budget" class="col-form-label"><i>Budget</i></label>
-            <input type="number" class="form-control" name="budget" min="0" placeholder="0" required>
-          </div>
 
-          <!-- Rent -->
-          <div class="form-group">
-            <label for="rent" class="col-form-label"><i>Mortgage/Rent</i></label>
-            <input type="number" class="form-control" name="rent" min="0" placeholder="0">
-          </div>
 
-          <!-- Utilities -->
-          <div class="form-group">
-            <label for="utilities" class="col-form-label"><i>Utilities</i></label>
-            <input type="number" class="form-control" name="utilities" min="0" placeholder="0">
-          </div>
 
-          <!-- Cards -->
-          <div class="form-group">
-            <label for="cards" class="col-form-label"><i>Credit Cards</i></label>
-            <input type="number" class="form-control" name="cards" min="0" placeholder="0">
-          </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <%- include partials/head %>
 
-          <!-- Auto -->
-          <div class="form-group">
-            <label for="auto" class="col-form-label"><i>Auto Insurance</i></label>
-            <input type="number" class="form-control" name="auto" min="0" placeholder="0">
-          </div>
+      <!-- Stuff we actually wrote -->
+      <title>Where'd It Go?!</title>
+      <link rel="stylesheet" href="../css/main.css">
+    </head>
 
-          <!-- Internet -->
-          <div class="form-group">
-            <label for="internet" class="col-form-label"><i>Internet Services</i></label>
-            <input type="number" class="form-control" name="internet" min="0" placeholder="0">
-          </div>
+    <body id="body-main">
+      <!-- Bootstrap navbar -->
+      <%- include partials/navbar %>
+
+      <div id="hdrs">
+        <h3 align="center" style="font-family:georgia;">Welcome back, <%= name %>!</h3>
+        <h1 align="center" style="font-family:georgia;"><strong>Don't know where it all went?</strong></h1>
+        <h2 align="center" style="font-family:georgia;"><i>Let's find out!</i></h2>
+      </div>
+
+      <div class="container center-block">
+        <!-- Budget form -->
+        <form id="main-form" method="POST">
+          <div id="div-input-fields">
+            <!-- Budget -->
+            <div class="form-group">
+              <label for="budget" class="col-form-label"><i>Budget</i></label>
+              <input type="number" class="form-control" name="budget" min="0" placeholder="0" required>
+            </div>
+
+            <!-- Rent -->
+            <div class="form-group">
+              <label for="rent" class="col-form-label"><i>Mortgage/Rent</i></label>
+              <input type="number" class="form-control" name="rent" min="0" placeholder="0">
+            </div>
+
+            <!-- Utilities -->
+            <div class="form-group">
+              <label for="utilities" class="col-form-label"><i>Utilities</i></label>
+              <input type="number" class="form-control" name="utilities" min="0" placeholder="0">
+            </div>
+
+            <!-- Cards -->
+            <div class="form-group">
+              <label for="cards" class="col-form-label"><i>Credit Cards</i></label>
+              <input type="number" class="form-control" name="cards" min="0" placeholder="0">
+            </div>
+
+            <!-- Auto -->
+            <div class="form-group">
+              <label for="auto" class="col-form-label"><i>Auto Insurance</i></label>
+              <input type="number" class="form-control" name="auto" min="0" placeholder="0">
+            </div>
+
+            <!-- Internet -->
+            <div class="form-group">
+              <label for="internet" class="col-form-label"><i>Internet Services</i></label>
+              <input type="number" class="form-control" name="internet" min="0" placeholder="0">
+            </div>
             
-          <!-- Food -->
-          <div class="form-group">
-            <label for="food" class="col-form-label"><i>Food</i></label>
-            <input type="number" class="form-control" name="food" min="0" placeholder="0">
-          </div>
+            <!-- Food -->
+            <div class="form-group">
+              <label for="food" class="col-form-label"><i>Food</i></label>
+              <input type="number" class="form-control" name="food" min="0" placeholder="0">
+            </div>
 
-          <!-- Clothing -->
-          <div class="form-group">
-            <label for="clothing" class="col-form-label"><i>Clothing</i></label>
-            <input type="number" class="form-control" name="clothing" min="0" placeholder="0">
+            <!-- Clothing -->
+            <div class="form-group">
+              <label for="clothing" class="col-form-label"><i>Clothing</i></label>
+              <input type="number" class="form-control" name="clothing" min="0" placeholder="0">
+            </div>
+            <!-- Travel -->
+            <div class="form-group">
+              <label for="travel" class="col-form-label"><i>Travel</i></label>
+              <input type="number" class="form-control" name="travel" min="0" placeholder="0">
+            </div>
           </div>
-           <!-- Travel -->
-          <div class="form-group">
-            <label for="travel" class="col-form-label"><i>Travel</i></label>
-            <input type="number" class="form-control" name="travel" min="0" placeholder="0">
+          <!-- Calculate button -->
+          <div id="div-button" class="form-group">
+            <label for="calculate" class="col-form-label"><i><strong>Total Your Costs!</strong></i></label>
+            <button type="submit" class="form-control" id="submit">Calculate!</button>
           </div>
-        </div>
-        <!-- Calculate button -->
-        <div id="div-button" class="form-group">
-          <label for="calculate" class="col-form-label"><i><strong>Total Your Costs!</strong></i></label>
-          <button type="submit" class="form-control" id="submit">Calculate!</button>
-        </div>
-      </form>
-    </div>
-  </body>
-</html>
+        </form>
+      </div>
+    </body>
+    </html>

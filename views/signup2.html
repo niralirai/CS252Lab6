@@ -1,0 +1,79 @@
+<!--
+  References:
+    - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
+    - https://getbootstrap.com/docs/4.0/components/navbar/
+    - http://ejs.co
+    //-->
+
+
+
+
+
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <%- include partials/head %>
+
+      <!-- Stuff we actually wrote -->
+      <title>Where'd It Go?!</title>
+      <link rel="stylesheet" href="../css/signup.css">
+    </head>
+
+    <body id="body-signup">
+
+
+      <div class="container center-block">
+        <!-- Budget form -->
+        <form id="signup-form" method="POST">
+
+ <h1>SignUp</h1>
+
+
+                <div id="div-input-fields">
+          <!-- Name -->
+          <div class="form-group">
+            <label for="firstname" class="col-form-label">First Name: </label>
+            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter first name"  required>
+          </div>
+          
+          <div class="form-group">
+            <label id="title" for="lastname" class="col-form-label">Last Name: </label>
+            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter last name" required>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email" class="col-form-label">Email: </label>
+            <input type="text" name="email" id="email" class="form-control" placeholder="Enter email"  required>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password" class="col-form-label">Password: </label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Enter password"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="password2" class="col-form-label">Re-enter Password</label>
+            <input type="password" name="password2" id="password2" class="form-control" placeholder="Re-enter password" required>
+          </div>
+        </div>
+        <!-- Login button -->
+         <div id="div-button" class="form-group">
+          <button type="submit" id="submit" class="form-control">Go!</button>
+        </div>
+
+        <!-- Login link -->
+        <a href="signup">Don't have an account yet?</a>
+
+        <!-- Error message -->
+        <p class="errorMsg"><%= errorMsg %></p>
+
+        </form>
+      </div>
+    </body>
+    </html>

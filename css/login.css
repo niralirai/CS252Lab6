@@ -6,26 +6,42 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
-
+body{
+  text-align: center;
+}
 .center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
+   
+
+}
+.body-login {
+  resize: both;
+     overflow: visible;
+ position: absolute;
+ scroll-behavior: auto;
 }
 
-#login-form {
+#login-form{
   color: #fff8de;
   background-color: rgba(0,0,0,0.5);
   min-width: 210px;
   max-width: 430px;
-  padding-right: 5%;
+ padding-right: 5%;
   padding-left: 5%;
   padding-top: 3%;
   padding-bottom: 2%;
+    
+  /* Center the form */
   position: absolute;
-  top: 50%;
-  left:50%;
-  transform: translate(-50%, -50%);
+  left: 10%;
+  right: 10%;
+  margin-top: 2ch;
+  margin-left: auto;
+  margin-bottom: 2ch;
+  margin-right: auto;
+
 }
 
 h1 {
@@ -35,15 +51,12 @@ h1 {
 
 .div-login {
   margin-bottom: 2ch;
+  font-size: 16px;
 }
 
 .login-input-title {
   margin-bottom: 0ch;
-}
-
-#div-button {
-  margin-bottom: 2ch;
-   margin: auto;
+  font-size: 16px;
 }
 input {
     width: 100%;
@@ -55,31 +68,32 @@ input {
     background-color: rgba(0, 0, 0, 0.70);
     font-size: 14px;
 }
+#div-button {
+  margin-bottom: 2ch;
+   margin: auto;
+   } 
 
 #submit {
   background-color: rgba(0, 0, 0, 0.70);
   color: #fff8de;
-  display: inline-block;
-  cursor: pointer;
-  border: 2px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  min-width: 35%;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-   text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    position:center;
-    padding: 0.75rem; 
-    width: 45%;
-    margin: 0.5rem;
-    margin-left: 5.25rem; 
-    font-size: 16px;
-}
+  min-width: 210px;
+  max-width: 430px;
+  padding-top: 2ch;
+  padding-left: 5%;
+  padding-bottom: 2ch;
+  padding-right: 5%;
+    
+  /* Center the form */
+  position: center;
+  left: 10%;
+  right: 10%;
+  margin-top: 2ch;
+  margin-left: auto;
+  margin-bottom: 2ch;
+  margin-right: auto;
 
+
+}
 
 #submit:hover, #submit:focus {
   background: #434a53;

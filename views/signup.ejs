@@ -1,75 +1,79 @@
 <!--
   References:
-    - Bootstrap
-      http://getbootstrap.com/docs/4.0/getting-started/introduction/
-      https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-get-started.php
-    - Login formatting
-      https://forums.adobe.com/thread/2444344
-      https://www.kirupa.com/html5/naming_via_class_id_name.htm
+    - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
+    - https://getbootstrap.com/docs/4.0/components/navbar/
+    - http://ejs.co
+    //-->
 
-  Notes:
-    - Input tags need "name" attribute to get sent to request body
-    - Don't need to link signup.js; form submittion handled in server.js
--->
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <%- include partials/head %>
 
-    <!-- Stuff we actually wrote -->
-    <title>Where'd It Go?! | Signup</title>
-    <link rel="stylesheet" href="../css/signup.css">
-  </head>
 
-  <body id="body-signup">
-    <div class="container center-block">
-      <!-- Signup form -->
-      <form id="signup-form" method="POST">
-        <h1>Sign Up</h1>
 
-        <!-- Form input -->
-        <div id="div-input-fields">
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <%- include partials/head %>
+
+      <!-- Stuff we actually wrote -->
+      <title>Where'd It Go?!</title>
+      <link rel="stylesheet" href="../css/signup.css">
+    </head>
+
+    <body id="body-signup">
+
+
+      <div class="container center-block">
+        <!-- Budget form -->
+        <form id="signup-form" method="POST">
+
+ <h1>SignUp</h1>
+
+
+                <div id="div-input-fields">
           <!-- Name -->
-          <div class="div-signup div-firstname">
-            <label for="firstname" class="signup-input-title">First Name: </label>
-            <input type="text" name="firstname" id="firstname" placeholder="Enter first name"  required>
+          <div class="form-group">
+            <label for="firstname" class="col-form-label">First Name: </label>
+            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Enter first name"  required>
           </div>
           
-          <div class="div-signup div-lastname">
-            <label id="title" for="lastname" class="signup-input-title">Last Name: </label>
-            <input type="text" name="lastname" id="lastname" placeholder="Enter last name" required>
+          <div class="form-group">
+            <label id="title" for="lastname" class="col-form-label">Last Name: </label>
+            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter last name" required>
           </div>
 
           <!-- Email -->
-          <div class="div-signup div-email">
-            <label for="email" class="signup-input-title">Email: </label>
-            <input type="text" name="email" id="email" placeholder="Enter email"  required>
+          <div class="form-group">
+            <label for="email" class="col-form-label">Email: </label>
+            <input type="text" name="email" id="email" class="form-control" placeholder="Enter email"  required>
           </div>
 
           <!-- Password -->
-          <div class="div-signup div-password">
-            <label for="password" class="signup-input-title">Password: </label>
-            <input type="password" name="password" id="password" placeholder="Enter password"  required>
+          <div class="form-group">
+            <label for="password" class="col-form-label">Password: </label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Enter password"  required>
           </div>
 
-          <div class="div-signup div-password">
-            <label for="password2" class="signup-input-title">Re-enter Password</label>
-            <input type="password" name="password2" id="password2" placeholder="Re-enter password" required>
+          <div class="form-group">
+            <label for="password2" class="col-form-label">Re-enter Password</label>
+            <input type="password" name="password2" id="password2" class="form-control" placeholder="Re-enter password" required>
           </div>
         </div>
-
-        <!-- Signup button -->
-        <div id="div-button">
-          <button type="submit" id="submit">Sign up!</button>
+        <!-- Login button -->
+         <div id="div-button" class="form-group">
+          <button type="submit" id="submit" class="form-control">Go!</button>
         </div>
 
         <!-- Login link -->
-        <a href="login">Already have an account?</a>
+        <a href="signup">Don't have an account yet?</a>
 
         <!-- Error message -->
         <p class="errorMsg"><%= errorMsg %></p>
-      </form>
-    </div>
-  </body>
-</html>
+
+        </form>
+      </div>
+    </body>
+    </html>
