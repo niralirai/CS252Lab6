@@ -129,7 +129,13 @@ pool.getConnection(function(error, connection) {
 
     // Check how many fields submitted (delete == 0, name == 2, password = 3)
     if (Object.keys(request.body).length === 0) {
-      response.send("Delete account was pressed");
+      var deleteUser = "DELETE FROM users WHERE email = ?;";
+      connection.query(deleteUser, [request.mySession.user], function(error, results, fields) {
+        // If error (else redirect to splash)
+        if (error) { throw error; }
+        request.mySession.reset();
+        response.redirect("/");
+      });
     } else if (Object.keys(request.body).length === 2) {
       response.send("Change name was pressed");
     } else {
