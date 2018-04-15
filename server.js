@@ -150,7 +150,19 @@ pool.getConnection(function(error, connection) {
         response.redirect("/");
       });
     } else if (Object.keys(request.body).length === 2) {
-      response.send("Change name was pressed");
+      // Get form field values
+      let firstname = (request.body.firstname == '' ? request.mySession.firstname : request.body.firstname);
+      let lastname = (request.body.lastname == '' ? request.mySession.lastname : request.body.lastname);
+
+      var changeName = "UPDATE users SET firstname = ?, lastname = ? WHERE email = ?;";
+      connection.query(changeName, [firstname, lastname, request.mySession.user], function(error, results, fields) {
+        // If error (else render with success message)
+        if (error) { throw error; }
+        request.mySession.firstname = firstname;
+        request.mySession.lastname = lastname;
+        const nameMsg = "Your new name is " + firstname + " " + lastname;
+        response.render("account", {nameMsg: nameMsg, passwordMsg: ''});
+      });
     } else {
       // Get form field values
       let oldpassword = request.body.oldpassword;
@@ -159,15 +171,15 @@ pool.getConnection(function(error, connection) {
 
       // If old password is not correct (else if passwords don't match, else save and render)
       if (oldpassword !== request.mySession.password) {
-        response.render("account", {passwordMsg: "Old password is incorrect"});
+        response.render("account", {nameMsg: '', passwordMsg: "Old password is incorrect"});
       } else if (password !== password2) {
-        response.render("account", {passwordMsg: "Re-typed password doesn't match"});
+        response.render("account", {nameMsg: '', passwordMsg: "Re-typed password doesn't match"});
       } else {
         var changePassword = "UPDATE users SET password = ? WHERE email = ?;";
         connection.query(changePassword, [password, request.mySession.user], function(error, results, fields) {
           if (error) { throw error; }
           request.mySession.password = password;
-          response.render("account", {passwordMsg: "Password successfully updated"});
+          response.render("account", {nameMsg: '', passwordMsg: "Password successfully updated"});
         });
       }
     }
@@ -253,7 +265,7 @@ app.get('/main', needsLoggedIn, function(request, response) {
 });
 
 app.get('/account', needsLoggedIn, function(request, response) {
-  response.render("account", {passwordMsg: ''});
+  response.render("account", {nameMsg: '', passwordMsg: ''});
   console.log("GET /account");
   console.log(request.headers);
   console.log(request.mySession);
@@ -308,8 +320,8 @@ app.post('/main', function(request, response) {
     const total = rent + utilities + cards + auto + internet + food + clothing;
     const spent = total;
     const diff = budget - spent;
-    let dollarDiff = (diff > 0 ? "$" + diff : "-$" + (diff * -1));
-    let msg = (diff > 0 ? "You're right on track! :)" : "You overspent this term. :(");
+    let dollarDiff = (diff >= 0 ? "$" + diff : "-$" + (diff * -1));
+    let msg = (diff >= 0 ? "You're right on track! :)" : "You overspent this term. :(");
 
     response.render("results", {spent: spent, budget: budget, diff: dollarDiff, msg: msg})
   }
