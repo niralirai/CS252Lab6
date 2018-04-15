@@ -58,6 +58,7 @@ pool.getConnection(function(error, connection) {
     console.log("POST /login");
     console.log(request.body);
     console.log(request.headers);
+    console.log(request.mySession);
     console.log("\n");
   
     // Get form field values
@@ -100,6 +101,7 @@ pool.getConnection(function(error, connection) {
     console.log("POST /signup");
     console.log(request.body);
     console.log(request.headers);
+    console.log(request.mySession);
     console.log("\n");
   
     // Get form field values
@@ -135,6 +137,7 @@ pool.getConnection(function(error, connection) {
     console.log("POST /account");
     console.log(request.body);
     console.log(request.headers);
+    console.log(request.mySession);
     console.log("\n");
 
     // Check how many fields submitted (delete == 0, name == 2, password = 3)
@@ -220,6 +223,7 @@ app.get('/', function(request, response) {
   response.render("splash");
   console.log("GET /");
   console.log(request.headers);
+  console.log(request.mySession);
   console.log("\n");
 });
 
@@ -227,6 +231,7 @@ app.get('/signup', needsNotLoggedIn, function(request, response) {
   response.render("signup", {errorMsg: ''});
   console.log("GET /signup");
   console.log(request.headers);
+  console.log(request.mySession);
   console.log("\n");
 });
 
@@ -235,6 +240,7 @@ app.get('/login', needsNotLoggedIn, function(request, response) {
   response.render("login", {errorMsg: msg});
   console.log("GET /login");
   console.log(request.headers);
+  console.log(request.mySession);
   console.log("\n");
 });
 
@@ -242,30 +248,33 @@ app.get('/main', needsLoggedIn, function(request, response) {
   response.render("main", {name: request.mySession.firstname});
   console.log("GET /main");
   console.log(request.headers);
-  console.log(request.mySession.user);
+  console.log(request.mySession);
   console.log("\n");
 });
 
 app.get('/account', needsLoggedIn, function(request, response) {
+  response.render("account", {passwordMsg: ''});
   console.log("GET /account");
   console.log(request.headers);
+  console.log(request.mySession);
   console.log("\n");
-  response.render("account", {passwordMsg: ''});
 });
 
 app.get('/history', needsLoggedIn, function(request, response) {
+  response.send("Make html page for history where users can see previous budget forms");
   console.log("GET /history");
   console.log(request.headers);
+  console.log(request.mySession);
   console.log("\n");
-  response.send("Make html page for history where users can see previous budget forms");
 });
 
 app.get('/logout', needsLoggedIn, function(request, response) {
-  console.log("GET /logout");
-  console.log(request.headers);
-  console.log("\n");
   request.mySession.reset();
   response.redirect("/");
+  console.log("GET /logout");
+  console.log(request.headers);
+  console.log(request.mySession);
+  console.log("\n");
 });
 
 /**
@@ -280,6 +289,7 @@ app.post('/main', function(request, response) {
   console.log("POST /main");
   console.log(request.body);
   console.log(request.headers);
+  console.log(request.mySession);
   console.log("\n");
 
   if (Object.keys(request.body) == 'again') {
