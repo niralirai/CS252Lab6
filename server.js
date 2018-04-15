@@ -5,26 +5,6 @@
  *  3. https://github.com/mysqljs/mysql
  *  4. https://dev.mysql.com/doc/refman/5.7/en/tutorial.html
  *  5. https://www.npmjs.com/package/client-sessions
- * 
- * Database (heroku_01db060d2e70e87) tables format: `SHOW TABLES;`
- *    +-----------------------------------+
- *    | Tables in heroku_01db060d2e70e87  |
- *    +-----------------------------------+
- *    | users                             |
- *    +-----------------------------------+
- * 
- * Database (heroku_01db060d2e70e87) table (users) format: `USE heroku_01db060d2e70e87; DESCRIBE users;`
- *    +------------+---------------+
- *    | Field      | Type          |
- *    +------------+---------------+
- *    | firstname  | varchar(35)   |
- *    +------------+---------------+
- *    | lastname   | varchar(35)   |
- *    +------------+---------------+
- *    | email      | varchar(254)  |
- *    +------------+---------------+
- *    | password   | varchar(20)   |
- *    +------------+---------------+
  */
 
 // Express is better for handling routing
@@ -46,7 +26,6 @@ app.use(express.static(__dirname));
  * https://github.com/mysqljs/mysql#pooling-connections
  */
 var mysql = require('mysql');
-// var p = process.argv[2];
 var pool = mysql.createPool({
   host: 'us-cdbr-iron-east-05.cleardb.net',
   user: 'bbb29a8be86d32',
@@ -134,6 +113,7 @@ pool.getConnection(function(error, connection) {
         var addUser = "INSERT INTO users VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "');";
         connection.query(addUser, function (e, r, f) {
           if (e) throw e;
+          request.mySession.newUser = true;
           response.redirect("login");
           // TODO - keep them signed in!!!!
         }); 
@@ -199,7 +179,8 @@ app.get('/signup', needsNotLoggedIn, function(request, response) {
 });
 
 app.get('/login', needsNotLoggedIn, function(request, response) {
-  response.render("login", {errorMsg: ''});
+  let msg = (request.mySession.newUser ? 'Log in with new credentials' : '');
+  response.render("login", {errorMsg: msg});
   console.log("GET /login");
   console.log(request.headers);
   console.log("\n");
