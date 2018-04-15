@@ -26,10 +26,11 @@
       <h2 align="center" style="font-family:georgia;"><i>Let's find out!</i></h2>
     </div>
 
-    <div class="container center-block">
+    <div class="modal-body" class="modal-body row">
       <!-- Budget form -->
       <form id="main-form" method="POST">
-        <div id="div-input-fields">
+        <div id="div-input-fields" class="col-md-6">
+          <div class="first-column">
           <!-- Budget -->
           <div class="form-group">
             <label for="budget" class="col-form-label"><i>Budget</i></label>
@@ -82,12 +83,29 @@
             <label for="travel" class="col-form-label"><i>Travel</i></label>
             <input type="number" class="form-control" name="travel" min="0" placeholder="0">
           </div>
-        </div>
         <!-- Calculate button -->
         <div id="div-button" class="form-group">
           <label for="calculate" class="col-form-label"><i><strong>Total Your Costs!</strong></i></label>
           <button type="submit" class="form-control" id="submit">Calculate!</button>
         </div>
+       </div>
+      </div>
+      <div id="div-input-fields-2" class="col-md-6">
+        <div class="second-column">
+         <!-- Clothing -->
+        <div class="form-group">
+          <label for="clothing" class="col-form-label"><i>Clothing</i></label>
+          <input type="number" class="form-control" name="clothing" min="0" placeholder="0">
+        </div>
+        <!-- Travel -->
+        <div class="form-group">
+          <label for="travel" class="col-form-label"><i>Travel</i></label>
+          
+          <input type="number" class="form-control" name="travel" min="0" placeholder="0">
+        </div>
+        </div>
+      </div>
+     </div>
       </form>
     </div>
   </body>
