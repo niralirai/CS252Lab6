@@ -1,0 +1,52 @@
+<!--
+  References:
+    - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
+    - https://getbootstrap.com/docs/4.0/components/navbar/
+    - http://ejs.co
+//-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include partials/head %>
+
+    <!-- Stuff we actually wrote -->
+    <title>Where'd It Go?!</title>
+    <link rel="stylesheet" href="../css/results.css">
+  </head>
+
+  <body id="body-main" >
+    <!-- Bootstrap navbar -->
+    <%- include partials/navbar %>
+
+    <h1 align="center" style="font-family:georgia;"><strong>Here's where it went...</strong></h1>
+    <h2 align="center" style="font-family:georgia;"><i>You spent a total of $<%= spent %></i></h2>
+
+    <div class="container center-block">
+      <!-- Budget results -->
+      <div id="page2-div">
+        <!-- Budget -->
+        <div class="form-group">
+          <p><i>Your budget was $<%= budget %></i></p>
+        </div>
+
+        <!-- What you actually spent -->
+        <div class="form-group">
+          <p><i>You actually spent $<%= spent %></i></p>
+        </div>
+
+        <!-- Over or under -->
+        <div class="form-group">
+          <p><i>You have <%= diff %> remaining</i></p>
+          <p><%= msg %></p>
+        </div>
+
+        <!-- Again -->
+        <form id="options-form" method="POST">
+          <input type="submit" class="input-options" name="again" value="Calculate another budget">
+        </form>
+      </div>
+    </div>  
+  </body>
+</html>
