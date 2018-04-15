@@ -201,7 +201,7 @@ app.get('/account', needsLoggedIn, function(request, response) {
   console.log("GET /account");
   console.log(request.headers);
   console.log("\n");
-  response.send("Make html page for account where users can change name, password, or delete account");
+  response.render("account");
 });
 
 app.get('/history', needsLoggedIn, function(request, response) {

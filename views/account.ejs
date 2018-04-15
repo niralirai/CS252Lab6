@@ -1,0 +1,85 @@
+<!--
+  References:
+    - Bootstrap
+      http://getbootstrap.com/docs/4.0/getting-started/introduction/
+      https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-get-started.php
+    - Login formatting
+      https://forums.adobe.com/thread/2444344
+      https://www.kirupa.com/html5/naming_via_class_id_name.htm
+
+  Notes:
+    - Input tags need "name" attribute to get sent to request body
+    - Don't need to link login.js; form submittion handled in server.js
+//-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include partials/head %>
+
+    <!-- Stuff we actually wrote -->
+    <title>My Account</title>
+    <link rel="stylesheet" href="../css/account.css">
+  </head>
+
+  <body id="body-account">
+    <!-- Change name form -->
+    <form id="change-name-form" method="POST">
+      <h1>Change name</h1>
+
+      <!-- New first name -->
+      <div id="div-input-fields">
+        <div class="div-change-name div-first">
+          <label for="firstname" class="firstname-input-title">First name: </label>
+          <input type="text" name="firstname" placeholder="Enter first name">
+        </div>
+
+        <!-- New last name -->
+        <div class="div-change-name div-last">
+          <label for="lastname" class="lastname-input-title">Last name: </label>
+          <input type="text" name="lastname" placeholder="Enter last name">
+        </div>
+      </div>
+
+      <!-- Change name button -->
+      <div id="div-button">
+        <button type="submit" id="submit">Change name</button>
+      </div>
+    </form>
+
+    <!-- Change password form -->
+    <form id="change-password-form" method="POST">
+      <h1>Change password</h1>
+
+      <div id="div-input-fields">
+        <!-- Old password -->
+        <div class="div-signup div-password">
+          <label for="password" class="signup-input-title">Old Password: </label>
+          <input type="password" name="oldpassword" id="password" placeholder="Enter old password"  required>
+        </div>
+
+        <!-- New password -->
+        <div class="div-signup div-password">
+          <label for="password" class="signup-input-title">New Password: </label>
+          <input type="password" name="password" id="password" placeholder="Enter new password"  required>
+        </div>
+
+        <div class="div-signup div-password">
+          <label for="password2" class="signup-input-title">Re-enter Password</label>
+          <input type="password" name="password2" id="password2" placeholder="Re-enter password" required>
+        </div>
+      </div>
+
+      <!-- Change password button -->
+      <div id="div-button">
+        <button type="submit" id="submit">Change password</button>
+      </div>
+    </form>
+
+    <!-- Delete account -->
+    <form id="delete-account-form" method="POST">
+      <h1>Delete account</h1>
+      <button type="submit" id="submit">Delete account</button>
+    </form>
+  </body>
+</html>
