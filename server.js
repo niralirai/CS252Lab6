@@ -120,6 +120,22 @@ pool.getConnection(function(error, connection) {
       }
     });
   });
+
+  app.post('/account', function(request, response) {
+    console.log("POST /account");
+    console.log(request.body);
+    console.log(request.headers);
+    console.log("\n");
+
+    // Check how many fields submitted (delete == 0, name == 2, password = 3)
+    if (Object.keys(request.body).length === 0) {
+      response.send("Delete account was pressed");
+    } else if (Object.keys(request.body).length === 2) {
+      response.send("Change name was pressed");
+    } else {
+      response.send("Change password was pressed");
+    }
+  });
 });
 
 // Set up session cookies for users (ref 5)
