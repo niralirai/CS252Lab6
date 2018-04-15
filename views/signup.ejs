@@ -6,34 +6,24 @@
     - http://ejs.co
     //-->
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include partials/head %>
+
+    <!-- Stuff we actually wrote -->
+    <title>Where'd It Go?! | Signup</title>
+    <link rel="stylesheet" href="../css/signup.css">
+  </head>
+
+  <body id="body-signup">
+    <div class="container center-block">
+      <!-- Budget form -->
+      <form id="signup-form" method="POST">
+        <h1>SignUp</h1>
 
 
-
-
-
-
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <%- include partials/head %>
-
-      <!-- Stuff we actually wrote -->
-      <title>Where'd It Go?!</title>
-      <link rel="stylesheet" href="../css/signup.css">
-    </head>
-
-    <body id="body-signup">
-
-
-      <div class="container center-block">
-        <!-- Budget form -->
-        <form id="signup-form" method="POST">
-
- <h1>SignUp</h1>
-
-
-                <div id="div-input-fields">
+        <div id="div-input-fields">
           <!-- Name -->
           <div class="form-group">
             <label for="firstname" class="col-form-label">First Name: </label>
@@ -62,18 +52,18 @@
             <input type="password" name="password2" id="password2" class="form-control" placeholder="Re-enter password" required>
           </div>
         </div>
-        <!-- Login button -->
-         <div id="div-button" class="form-group">
-          <button type="submit" id="submit" class="form-control">Go!</button>
+
+        <!-- Signup button -->
+        <div id="div-button" class="form-group">
+          <button type="submit" id="submit" class="form-control">Sign Up!</button>
         </div>
 
         <!-- Login link -->
-        <a href="signup">Don't have an account yet?</a>
+        <a href="login">Don't have an account yet?</a>
 
         <!-- Error message -->
         <p class="errorMsg"><%= errorMsg %></p>
-
-        </form>
-      </div>
-    </body>
-    </html>
+      </form>
+    </div>
+  </body>
+</html>
