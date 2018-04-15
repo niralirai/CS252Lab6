@@ -12,6 +12,10 @@ html {
   margin-left: auto;
   margin-right: auto;
 }
+
+body{
+  text-align: center;
+}
 div {
     resize: both;
     overflow: auto;
@@ -42,11 +46,11 @@ h1 {
   text-align: center;
 }
 
-.div-login {
+.div-acc {
   margin-bottom: 2ch;
 }
 
-.login-input-title {
+.acc-input-title {
   margin-bottom: 0ch;
 }
 
@@ -61,7 +65,7 @@ input {
     box-sizing: border-box;
     border: none;
     color: white;
-    background-color: rgba(0, 0, 0, 0.50);
+    background-color: rgba(0, 0, 0, 0.70);
     font-size: 14px;
 }
 
@@ -107,101 +111,3 @@ a {
 
 
 
-
-body{
-  text-align: center;
-}
-
-.body-signup {
-  resize: both;
-     overflow: visible;
- position: absolute;
- scroll-behavior: auto;
-}
-
-#signup-form{
-  color: #fff8de;
-  background-color: rgba(0,0,0,0.5);
-  min-width: 210px;
-  max-width: 430px;
- padding-right: 5%;
-  padding-left: 5%;
-  padding-top: 3%;
-  padding-bottom: 2%;
-    
-  /* Center the form */
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  margin-top: 2ch;
-  margin-left: auto;
-  margin-bottom: 2ch;
-  margin-right: auto;
-
-}
-
-h1 {
-  margin-bottom: 1ch;
-  text-align: center;
-}
-
-.div-signup {
-  margin-bottom: 2ch;
-  font-size: 16px;
-}
-
-.signup-input-title {
-  margin-bottom: 0ch;
-  font-size: 16px;
-}
-input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: none;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.70);
-    font-size: 14px;
-}
-#div-button {
-  margin-bottom: 2ch;
-   margin: auto;
-   } 
-
-#submit {
-  background-color: rgba(0, 0, 0, 0.70);
-  color: #fff8de;
-  min-width: 210px;
-  max-width: 430px;
-  padding-top: 2ch;
-  padding-left: 5%;
-  padding-bottom: 2ch;
-  padding-right: 5%;
-    
-  /* Center the form */
-  position: center;
-  left: 10%;
-  right: 10%;
-  margin-top: 2ch;
-  margin-left: auto;
-  margin-bottom: 2ch;
-  margin-right: auto;
-
-
-}
-
-#submit:hover, #submit:focus {
-  background: #434a53;
-  text-decoration: none;
-}
-
-a {
-  color: #b2b2b2;
-  text-decoration: underline;
-}
-
-.errorMsg {
-  color: red;
-  margin-top: 2ch;
-}

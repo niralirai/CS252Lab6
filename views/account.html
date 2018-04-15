@@ -21,70 +21,73 @@
     <title>My Account</title>
     <link rel="stylesheet" href="../css/account.css">
   </head>
-
+ <%- include partials/navbar %>
   <body id="body-account">
+    <!-- Bootstrap navbar -->
+   
     
     <!-- Change name form -->
-     <div class="container center-block">
-    <form id="change-name-form" method="POST">
-      <h1>Change name</h1>
+    <div class="container center-block">
+      <form id="change-name-form" method="POST">
+        <h1>Change name</h1>
 
-      <!-- New first name -->
-      <div id="div-input-fields">
-        <div class="div-change-name div-first">
-          <label for="firstname" class="firstname-input-title">First name: </label>
-          <input type="text" name="firstname" placeholder="Enter first name">
+        <!-- New first name -->
+        <div id="div-input-fields">
+          <div class="div-change-name div-first">
+            <label for="firstname" class="firstname-input-title">First name: </label>
+            <input type="text" name="firstname" placeholder="Enter first name">
+          </div>
+
+          <!-- New last name -->
+          <div class="div-change-name div-last">
+            <label for="lastname" class="lastname-input-title">Last name: </label>
+            <input type="text" name="lastname" placeholder="Enter last name">
+          </div>
         </div>
 
-        <!-- New last name -->
-        <div class="div-change-name div-last">
-          <label for="lastname" class="lastname-input-title">Last name: </label>
-          <input type="text" name="lastname" placeholder="Enter last name">
+        <!-- Change name button -->
+        <div id="div-button">
+          <button type="submit" id="submit">Change name</button>
         </div>
-      </div>
+      </form>
 
-      <!-- Change name button -->
-     
-      <div id="div-button" class="form-group">
-          <button type="submit" id="submit" class="form-control">Change name</button>
-        </div>
-    </form>
+      <!-- Change password form -->
+      <form id="change-password-form" method="POST">
+        <h1>Change password</h1>
 
-    <!-- Change password form -->
-    <form id="change-password-form" method="POST">
-      <h1>Change password</h1>
+        <div id="div-input-fields">
+          <!-- Old password -->
+          <div class="div-acc div-password">
+            <label for="password" class=-acc-input-title">Old Password: </label>
+            <input type="password" name="oldpassword" id="password" placeholder="Enter old password"  required>
+          </div>
 
-      <div id="div-input-fields">
-        <!-- Old password -->
-        <div class="div-signup div-password">
-          <label for="password" class="signup-input-title">Old Password: </label>
-          <input type="password" name="oldpassword" id="password" placeholder="Enter old password"  required>
-        </div>
+          <!-- New password -->
+          <div class="div-acc div-password">
+            <label for="password" class=-acc-input-title">New Password: </label>
+            <input type="password" name="password" id="password" placeholder="Enter new password"  required>
+          </div>
 
-        <!-- New password -->
-        <div class="div-signup div-password">
-          <label for="password" class="signup-input-title">New Password: </label>
-          <input type="password" name="password" id="password" placeholder="Enter new password"  required>
+          <div class="div-acc div-password">
+            <label for="password2" class=-acc-input-title">Re-enter Password</label>
+            <input type="password" name="password2" id="password2" placeholder="Re-enter password" required>
+          </div>
         </div>
 
-        <div class="div-signup div-password">
-          <label for="password2" class="signup-input-title">Re-enter Password</label>
-          <input type="password" name="password2" id="password2" placeholder="Re-enter password" required>
+        <!-- Change password button -->
+        <div id="div-button">
+          <button type="submit" id="submit">Change password</button>
         </div>
-      </div>
 
-      <!-- Change password button -->
-    
-      <div id="div-button" class="form-group">
-          <button type="submit" id="submit" class="form-control">Change password</button>
-        </div>
-    </form>
+        <!-- Error message -->
+        <p class="errorMsg"><%= passwordMsg %></p>
+      </form>
 
-    <!-- Delete account -->
-    <form id="delete-account-form" method="POST">
-      <h1>Delete account</h1>
-      <button type="submit" id="submit" class="form-control">Delete account</button>
-    </form>
-  </div>
+      <!-- Delete account -->
+      <form id="delete-account-form" method="POST">
+        <h1>Delete account</h1>
+        <button type="submit" id="submit">Delete account</button>
+      </form>
+    </div>
   </body>
 </html>
