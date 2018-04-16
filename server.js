@@ -42,7 +42,10 @@ var pool = mysql.createPool({
 });
 
 pool.getConnection(function(error, connection) {
-  if (error) { throw error; }
+  if (error) { 
+    throw error;
+     
+     }
   console.log('connected as id ' + connection.threadId);
 
   /**
@@ -75,6 +78,7 @@ pool.getConnection(function(error, connection) {
       // If error (else if email not found, else if passwords don't match, else redirect)
       if (error) {
         throw error;
+        request.mySession.reset();
       } else if (results.length <= 0) {
         response.render("login", {errorMsg: "Email not registered"});
       } else if (results[0].password !== password) {
@@ -117,6 +121,7 @@ pool.getConnection(function(error, connection) {
       // If error (else if email already used, else if passwords don't match, else save and redirect)
       if (error) {
         throw error;
+        request.mySession.reset();
       } else if (results.length > 0) {
         response.render("signup", {errorMsg: "Email already in use"});
       } else if (password !== password2) {
