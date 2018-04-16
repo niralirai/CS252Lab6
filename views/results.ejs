@@ -4,12 +4,41 @@
     - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
     - https://getbootstrap.com/docs/4.0/components/navbar/
     - http://ejs.co
+    - https://canvasjs.com/docs/charts/chart-types/html5-doughnut-chart/
 //-->
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <%- include partials/head %>
+    <!--Pie Chart-->
+    <script type="text/javascript">
+      window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+          title:{
+            text: "Breakdown:"
+          },
+          data: [
+          {
+           type: "doughnut",
+           dataPoints: [
+           {  y: 50, indexLabel: "Mortgage/Rent" },
+           {  y: 31, indexLabel: "Utilities" },
+           {  y: 7, indexLabel: "Credit Cards" },
+           {  y: 2, indexLabel: "Auto Insurance" },
+           {  y: 2, indexLabel: "Internet Services" },
+           {  y: 2, indexLabel: "Food"},
+           {  y: 3, indexLabel: "Clothing"},
+           {  y: 3, indexLabel: "Travel"}
+           ]
+         }
+         ]
+       });
+    
+        chart.render();
+      }
+      </script>
+      <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
@@ -20,32 +49,40 @@
     <!-- Bootstrap navbar -->
     <%- include partials/navbar %>
 
-    <h1 align="center" style="font-family:georgia;"><strong>Here's where it went...</strong></h1>
+    <div id="hdr">
+      <h1 align="center" style="font-family:georgia;"><strong>Here's where it went...</strong></h1>
+    </div>
 
     <div class="container center-block">
       <!-- Budget results -->
       <div id="page2-div">
         <!-- Budget -->
         <div class="form-group">
-          <p><i>Your budget totaled to $<%= budget %></i></p>
+          <p><i><strong>Your budget totaled to $<%= budget %></strong></i></p>
         </div>
 
         <!-- What you actually spent -->
         <div class="form-group">
-          <p><i>You actually spent $<%= spent %></i></p>
+          <p><i><strong>You actually spent $<%= spent %></strong></i></p>
         </div>
 
         <!-- Over or under -->
         <div class="form-group">
-          <p><i>You have <%= diff %> remaining</i></p>
-          <p><%= msg %></p>
+          <p><i><strong>You have <%= diff %> remaining</strong></i></p>
+          <p><strong><%= msg %></strong></p>
         </div>
 
         <!-- Again -->
         <form id="options-form" method="POST">
           <input type="submit" class="input-options" name="again" value="Calculate another budget">
+
         </form>
+        <p> </p>
+        <div id="chartContainer" style="height: 300px; width: 100%;">
+        </div>
       </div>
+      
     </div>  
+    
   </body>
 </html>
