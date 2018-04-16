@@ -66,4 +66,16 @@ input {
 
 #submit {
   width: auto;
+  align-self: center;
+  align-content: center;
+}
+#calculate-label {
+  align-self: center;
+  align-items: center;
+  align-content: center;
+}
+#div-button{
+  align-self: center;
+  align-content: center;
+  align-items: center;
 }

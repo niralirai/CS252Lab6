@@ -344,7 +344,7 @@ app.post('/main', function(request, response) {
     let dollarDiff = (diff >= 0 ? "$" + diff : "-$" + (diff * -1));
     let msg = (diff >= 0 ? "You're right on track! :)" : "You overspent this term. :(");
 
-    response.render("results", {budget: total0, spent: total1, diff: dollarDiff, msg: msg})
+    response.render("results", {budget: total0, spent: total1, diff: dollarDiff, msg: msg, rent: rent0, utilities: utilities0, cards: cards0, auto: auto0, internet: internet0, food: food0, clothing: clothing0, travel: travel0})
   }
 });
 

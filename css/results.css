@@ -14,6 +14,7 @@ html {
   min-width: 300px;
   max-width: 530px;
   padding: 5%;
+  
     
   /* Center the form */
   position: absolute;
@@ -21,6 +22,8 @@ html {
   right: 10%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3ch;
+  margin-bottom: 2ch;
 }
 #hdr {
   background-color: #978aaf;

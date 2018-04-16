@@ -15,6 +15,7 @@
     <script type="text/javascript">
       window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer", {
+          backgroundColor: "PowderBlue",
           title:{
             text: "Breakdown:"
           },
@@ -22,14 +23,14 @@
           {
            type: "doughnut",
            dataPoints: [
-           {  y: 50, indexLabel: "Mortgage/Rent" },
-           {  y: 31, indexLabel: "Utilities" },
-           {  y: 7, indexLabel: "Credit Cards" },
-           {  y: 2, indexLabel: "Auto Insurance" },
-           {  y: 2, indexLabel: "Internet Services" },
-           {  y: 2, indexLabel: "Food"},
-           {  y: 3, indexLabel: "Clothing"},
-           {  y: 3, indexLabel: "Travel"}
+           {  y: 5, indexLabel: "Mortgage/Rent", color: "LightPink" },
+           {  y: 5, indexLabel: "Utilities", color: "Aqua"},
+           {  y: 5, indexLabel: "Credit Cards", color: "#66a3ff" },
+           {  y: 5, indexLabel: "Auto Insurance", color: "Crimson"},
+           {  y: 5, indexLabel: "Internet Services", color: "#ffff66" },
+           {  y: 5, indexLabel: "Food", color: "DarkOrchid"},
+           {  y: 30, indexLabel: "Clothing", color: "#ccb3ff"},
+           {  y: 40, indexLabel: "Travel", color: "Teal"}
            ]
          }
          ]
