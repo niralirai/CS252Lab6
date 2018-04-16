@@ -307,23 +307,37 @@ app.post('/main', function(request, response) {
   if (Object.keys(request.body) == 'again') {
     response.redirect("main");
   } else {
-    // Get form field values
-    let budget = Number(request.body.budget);
-    let rent = Number(request.body.rent == '' ? '0' : request.body.rent);
-    let utilities = Number(request.body.utilities == '' ? '0' : request.body.utilities);
-    let cards = Number(request.body.cards == '' ? '0' : request.body.cards);
-    let auto = Number(request.body.auto == '' ? '0' : request.body.auto);
-    let internet = Number(request.body.internet == '' ? '0' : request.body.internet);
-    let food = Number(request.body.food == '' ? '0' : request.body.food);
-    let clothing = Number(request.body.clothing == '' ? '0' : request.body.clothing);
+    // Get form field values (0 is planned, 1 is actual)
+    let rent0 = Number(request.body.rent[0] == '' ? '0' : request.body.rent[0]);
+    let utilities0 = Number(request.body.utilities[0] == '' ? '0' : request.body.utilities[0]);
+    let cards0 = Number(request.body.cards[0] == '' ? '0' : request.body.cards[0]);
+    let auto0 = Number(request.body.auto[0] == '' ? '0' : request.body.auto[0]);
+    let internet0 = Number(request.body.internet[0] == '' ? '0' : request.body.internet[0]);
+    let food0 = Number(request.body.food[0] == '' ? '0' : request.body.food[0]);
+    let clothing0 = Number(request.body.clothing[0] == '' ? '0' : request.body.clothing[0]);
+    let travel0 = Number(request.body.travel[0] == '' ? '0' : request.body.travel[0]);
 
-    const total = rent + utilities + cards + auto + internet + food + clothing;
-    const spent = total;
-    const diff = budget - spent;
+    let rent1 = Number(request.body.rent[1] == '' ? '0' : request.body.rent[1]);
+    let utilities1 = Number(request.body.utilities[1] == '' ? '0' : request.body.utilities[1]);
+    let cards1 = Number(request.body.cards[1] == '' ? '0' : request.body.cards[1]);
+    let auto1 = Number(request.body.auto[1] == '' ? '0' : request.body.auto[1]);
+    let internet1 = Number(request.body.internet[1] == '' ? '0' : request.body.internet[1]);
+    let food1 = Number(request.body.food[1] == '' ? '0' : request.body.food[1]);
+    let clothing1 = Number(request.body.clothing[1] == '' ? '0' : request.body.clothing[1]);
+    let travel1 = Number(request.body.travel[1] == '' ? '0' : request.body.travel[1]);
+
+    const total0 = rent0 + utilities0 + cards0 + auto0 + internet0 + food0 + clothing0 + travel0;
+    const spent0 = total0;
+
+    const total1 = rent1 + utilities1 + cards1 + auto1 + internet1 + food1 + clothing1 + travel1;
+    const spent1 = total1;
+
+    const diff = total0 - total1;
+    
     let dollarDiff = (diff >= 0 ? "$" + diff : "-$" + (diff * -1));
     let msg = (diff >= 0 ? "You're right on track! :)" : "You overspent this term. :(");
 
-    response.render("results", {spent: spent, budget: budget, diff: dollarDiff, msg: msg})
+    response.render("results", {budget: total0, spent: total1, diff: dollarDiff, msg: msg})
   }
 });
 
