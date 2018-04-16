@@ -184,6 +184,8 @@ pool.getConnection(function(error, connection) {
       }
     }
   });
+  console.log("Releasing");
+  connection.release();
 });
 
 // Set up session cookies for users (ref 5)
