@@ -45,3 +45,4 @@
 * See processes/dynos running: `heroku ps`
 * Start app to run on n servers: `heroku ps:scale web=n`
 * Start app to run on 1 server: `heroku ps:scale web=1`
+* Start app on localhost: `heroku local web` routes to localhost:5000

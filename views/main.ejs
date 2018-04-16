@@ -26,129 +26,140 @@
       <h2 align="center" style="font-family:georgia;"><i>Let's find out!</i></h2>
     </div>
 
-    <div class="modal-body" class="modal-body row">
+    <div class="modal-body container">
       <!-- Budget form -->
       <form id="main-form" method="POST">
-        <div id="div-input-fields" class="col-md-6">
-         <h4 align="center" style="font-family:georgia;">What you plan to spend:</h4>
+        <div class="row">
+          <!-- First column -->
+          <div id="div-input-fields" class="col">
+            <div class="first-column">
+              <h4 align="center" style="font-family:georgia;">Planned spending</h4>
 
-          <div class="first-column">
-          <!-- Budget -->
-          <div class="form-group">
-            <label for="budget" class="col-form-label"><i>Budget</i></label>
-            <input type="number" class="form-control" name="budget" min="0" placeholder="0" required>
-          </div>
+              <!-- Budget -->
+              <div class="form-group">
+                <label for="budget" class="col-form-label"><i>Budget</i></label>
+                <input type="number" class="form-control" name="budget" min="0" placeholder="0" required>
+              </div>
 
-          <!-- Rent -->
-          <div class="form-group">
-            <label for="rent" class="col-form-label"><i>Mortgage/Rent</i></label>
-            <input type="number" class="form-control" name="rent" min="0" placeholder="0">
-          </div>
+              <!-- Rent -->
+              <div class="form-group">
+                <label for="rent" class="col-form-label"><i>Mortgage/Rent</i></label>
+                <input type="number" class="form-control" name="rent" min="0" placeholder="0">
+              </div>
 
-          <!-- Utilities -->
-          <div class="form-group">
-            <label for="utilities" class="col-form-label"><i>Utilities</i></label>
-            <input type="number" class="form-control" name="utilities" min="0" placeholder="0">
-          </div>
+              <!-- Utilities -->
+              <div class="form-group">
+                <label for="utilities" class="col-form-label"><i>Utilities</i></label>
+                <input type="number" class="form-control" name="utilities" min="0" placeholder="0">
+              </div>
 
-          <!-- Cards -->
-          <div class="form-group">
-            <label for="cards" class="col-form-label"><i>Credit Cards</i></label>
-            <input type="number" class="form-control" name="cards" min="0" placeholder="0">
-          </div>
+              <!-- Cards -->
+              <div class="form-group">
+                <label for="cards" class="col-form-label"><i>Credit Cards</i></label>
+                <input type="number" class="form-control" name="cards" min="0" placeholder="0">
+              </div>
 
-          <!-- Auto -->
-          <div class="form-group">
-            <label for="auto" class="col-form-label"><i>Auto Insurance</i></label>
-            <input type="number" class="form-control" name="auto" min="0" placeholder="0">
-          </div>
+              <!-- Auto -->
+              <div class="form-group">
+                <label for="auto" class="col-form-label"><i>Auto Insurance</i></label>
+                <input type="number" class="form-control" name="auto" min="0" placeholder="0">
+              </div>
 
-          <!-- Internet -->
-          <div class="form-group">
-            <label for="internet" class="col-form-label"><i>Internet Services</i></label>
-            <input type="number" class="form-control" name="internet" min="0" placeholder="0">
-          </div>
-            
-          <!-- Food -->
-          <div class="form-group">
-            <label for="food" class="col-form-label"><i>Food</i></label>
-            <input type="number" class="form-control" name="food" min="0" placeholder="0">
-          </div>
+              <!-- Internet -->
+              <div class="form-group">
+                <label for="internet" class="col-form-label"><i>Internet Services</i></label>
+                <input type="number" class="form-control" name="internet" min="0" placeholder="0">
+              </div>
+                
+              <!-- Food -->
+              <div class="form-group">
+                <label for="food" class="col-form-label"><i>Food</i></label>
+                <input type="number" class="form-control" name="food" min="0" placeholder="0">
+              </div>
 
-          <!-- Clothing -->
-          <div class="form-group">
-            <label for="clothing" class="col-form-label"><i>Clothing</i></label>
-            <input type="number" class="form-control" name="clothing" min="0" placeholder="0">
-          </div>
-           <!-- Travel -->
-          <div class="form-group">
-            <label for="travel" class="col-form-label"><i>Travel</i></label>
-            <input type="number" class="form-control" name="travel" min="0" placeholder="0">
-          </div>
-       </div>
-      </div>
-      <div id="div-input-fields-2" class="col-md-6">
-        <div class="second-column">
-          <!-- Budget -->
-          <div class="form-group">
-            <label for="budget" class="col-form-label"><i>Budget</i></label>
-            <input type="number" class="form-control" name="budget" min="0" placeholder="0" required>
+              <!-- Clothing -->
+              <div class="form-group">
+                <label for="clothing" class="col-form-label"><i>Clothing</i></label>
+                <input type="number" class="form-control" name="clothing" min="0" placeholder="0">
+              </div>
+              <!-- Travel -->
+              <div class="form-group">
+                <label for="travel" class="col-form-label"><i>Travel</i></label>
+                <input type="number" class="form-control" name="travel" min="0" placeholder="0">
+              </div>
+            </div>
           </div>
 
-          <!-- Rent -->
-          <div class="form-group">
-            <label for="rent" class="col-form-label"><i>Mortgage/Rent</i></label>
-            <input type="number" class="form-control" name="rent" min="0" placeholder="0">
-          </div>
+          <!-- Second column -->
+          <div id="div-input-fields-2" class="col">
+            <div class="second-column">
+              <h4 align="center" style="font-family:georgia;">Actual spending</h4>
 
-          <!-- Utilities -->
-          <div class="form-group">
-            <label for="utilities" class="col-form-label"><i>Utilities</i></label>
-            <input type="number" class="form-control" name="utilities" min="0" placeholder="0">
-          </div>
+              <!-- Budget -->
+              <div class="form-group">
+                <label for="budget" class="col-form-label"><i>Budget</i></label>
+                <input type="number" class="form-control" name="budget" min="0" placeholder="0" required>
+              </div>
 
-          <!-- Cards -->
-          <div class="form-group">
-            <label for="cards" class="col-form-label"><i>Credit Cards</i></label>
-            <input type="number" class="form-control" name="cards" min="0" placeholder="0">
-          </div>
+              <!-- Rent -->
+              <div class="form-group">
+                <label for="rent" class="col-form-label"><i>Mortgage/Rent</i></label>
+                <input type="number" class="form-control" name="rent" min="0" placeholder="0">
+              </div>
 
-          <!-- Auto -->
-          <div class="form-group">
-            <label for="auto" class="col-form-label"><i>Auto Insurance</i></label>
-            <input type="number" class="form-control" name="auto" min="0" placeholder="0">
-          </div>
+              <!-- Utilities -->
+              <div class="form-group">
+                <label for="utilities" class="col-form-label"><i>Utilities</i></label>
+                <input type="number" class="form-control" name="utilities" min="0" placeholder="0">
+              </div>
 
-          <!-- Internet -->
-          <div class="form-group">
-            <label for="internet" class="col-form-label"><i>Internet Services</i></label>
-            <input type="number" class="form-control" name="internet" min="0" placeholder="0">
-          </div>
-            
-          <!-- Food -->
-          <div class="form-group">
-            <label for="food" class="col-form-label"><i>Food</i></label>
-            <input type="number" class="form-control" name="food" min="0" placeholder="0">
-          </div>
+              <!-- Cards -->
+              <div class="form-group">
+                <label for="cards" class="col-form-label"><i>Credit Cards</i></label>
+                <input type="number" class="form-control" name="cards" min="0" placeholder="0">
+              </div>
 
-          <!-- Clothing -->
-          <div class="form-group">
-            <label for="clothing" class="col-form-label"><i>Clothing</i></label>
-            <input type="number" class="form-control" name="clothing" min="0" placeholder="0">
-          </div>
-           <!-- Travel -->
-          <div class="form-group">
-            <label for="travel" class="col-form-label"><i>Travel</i></label>
-            <input type="number" class="form-control" name="travel" min="0" placeholder="0">
+              <!-- Auto -->
+              <div class="form-group">
+                <label for="auto" class="col-form-label"><i>Auto Insurance</i></label>
+                <input type="number" class="form-control" name="auto" min="0" placeholder="0">
+              </div>
+
+              <!-- Internet -->
+              <div class="form-group">
+                <label for="internet" class="col-form-label"><i>Internet Services</i></label>
+                <input type="number" class="form-control" name="internet" min="0" placeholder="0">
+              </div>
+                
+              <!-- Food -->
+              <div class="form-group">
+                <label for="food" class="col-form-label"><i>Food</i></label>
+                <input type="number" class="form-control" name="food" min="0" placeholder="0">
+              </div>
+
+              <!-- Clothing -->
+              <div class="form-group">
+                <label for="clothing" class="col-form-label"><i>Clothing</i></label>
+                <input type="number" class="form-control" name="clothing" min="0" placeholder="0">
+              </div>
+              <!-- Travel -->
+              <div class="form-group">
+                <label for="travel" class="col-form-label"><i>Travel</i></label>
+                <input type="number" class="form-control" name="travel" min="0" placeholder="0">
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Calculate label -->
+        <div class="form-group row">
+          <label for="calculate" class="col-form-label" id="calculate-label"><i><strong>Total Your Costs!</strong></i></label>
         </div>
+
         <!-- Calculate button -->
-        <div id="div-button" class="form-group">
-          <label for="calculate" class="col-form-label"><i><strong>Total Your Costs!</strong></i></label>
+        <div id="div-button" class="form-group row">
           <button type="submit" class="form-control" id="submit">Calculate!</button>
-        </div> 
-      </div>
+        </div>
       </form>
     </div>
   </body>
