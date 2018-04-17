@@ -42,10 +42,7 @@ var pool = mysql.createPool({
 });
 
 pool.getConnection(function(error, connection) {
-  if (error) { 
-    throw error;
-     
-     }
+  if (error) { throw error; }
   console.log('connected as id ' + connection.threadId);
 
   /**
