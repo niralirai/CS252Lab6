@@ -342,8 +342,9 @@ app.post('/main', function(request, response) {
     const diff = total0 - total1;
     
     let dollarDiff = (diff >= 0 ? "$" + diff : "-$" + (diff * -1));
-    let msg = (diff >= 0 ? "You're right on track! :)" : "You overspent this term. :(");
 
+    let msg = (diff >= 0 ? "You're right on track! :)" : "You overspent this term. :(");
+   //send the actually spend variables to results to put them in the chart
     response.render("results", {budget: total0, spent: total1, diff: dollarDiff, msg: msg, rent: rent1, utilities: utilities1, cards: cards1, auto: auto1, internet: internet1, food: food1, clothing: clothing1, travel: travel1})
   }
 });
