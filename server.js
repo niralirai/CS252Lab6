@@ -5,6 +5,7 @@
  *  3. https://github.com/mysqljs/mysql
  *  4. https://dev.mysql.com/doc/refman/5.7/en/tutorial.html
  *  5. https://www.npmjs.com/package/client-sessions
+ *  6. https://github.com/mysqljs/mysql/issues/1478
  * 
  * request.mySession {
  *  user: "email@email.com",
@@ -34,167 +35,75 @@ app.use(express.static(__dirname));
  * https://github.com/mysqljs/mysql#pooling-connections
  */
 var mysql = require('mysql');
-var pool = mysql.createPool({
+var connection = mysql.createConnection({
   host: 'us-cdbr-iron-east-05.cleardb.net',
   user: 'bbb29a8be86d32',
   password: '03394565',
-  database: 'heroku_01db060d2e70e87'
+  database: 'heroku_01db060d2e70e87',
 });
 
-pool.getConnection(function(error, connection) {
-  if (error) { throw error; }
-  console.log('connected as id ' + connection.threadId);
+// Function to listen for errors (ref 6)
+connection.on('error', function(error) {
+  // If double handshake, can't make another connection so don't TODO need to handle so we don't have a crash
+  if(error.code === "PROTOCOL_ENQUEUE_HANDSHAKE_TWICE"){
+    console.log(error.code);
+  } else {
+    console.log(error.code);
+    reconnect(connection);
+  }
+});
 
-  /**
-   * POST requests sent when submitting a form (ref 3)
-   *  - /login (in pool connection)
-   *  - /signup (in pool connection)
-   * 
-   * https://github.com/mysqljs/mysql#performing-queries
-   * https://github.com/mysqljs/mysql#escaping-query-values
-   * https://expressjs.com/en/api.html#app.locals
-   */
-  app.post('/login', function(request, response) {
-    console.log("POST /login");
-    console.log(request.body);
-    console.log(request.headers);
-    console.log(request.mySession);
-    console.log("\n");
-  
-    // Get form field values
-    let email = request.body.email;
-    let password = request.body.password;
-  
-    /**
-     * Create MySQL requests to check email
-     *  - 'results' stores MySQL "return value" as object of strings (table entries), length = 1
-     *  - 'fields' stores metadata for each result
-     */
-    var checkEmail = "SELECT * FROM users WHERE email = ?;";
-    connection.query(checkEmail, [email], function (error, results, fields) {
-      // If error (else if email not found, else if passwords don't match, else redirect)
-      if (error) {
-        throw error;
-        request.mySession.reset();
-      } else if (results.length <= 0) {
-        response.render("login", {errorMsg: "Email not registered"});
-      } else if (results[0].password !== password) {
-        response.render("login", {errorMsg: "Incorrect password"});
-      } else {
-        // Set cookieName: mySession attributes then redirect
-        request.mySession.user = email;
-        request.mySession.password = password;
-        request.mySession.newUser = false;
-  
-        // Get user's name
-        const getName = "SELECT firstname, lastname FROM users WHERE email = \"" + email + "\";";
-        connection.query(getName, [email], function (e, r, f) {
-          if (e) { throw e; }
-          request.mySession.firstname = r[0].firstname;
-          request.mySession.lastname = r[0].lastname;
-          response.redirect("main");
-        })
-      }
-    });
-  });
-  
-  app.post('/signup', function(request, response) {
-    console.log("POST /signup");
-    console.log(request.body);
-    console.log(request.headers);
-    console.log(request.mySession);
-    console.log("\n");
-  
-    // Get form field values
-    let firstname = request.body.firstname;
-    let lastname = request.body.lastname;
-    let email = request.body.email;
-    let password = request.body.password;
-    let password2 = request.body.password2;
-  
-    // Create MySQL requests to check email
-    var checkEmail = "SELECT * FROM users WHERE email = ?;";
-    connection.query(checkEmail, [email], function (error, results, fields) {
-      // If error (else if email already used, else if passwords don't match, else save and redirect)
-      if (error) {
-        throw error;
-        request.mySession.reset();
-      } else if (results.length > 0) {
-        response.render("signup", {errorMsg: "Email already in use"});
-      } else if (password !== password2) {
-        response.render("signup", {errorMsg: "Re-typed password doesn't match"});
-      } else {
-        var addUser = "INSERT INTO users VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "');";
-        connection.query(addUser, function (e, r, f) {
-          if (e) throw e;
-          request.mySession.newUser = true;
-          response.redirect("login");
-          // TODO - keep them signed in!!!!
-        }); 
-      }
-    });
+// Function to handle disconnect (ref 6)
+function reconnect(connection) {
+  console.log("Reconnecting...");
+  // Destroy the current connection variable if there is one
+  if (connection) { connection.destroy(); }
+
+  // Create a new connection
+  connection = mysql.createConnection({
+    host: 'us-cdbr-iron-east-05.cleardb.net',
+    user: 'bbb29a8be86d32',
+    password: '03394565',
+    database: 'heroku_01db060d2e70e87',
   });
 
-  app.post('/account', function(request, response) {
-    console.log("POST /account");
-    console.log(request.body);
-    console.log(request.headers);
-    console.log(request.mySession);
-    console.log("\n");
-
-    // Check how many fields submitted (delete == 0, name == 2, password = 3)
-    if (Object.keys(request.body).length === 0) {
-      var deleteUser = "DELETE FROM users WHERE email = ?;";
-      connection.query(deleteUser, [request.mySession.user], function(error, results, fields) {
-        // If error (else redirect to splash)
-        if (error) { throw error; }
-        request.mySession.reset();
-        response.redirect("/");
-      });
-    } else if (Object.keys(request.body).length === 2) {
-      // Get form field values
-      let firstname = (request.body.firstname == '' ? request.mySession.firstname : request.body.firstname);
-      let lastname = (request.body.lastname == '' ? request.mySession.lastname : request.body.lastname);
-
-      var changeName = "UPDATE users SET firstname = ?, lastname = ? WHERE email = ?;";
-      connection.query(changeName, [firstname, lastname, request.mySession.user], function(error, results, fields) {
-        // If error (else render with success message)
-        if (error) { throw error; }
-        request.mySession.firstname = firstname;
-        request.mySession.lastname = lastname;
-        const nameMsg = "Your new name is " + firstname + " " + lastname;
-        response.render("account", {nameMsg: nameMsg, passwordMsg: ''});
-      });
+  // Try to reconnect
+  connection.connect(function(error) {
+    // If error, try to reconnect every 2000 milliseconds 
+    if (error) {
+      setTimeout(reconnect, 2000);
     } else {
-      // Get form field values
-      let oldpassword = request.body.oldpassword;
-      let password = request.body.password;
-      let password2 = request.body.password2;
+      console.log("New connection successful\n")
 
-      // If old password is not correct (else if passwords don't match, else save and render)
-      if (oldpassword !== request.mySession.password) {
-        response.render("account", {nameMsg: '', passwordMsg: "Old password is incorrect"});
-      } else if (password !== password2) {
-        response.render("account", {nameMsg: '', passwordMsg: "Re-typed password doesn't match"});
-      } else {
-        var changePassword = "UPDATE users SET password = ? WHERE email = ?;";
-        connection.query(changePassword, [password, request.mySession.user], function(error, results, fields) {
-          if (error) { throw error; }
-          request.mySession.password = password;
-          response.render("account", {nameMsg: '', passwordMsg: "Password successfully updated"});
-        });
-      }
+      // Need to make a listening for the "new" connection
+      connection.on('error', function(err) {
+        // If double handshake, can't make another connection so don't TODO need to handle so we don't have a crash
+        if(err.code === "PROTOCOL_ENQUEUE_HANDSHAKE_TWICE"){
+          console.log(err.code);
+        } else {
+          console.log(err.code);
+          reconnect(connection);
+        }
+      });
     }
   });
-  console.log("Releasing");
-  connection.release();
-});
+}
+
+// Function to check if connection is still good
+function isConnected(connection) {
+  if (connection) {
+    console.log("Connection good");
+    return true;
+  }
+  console.log("Connection bad");
+  return false;
+}
 
 // Set up session cookies for users (ref 5)
 var sessions = require('client-sessions');
 app.use(sessions({
   cookieName: 'mySession',
-  secret: 'iaraniratakilarinniakamffohhcirugerg',
+  secret: 'iaraniratakilarinniakamffohhcirugerg', // gregurich hoffmakain nirali katarina rai
   duration: 30 * 60 * 1000,
   cookie: {
     ephemeral: true,
@@ -295,12 +204,140 @@ app.get('/logout', needsLoggedIn, function(request, response) {
 
 /**
  * POST requests sent when submitting a form (ref 3)
+ *  - /login (need connection)
+ *  - /signup (need connection)
+ *  - /account (need connection)
  *  - /main
  * 
  * https://github.com/mysqljs/mysql#performing-queries
  * https://github.com/mysqljs/mysql#escaping-query-values
  * https://expressjs.com/en/api.html#app.locals
  */
+app.post('/login', function(request, response) {
+  console.log("POST /login");
+  console.log(request.body);
+  console.log(request.headers);
+  console.log(request.mySession);
+  
+  if (!isConnected(connection)) { reconnect(connection); }
+  console.log("\n");
+
+  // Get form field values
+  let email = request.body.email;
+  let password = request.body.password;
+
+  /**
+   * Create MySQL requests to check email
+   *  - 'results' stores MySQL "return value" as object of strings (table entries), length = 1
+   *  - 'fields' stores metadata for each result
+   */
+  var checkEmail = "SELECT * FROM users WHERE email = ?;";
+  connection.query(checkEmail, [email], function (error, results, fields) {
+    // If email not found (else if passwords don't match, else redirect)
+    if (results.length <= 0) {
+      response.render("login", {errorMsg: "Email not registered"});
+    } else if (results[0].password !== password) {
+      response.render("login", {errorMsg: "Incorrect password"});
+    } else {
+      // Set cookieName: mySession attributes then redirect
+      request.mySession.user = email;
+      request.mySession.password = password;
+      request.mySession.newUser = false;
+
+      // Get user's name
+      const getName = "SELECT firstname, lastname FROM users WHERE email = \"" + email + "\";";
+      connection.query(getName, [email], function (e, r, f) {
+        request.mySession.firstname = r[0].firstname;
+        request.mySession.lastname = r[0].lastname;
+        response.redirect("main");
+      })
+    }
+  });
+});
+  
+app.post('/signup', function(request, response) {
+  console.log("POST /signup");
+  console.log(request.body);
+  console.log(request.headers);
+  console.log(request.mySession);
+  
+  if (!isConnected(connection)) { reconnect(connection); }
+  console.log("\n");
+
+  // Get form field values
+  let firstname = request.body.firstname;
+  let lastname = request.body.lastname;
+  let email = request.body.email;
+  let password = request.body.password;
+  let password2 = request.body.password2;
+
+  // Create MySQL requests to check email
+  var checkEmail = "SELECT * FROM users WHERE email = ?;";
+  connection.query(checkEmail, [email], function (error, results, fields) {
+    // if email already used (else if passwords don't match, else save and redirect)
+    if (results.length > 0) {
+      response.render("signup", {errorMsg: "Email already in use"});
+    } else if (password !== password2) {
+      response.render("signup", {errorMsg: "Re-typed password doesn't match"});
+    } else {
+      var addUser = "INSERT INTO users VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "');";
+      connection.query(addUser, function (e, r, f) {
+        request.mySession.newUser = true;
+        response.redirect("login");
+      }); 
+    }
+  });
+});
+
+app.post('/account', function(request, response) {
+  console.log("POST /account");
+  console.log(request.body);
+  console.log(request.headers);
+  console.log(request.mySession);
+  
+  if (!isConnected(connection)) { reconnect(connection); }
+  console.log("\n");
+
+  // Check how many fields submitted (delete == 0, name == 2, password = 3)
+  if (Object.keys(request.body).length === 0) {
+    var deleteUser = "DELETE FROM users WHERE email = ?;";
+    connection.query(deleteUser, [request.mySession.user], function(error, results, fields) {
+      request.mySession.reset();
+      response.redirect("/");
+    });
+  } else if (Object.keys(request.body).length === 2) {
+    // Get form field values
+    let firstname = (request.body.firstname == '' ? request.mySession.firstname : request.body.firstname);
+    let lastname = (request.body.lastname == '' ? request.mySession.lastname : request.body.lastname);
+
+    var changeName = "UPDATE users SET firstname = ?, lastname = ? WHERE email = ?;";
+    connection.query(changeName, [firstname, lastname, request.mySession.user], function(error, results, fields) {
+      request.mySession.firstname = firstname;
+      request.mySession.lastname = lastname;
+      const nameMsg = "Your new name is " + firstname + " " + lastname;
+      response.render("account", {nameMsg: nameMsg, passwordMsg: ''});
+    });
+  } else {
+    // Get form field values
+    let oldpassword = request.body.oldpassword;
+    let password = request.body.password;
+    let password2 = request.body.password2;
+
+    // If old password is not correct (else if passwords don't match, else save and render)
+    if (oldpassword !== request.mySession.password) {
+      response.render("account", {nameMsg: '', passwordMsg: "Old password is incorrect"});
+    } else if (password !== password2) {
+      response.render("account", {nameMsg: '', passwordMsg: "Re-typed password doesn't match"});
+    } else {
+      var changePassword = "UPDATE users SET password = ? WHERE email = ?;";
+      connection.query(changePassword, [password, request.mySession.user], function(error, results, fields) {
+        request.mySession.password = password;
+        response.render("account", {nameMsg: '', passwordMsg: "Password successfully updated"});
+      });
+    }
+  }
+});
+
 app.post('/main', function(request, response) {
   console.log("POST /main");
   console.log(request.body);
@@ -339,9 +376,8 @@ app.post('/main', function(request, response) {
     const diff = total0 - total1;
     
     let dollarDiff = (diff >= 0 ? "$" + diff : "-$" + (diff * -1));
-
     let msg = (diff >= 0 ? "You're right on track! :)" : "You overspent this term. :(");
-   //send the actually spend variables to results to put them in the chart
+
     response.render("results", {budget: total0, spent: total1, diff: dollarDiff, msg: msg, rent: rent1, utilities: utilities1, cards: cards1, auto: auto1, internet: internet1, food: food1, clothing: clothing1, travel: travel1})
   }
 });
