@@ -12,12 +12,16 @@
   <head>
     <%- include partials/head %>
     <!--Pie Chart-->
+    var rentInt = $<%= rent %>;
     <script type="text/javascript">
       window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer", {
-          backgroundColor: "PowderBlue",
-          title:{
-            text: "Breakdown:"
+          backgroundColor: "rgba(176, 224, 230, .6)",
+          title:{ 
+            text: "Breakdown:",
+            fontFamily: "georgia",
+            fontWeight: "bolder",
+            fontSize: 25
           },
           data: [
           {
