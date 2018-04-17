@@ -40,45 +40,7 @@ var connection = mysql.createConnection({
   user: 'bbb29a8be86d32',
   password: '03394565',
   database: 'heroku_01db060d2e70e87',
-  connectTimeout: 60 * 60 * 1000
 });
-
-// Function to check if connection is still good
-function isConnected(connection) {
-  if (connection) {
-    console.log("Connection good");
-    return true;
-  }
-  console.log("Connection bad");
-  return false;
-}
-
-// Function to handle disconnect (ref 6)
-function reconnect(connection){
-  console.log("Reconnecting...");
-  // Destroy the current connection variable if there is one
-  if (connection) { connection.destroy(); }
-
-  // Create a new connection
-  connection = mysql.createConnection({
-    host: 'us-cdbr-iron-east-05.cleardb.net',
-    user: 'bbb29a8be86d32',
-    password: '03394565',
-    database: 'heroku_01db060d2e70e87',
-    connectTimeout: 60 * 60 * 1000
-  });
-
-  // Try to reconnect
-  connection.connect(function(error) {
-    // If error, try to reconnect every 2000 milliseconds 
-    if (error) {
-      setTimeout(reconnect, 2000);
-    } else {
-      console.log("New connection successful\n")
-      //return connection;
-    }
-  });
-}
 
 // Function to listen for errors (ref 6)
 connection.on('error', function(error) {
@@ -91,11 +53,57 @@ connection.on('error', function(error) {
   }
 });
 
+// Function to handle disconnect (ref 6)
+function reconnect(connection) {
+  console.log("Reconnecting...");
+  // Destroy the current connection variable if there is one
+  if (connection) { connection.destroy(); }
+
+  // Create a new connection
+  connection = mysql.createConnection({
+    host: 'us-cdbr-iron-east-05.cleardb.net',
+    user: 'bbb29a8be86d32',
+    password: '03394565',
+    database: 'heroku_01db060d2e70e87',
+  });
+
+  // Try to reconnect
+  connection.connect(function(error) {
+    // If error, try to reconnect every 2000 milliseconds 
+    if (error) {
+      setTimeout(reconnect, 2000);
+    } else {
+      console.log("New connection successful\n")
+
+      // Need to make a listening for the "new" connection
+      connection.on('error', function(err) {
+        // If double handshake, can't make another connection so don't TODO need to handle so we don't have a crash
+        if(err.code === "PROTOCOL_ENQUEUE_HANDSHAKE_TWICE"){
+          console.log(err.code);
+        } else {
+          console.log(err.code);
+          reconnect(connection);
+        }
+      });
+    }
+  });
+}
+
+// Function to check if connection is still good
+function isConnected(connection) {
+  if (connection) {
+    console.log("Connection good");
+    return true;
+  }
+  console.log("Connection bad");
+  return false;
+}
+
 // Set up session cookies for users (ref 5)
 var sessions = require('client-sessions');
 app.use(sessions({
   cookieName: 'mySession',
-  secret: 'iaraniratakilarinniakamffohhcirugerg',
+  secret: 'iaraniratakilarinniakamffohhcirugerg', // gregurich hoffmakain nirali katarina rai
   duration: 30 * 60 * 1000,
   cookie: {
     ephemeral: true,
@@ -225,10 +233,7 @@ app.post('/login', function(request, response) {
    */
   var checkEmail = "SELECT * FROM users WHERE email = ?;";
   connection.query(checkEmail, [email], function (error, results, fields) {
-    // If error, reconnect
-//    if (error) { reconnect(connection); }
-    
-    // if email not found (else if passwords don't match, else redirect)
+    // If email not found (else if passwords don't match, else redirect)
     if (results.length <= 0) {
       response.render("login", {errorMsg: "Email not registered"});
     } else if (results[0].password !== password) {
@@ -242,8 +247,6 @@ app.post('/login', function(request, response) {
       // Get user's name
       const getName = "SELECT firstname, lastname FROM users WHERE email = \"" + email + "\";";
       connection.query(getName, [email], function (e, r, f) {
-        // If error, reconnect
-//        if (e) { reconnect(connection); }
         request.mySession.firstname = r[0].firstname;
         request.mySession.lastname = r[0].lastname;
         response.redirect("main");
@@ -271,9 +274,6 @@ app.post('/signup', function(request, response) {
   // Create MySQL requests to check email
   var checkEmail = "SELECT * FROM users WHERE email = ?;";
   connection.query(checkEmail, [email], function (error, results, fields) {
-    // If error, reconnect
-//    if (error) { reconnect(connection); }
-
     // if email already used (else if passwords don't match, else save and redirect)
     if (results.length > 0) {
       response.render("signup", {errorMsg: "Email already in use"});
@@ -282,10 +282,8 @@ app.post('/signup', function(request, response) {
     } else {
       var addUser = "INSERT INTO users VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "');";
       connection.query(addUser, function (e, r, f) {
-//        if (e) { reconnect(connection); }
         request.mySession.newUser = true;
         response.redirect("login");
-        // TODO - keep them signed in!!!!
       }); 
     }
   });
@@ -304,8 +302,6 @@ app.post('/account', function(request, response) {
   if (Object.keys(request.body).length === 0) {
     var deleteUser = "DELETE FROM users WHERE email = ?;";
     connection.query(deleteUser, [request.mySession.user], function(error, results, fields) {
-      // If error, reconnect
-//      if (error) { reconnect(connection); }
       request.mySession.reset();
       response.redirect("/");
     });
@@ -316,8 +312,6 @@ app.post('/account', function(request, response) {
 
     var changeName = "UPDATE users SET firstname = ?, lastname = ? WHERE email = ?;";
     connection.query(changeName, [firstname, lastname, request.mySession.user], function(error, results, fields) {
-      // If error, reconnect
-//      if (error) { reconnect(connection); }
       request.mySession.firstname = firstname;
       request.mySession.lastname = lastname;
       const nameMsg = "Your new name is " + firstname + " " + lastname;
@@ -337,8 +331,6 @@ app.post('/account', function(request, response) {
     } else {
       var changePassword = "UPDATE users SET password = ? WHERE email = ?;";
       connection.query(changePassword, [password, request.mySession.user], function(error, results, fields) {
-        // If error, reconnect
-//        if (error) { reconnect(connection); }
         request.mySession.password = password;
         response.render("account", {nameMsg: '', passwordMsg: "Password successfully updated"});
       });
