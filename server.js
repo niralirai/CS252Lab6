@@ -186,7 +186,7 @@ app.get('/account', needsLoggedIn, function(request, response) {
 });
 
 app.get('/history', needsLoggedIn, function(request, response) {
-  response.send("Make html page for history where users can see previous budget forms");
+  response.render("history", {data: ['one', 'two', 'three']});
   console.log("GET /history");
   console.log(request.headers);
   console.log(request.mySession);
@@ -357,6 +357,7 @@ app.post('/main', function(request, response) {
     let food0 = Number(request.body.food[0] == '' ? '0' : request.body.food[0]);
     let clothing0 = Number(request.body.clothing[0] == '' ? '0' : request.body.clothing[0]);
     let travel0 = Number(request.body.travel[0] == '' ? '0' : request.body.travel[0]);
+    let misc0 = Number(request.body.misc[0] == '' ? '0' : request.body.misc[0]);
 
     let rent1 = Number(request.body.rent[1] == '' ? '0' : request.body.rent[1]);
     let utilities1 = Number(request.body.utilities[1] == '' ? '0' : request.body.utilities[1]);
@@ -366,17 +367,26 @@ app.post('/main', function(request, response) {
     let food1 = Number(request.body.food[1] == '' ? '0' : request.body.food[1]);
     let clothing1 = Number(request.body.clothing[1] == '' ? '0' : request.body.clothing[1]);
     let travel1 = Number(request.body.travel[1] == '' ? '0' : request.body.travel[1]);
+    let misc1 = Number(request.body.misc[1] == '' ? '0' : request.body.misc[1]);
 
-    const total0 = rent0 + utilities0 + cards0 + auto0 + internet0 + food0 + clothing0 + travel0;
+    const total0 = rent0 + utilities0 + cards0 + auto0 + internet0 + food0 + clothing0 + travel0 + misc0;
     const spent0 = total0;
 
-    const total1 = rent1 + utilities1 + cards1 + auto1 + internet1 + food1 + clothing1 + travel1;
+    const total1 = rent1 + utilities1 + cards1 + auto1 + internet1 + food1 + clothing1 + travel1 + misc1;
     const spent1 = total1;
 
     const diff = total0 - total1;
     
     let dollarDiff = (diff >= 0 ? "$" + diff : "-$" + (diff * -1));
     let msg = (diff >= 0 ? "You're right on track! :)" : "You overspent this term. :(");
+
+    /**
+     * Date.now() --> milliseconds since the epoch
+     * new Date() --> create date object with whatever time it is now
+     * toDateString() --> [day] [month] [date] [year]
+     */
+    let time = (new Date(Date.now())).toDateString();
+    console.log(time);
 
     response.render("results", {budget: total0, spent: total1, diff: dollarDiff, msg: msg, rent: rent1, utilities: utilities1, cards: cards1, auto: auto1, internet: internet1, food: food1, clothing: clothing1, travel: travel1})
   }

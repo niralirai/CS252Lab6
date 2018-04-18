@@ -1,0 +1,30 @@
+<!--
+  References:
+    - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
+    - https://getbootstrap.com/docs/4.0/components/navbar/
+    - http://ejs.co
+//-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include partials/head %>
+
+    <!-- Stuff we actually wrote -->
+    <title>Where'd It Go?!</title>
+    <link rel="stylesheet" href="../css/history.css">
+  </head>
+
+  <body id="body-history">
+    <div class="container center-block">
+      <table>
+        <% for(var i=0; i < data.length; i++) { %>
+          <tr>
+            <td><a href="https://www.google.com"><%= data[i] %></a></td>
+          </tr>
+        <% } %>
+      </table>
+    </div>
+  </body>
+</html>
