@@ -1,3 +1,10 @@
+html { 
+  background: url('https://farm5.static.flickr.com/4784/40823527141_3898ff55fa_b.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 body {
   text-align: center;
 }
@@ -18,4 +25,11 @@ body {
 table {
   width: 100%;
   margin-bottom: 20px;
+}
+
+#hdrs {
+  background-color: #228073;
+  padding-top: 1ch;
+  padding-bottom: 1ch;
+  color: bisque;
 }
