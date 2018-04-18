@@ -29,21 +29,21 @@ table {
   border: 1px solid black;
   box-shadow: 10px 10px 5px rgb(11, 45, 51);
   border-collapse: separate;
+  
 }
 
 table th:nth-child(even){
   /* background-color: rgba(255, 228, 196, 0.37);
  */
-background-color: rgba(255, 255, 255, 0.459);
+background-color: rgba(255, 255, 255, 0);
 }
 
 table td:last-child{
-  background-color: #1b5f56; 
+  background-color: #248175; 
   color: snow;
 }
-
-tbody tr:hover {
-  background-color: #f1e9e9;
+.table-hover tbody tr:hover td {
+  background-color: #ff9f80;
 }
 
 
@@ -62,12 +62,3 @@ tbody tr:hover {
   color: bisque;
   text-shadow: 2px 2px 5px rgb(12, 36, 31);
 }
-/* .table-responsive{
-  /* max-width: 1200px;
-  margin-top:-220px;
-  margin-left:200px;
-  max-width: auto; */
- /* scrollbar-base-color: black;
- scrollbar-3dlight-color: #228073; */
- /* background-color: black; 
-} */
