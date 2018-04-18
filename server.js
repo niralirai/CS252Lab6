@@ -302,8 +302,11 @@ app.post('/account', function(request, response) {
   if (Object.keys(request.body).length === 0) {
     var deleteUser = "DELETE FROM users WHERE email = ?;";
     connection.query(deleteUser, [request.mySession.user], function(error, results, fields) {
-      request.mySession.reset();
-      response.redirect("/");
+      var deleteLog = "DELETE FROM logs WHERE email = ?;";
+      connection.query(deleteLog, [request.mySession.user], function(err, res, fie) {
+        request.mySession.reset();
+        response.redirect("/");
+      });
     });
   } else if (Object.keys(request.body).length === 2) {
     // Get form field values
@@ -383,12 +386,15 @@ app.post('/main', function(request, response) {
     /**
      * Date.now() --> milliseconds since the epoch
      * new Date() --> create date object with whatever time it is now
-     * toDateString() --> [day] [month] [date] [year]
+     * toString() --> [day] [month] [date] [year] [time] [time zone]
      */
-    let time = (new Date(Date.now())).toDateString();
-    console.log(time);
+    const time = (new Date(Date.now())).toString();
 
-    response.render("results", {budget: total0, spent: total1, diff: dollarDiff, msg: msg, rent: rent1, utilities: utilities1, cards: cards1, auto: auto1, internet: internet1, food: food1, clothing: clothing1, travel: travel1})
+    // Write budget to database
+    const addLog = "INSERT INTO logs VALUES ('" + request.mySession.user + "', '" + rent0 + "', '" + utilities0 + "', '" + cards0 + "', '" + auto0 + "', '" + internet0 + "', '" + food0 + "', '" + clothing0 + "', '" + travel0 + "', '" + misc0 + "', '" + total0 + "', '" + rent1 + "', '" + utilities1 + "', '" + cards1 + "', '" + auto1 + "', '" + internet1 + "', '" + food1 + "', '" + clothing1 + "', '" + travel1 + "', '" + misc1 + "', '" + total1 + "', '" + diff + "', '" + time + "');";
+    connection.query(addLog, function(error, results, fields) {
+      response.render("results", {budget: total0, spent: total1, diff: dollarDiff, msg: msg, rent: rent1, utilities: utilities1, cards: cards1, auto: auto1, internet: internet1, food: food1, clothing: clothing1, travel: travel1});
+    });
   }
 });
 
