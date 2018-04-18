@@ -7,12 +7,14 @@ html {
 }
 body {
   text-align: center;
+  background: rgba(240, 127, 225, 0);
 }
 
 .center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .body-history {
