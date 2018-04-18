@@ -5,15 +5,41 @@
     - https://getbootstrap.com/docs/4.0/components/navbar/
     - http://ejs.co
     - https://canvasjs.com/docs/charts/chart-types/html5-doughnut-chart/
+    - https://stackoverflow.com/questions/16098397/pass-variables-to-javascript-in-expressjs
 //-->
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <%- include partials/head %>
-    <!--Pie Chart-->
-    var rentInt = $<%= rent %>;
+    
+    <!-- Script to get ejs values -->
+    <script>
+      function  getEJS(input) {
+        let e = document.createElement('div');
+
+        // Set content of the div to the EJS syntax
+        e.innerHTML = input;
+
+        // When you get the innerHTML, it will already have been converted to the actual value
+        return Number(e.childNodes.length === 0 ? "0" : e.childNodes[0].nodeValue);
+      }
+    </script>
+
+    <!-- Pie Chart -->
     <script type="text/javascript">
+      // Get EJS values
+      const rent =  getEJS("<%= rent %>");
+      const utilities =  getEJS("<%= utilities %>");
+      const cards =  getEJS("<%= cards %>");
+      const auto =  getEJS("<%= auto %>");
+      const internet =  getEJS("<%= internet %>");
+      const food =  getEJS("<%= food %>");
+      const clothing =  getEJS("<%= clothing %>");
+      const travel =  getEJS("<%= travel %>");
+      const misc =  getEJS("<%= misc %>");
+
+      // Create the chart with the decoded data
       window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer", {
           backgroundColor: "rgba(176, 224, 230, .6)",
@@ -23,27 +49,27 @@
             fontWeight: "bolder",
             fontSize: 25
           },
-          data: [
-          {
-           type: "doughnut",
-           dataPoints: [
-           {  y: 5, indexLabel: "Mortgage/Rent", color: "LightPink" },
-           {  y: 5, indexLabel: "Utilities", color: "Aqua"},
-           {  y: 5, indexLabel: "Credit Cards", color: "#66a3ff" },
-           {  y: 5, indexLabel: "Auto Insurance", color: "Crimson"},
-           {  y: 5, indexLabel: "Internet Services", color: "#ffff66" },
-           {  y: 5, indexLabel: "Food", color: "DarkOrchid"},
-           {  y: 30, indexLabel: "Clothing", color: "#ccb3ff"},
-           {  y: 40, indexLabel: "Travel", color: "Teal"}
-           ]
-         }
-         ]
-       });
-    
+          data: [{
+            type: "doughnut",
+            dataPoints: [
+            {  y: rent, indexLabel: "Mortgage/Rent", color: "LightPink" },
+            {  y: utilities, indexLabel: "Utilities", color: "Aqua"},
+            {  y: cards, indexLabel: "Credit Cards", color: "#66a3ff" },
+            {  y: auto, indexLabel: "Auto Insurance", color: "Crimson"},
+            {  y: internet, indexLabel: "Internet Services", color: "#ffff66" },
+            {  y: food, indexLabel: "Food", color: "DarkOrchid"},
+            {  y: clothing, indexLabel: "Clothing", color: "#ccb3ff"},
+            {  y: travel, indexLabel: "Travel", color: "Teal"},
+            {  y: misc, indexLabel: "Miscellaneous", color: "Black"}
+            ]
+          }]
+        });
+
         chart.render();
       }
-      </script>
-      <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </script>
+
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
