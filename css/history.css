@@ -27,11 +27,24 @@ body {
 table {
   width: 100%;
   margin-bottom: 20px;
+  border: 1px solid black;
+  box-shadow: 10px 10px 5px rgb(11, 45, 51);
 }
+
+table th:nth-child(even){
+  background-color: bisque;
+}
+
+tr:hover {
+  background-color: #f1e9e9;
+}
+
+
 
 #hdrs {
   background-color: #228073;
   padding-top: 1ch;
   padding-bottom: 1ch;
   color: bisque;
+  text-shadow: 2px 2px 5px rgb(12, 36, 31);
 }

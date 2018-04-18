@@ -28,10 +28,10 @@
       <!-- Loop through dates (create a <table> for each) -->
       <% for(var i=22; i < data.length; i+=22) { %>
         <div class="log">
-          <h1><%= data[i] %></h1>
+          <h2 style="color: bisque;" style="text-shadow: dimgrey;"><%= data[i] %></h2>
           <table style="background-color: rgba(127, 255, 212, 0.486);">
             <!-- Header row -->
-            <tr id="table-headers", style="background-color:darkgray;">
+            <tr id="table-headers", style="background-color:rgb(255, 255, 255);">
               <th></th>
               <th>Mortgage/Rent</th>
               <th>Utilities</th>
@@ -42,9 +42,9 @@
               <th>Clothing</th>
               <th>Travel</th>
               <th>Miscellaneous</th>
-              <th>Total</th>
+              <th bgcolor= "#033738"><font color="#fff">Total</th>
             </tr>
-
+          
             <!-- Planned row -->
             <tr style="background-color: rgb(194, 243, 227);">
               <td><strong>Planned</strong></td>
