@@ -32,11 +32,14 @@ table {
 }
 
 table th:nth-child(even){
-  background-color: rgba(255, 228, 196, 0.37);
+  /* background-color: rgba(255, 228, 196, 0.37);
+ */
+background-color: rgba(255, 255, 255, 0.459);
 }
 
 table td:last-child{
-  background-color: #228073; 
+  background-color: #1b5f56; 
+  color: snow;
 }
 
 tbody tr:hover {
@@ -46,16 +49,25 @@ tbody tr:hover {
 
 
 #hdrs {
-  background-color: #228073;
+  background-color: #228073b2;
   padding-top: 1ch;
   padding-bottom: 1ch;
   color: bisque;
   text-shadow: 2px 2px 5px rgb(12, 36, 31);
 }
-.table-responsive{
+#hdr2 {
+  /* background-color: #faabab36; */
+  padding-top: 1ch;
+  padding-bottom: 1ch;
+  color: bisque;
+  text-shadow: 2px 2px 5px rgb(12, 36, 31);
+}
+/* .table-responsive{
   /* max-width: 1200px;
   margin-top:-220px;
   margin-left:200px;
   max-width: auto; */
- color: black;
-}
+ /* scrollbar-base-color: black;
+ scrollbar-3dlight-color: #228073; */
+ /* background-color: black; 
+} */

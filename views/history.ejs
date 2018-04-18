@@ -28,7 +28,9 @@
       <!-- Loop through dates (create a <table> for each) -->
       <% for(var i=22; i < data.length; i+=22) { %>
         <div class="log">
-         <h2 style="color: bisque;" style="text-shadow: dimgrey;"><%= data[i] %></h2>
+         <div id="hdr2">
+           <h2 style="color: bisque;"><i><%= data[i] %></i></h2>
+          </div>
          <div class="table-responsive">
           <table style="background-color: rgba(127, 255, 212, 0.486);"  class="table table-bordered;">
             <!-- Header row -->
@@ -52,7 +54,7 @@
 
               <!-- Loop through data for given date (starts 21 indices earlier) -->
               <% for(var j=i-21; j < i-11; j++) { %>
-                <td><%= data[j] %></td>
+                <td>$<%= data[j] %></td>
               <% } %>
             </tr>
 
@@ -62,17 +64,21 @@
 
               <!-- Loop through data for given date (starts 11 indices earlier) -->
               <% for(var j=i-11; j < i-1; j++) { %>
-                <td><%= data[j] %></td>
+                <td>$<%= data[j] %></td>
               <% } %>
             </tr>
 
             <!-- Difference row -->
-            <tr style="background-color: rgb(6, 250, 169);">
+            <tr style="background-color: rgb(8, 197, 134);">
               <td><strong>Difference</strong></td>
 
               <!-- Loop through data for given date -->
               <% for(var j=i-21; j < i-11; j++) { %>
-                <td><%= data[j]-data[j+10] %></td>
+                <% if(data[j]-data[j+10] < 0) { %>
+                  <td style="color: rgb(248, 8, 8);">-$<%= (data[j]-data[j+10]) * -1 %></td>
+                <% } else { %>
+                  <td style="color: rgb(5, 41, 5);">$<%= data[j]-data[j+10] %></td>
+                <% } %>
               <% } %>
             </tr>
           </table>
