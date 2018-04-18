@@ -42,10 +42,15 @@ var connection = mysql.createConnection({
   database: 'heroku_01db060d2e70e87',
 });
 
+connection.connect(function(error) {
+  if (error) { throw error; }
+  console.log('connected as id ' + connection.threadId + "\n");
+});
+
 // Function to listen for errors (ref 6)
 connection.on('error', function(error) {
   // If double handshake, can't make another connection so don't TODO need to handle so we don't have a crash
-  if(error.code === "PROTOCOL_ENQUEUE_HANDSHAKE_TWICE"){
+  if (error.code === "PROTOCOL_ENQUEUE_HANDSHAKE_TWICE") {
     console.log(error.code);
   } else {
     console.log(error.code);
@@ -73,7 +78,8 @@ function reconnect(connection) {
     if (error) {
       setTimeout(reconnect, 2000);
     } else {
-      console.log("New connection successful\n")
+      console.log("New connection successful")
+      console.log('connected as id ' + connection.threadId + "\n");
 
       // Need to make a listening for the "new" connection
       connection.on('error', function(err) {
@@ -186,11 +192,29 @@ app.get('/account', needsLoggedIn, function(request, response) {
 });
 
 app.get('/history', needsLoggedIn, function(request, response) {
-  response.render("history", {data: ['one', 'two', 'three']});
-  console.log("GET /history");
-  console.log(request.headers);
-  console.log(request.mySession);
+  if (!isConnected(connection)) { reconnect(connection); }
   console.log("\n");
+  
+  /**
+  const getLogs = "SELECT * FROM logs WHERE email = ?;";
+  connection.query(getLogs, [request.mySession.user], function(error, results, fields) {
+    console.log(error);
+    const data = createArray(results);
+    response.render("history", {data: data});
+    console.log("GET /history");
+    console.log(request.headers);
+    console.log(request.mySession);
+    console.log("\n");
+  });
+  */
+ 
+  connection.query("SELECT * FROM users WHERE email = ?;", [request.mySession.user], function(error, results, fields) {
+    if (error) {
+      response.send(error);
+    } else {
+      response.send(results);
+    }
+  });
 });
 
 app.get('/logout', needsLoggedIn, function(request, response) {
@@ -350,6 +374,8 @@ app.post('/main', function(request, response) {
 
   if (Object.keys(request.body) == 'again') {
     response.redirect("main");
+  } else if (Object.keys(request.body) == 'history') {
+    response.send("history button was pressed");
   } else {
     // Get form field values (0 is planned, 1 is actual)
     let rent0 = Number(request.body.rent[0] == '' ? '0' : request.body.rent[0]);
@@ -397,6 +423,39 @@ app.post('/main', function(request, response) {
     });
   }
 });
+
+function createArray(logs) {
+  // Create empty array
+  let data = ['empty'];
+
+  // Loop over all log entries
+  for (let i = 0; i < logs.length; i++) {
+    data.push(logs[i].rent0);
+    data.push(logs[i].utilities0);
+    data.push(logs[i].cards0);
+    data.push(logs[i].auto0);
+    data.push(logs[i].internet0);
+    data.push(logs[i].food0);
+    data.push(logs[i].clothing0);
+    data.push(logs[i].travel0);
+    data.push(logs[i].misc0);
+    data.push(logs[i].total0);
+    data.push(logs[i].rent1);
+    data.push(logs[i].utilities1);
+    data.push(logs[i].cards1);
+    data.push(logs[i].auto1);
+    data.push(logs[i].internet1);
+    data.push(logs[i].food1);
+    data.push(logs[i].clothing1);
+    data.push(logs[i].travel1);
+    data.push(logs[i].misc1);
+    data.push(logs[i].total1);
+    data.push(logs[i].diff);
+    data.push(logs[i].time);
+  }
+
+  return data;
+}
 
 app.listen(port);
 console.log("Server started on port " + port);

@@ -17,14 +17,62 @@
   </head>
 
   <body id="body-history">
+    <!-- Bootstrap navbar -->
+    <%- include partials/navbar %>
+
     <div class="container center-block">
-      <table>
-        <% for(var i=0; i < data.length; i++) { %>
-          <tr>
-            <td><a href="https://www.google.com"><%= data[i] %></a></td>
-          </tr>
-        <% } %>
-      </table>
+      <!-- Loop through dates (create a <table> for each) -->
+      <% for(var i=22; i < data.length; i+=22) { %>
+        <div class="log">
+          <h1><%= data[i] %></h1>
+          <table>
+            <!-- Header row -->
+            <tr id="table-headers">
+              <th></th>
+              <th>Mortgage/Rent</th>
+              <th>Utilities</th>
+              <th>Credit Cards</th>
+              <th>Auto Insurance</th>
+              <th>Internet Services</th>
+              <th>Food</th>
+              <th>Clothing</th>
+              <th>Travel</th>
+              <th>Miscellaneous</th>
+              <th>Total</th>
+            </tr>
+
+            <!-- Planned row -->
+            <tr>
+              <td><strong>Planned</strong></td>
+
+              <!-- Loop through data for given date (starts 21 indices earlier) -->
+              <% for(var j=i-21; j < i-11; j++) { %>
+                <td><%= data[j] %></td>
+              <% } %>
+            </tr>
+
+            <!-- Actual row -->
+            <tr>
+              <td><strong>Actual</strong></td>
+
+              <!-- Loop through data for given date (starts 11 indices earlier) -->
+              <% for(var j=i-11; j < i-1; j++) { %>
+                <td><%= data[j] %></td>
+              <% } %>
+            </tr>
+
+            <!-- Difference row -->
+            <tr>
+              <td><strong>Difference</strong></td>
+
+              <!-- Loop through data for given date -->
+              <% for(var j=i-21; j < i-11; j++) { %>
+                <td><%= data[j]-data[j+10] %></td>
+              <% } %>
+            </tr>
+          </table>
+        </div>
+      <% } %>
     </div>
   </body>
 </html>

@@ -1,4 +1,4 @@
-body{
+body {
   text-align: center;
 }
 
@@ -8,9 +8,14 @@ body{
   margin-right: auto;
 }
 
-.body-login {
+.body-history {
   resize: both;
   overflow: visible;
   position: absolute;
   scroll-behavior: auto;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
 }
