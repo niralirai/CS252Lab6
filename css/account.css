@@ -11,22 +11,12 @@ html {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
 
-body{
-  text-align: center;
-}
-div {
-    resize: both;
-    overflow: auto;
-}
-#body-account {
-
-    color: #fff8de;
+  color: #fff8de;
   background-color: rgba(0,0,0,0.5);
   min-width: 210px;
   max-width: 430px;
- padding-right: 5%;
+  padding-right: 5%;
   padding-left: 5%;
   padding-top: 3%;
   padding-bottom: 2%;
@@ -39,6 +29,15 @@ div {
   margin-left: auto;
   margin-bottom: 2ch;
   margin-right: auto;
+}
+
+body{
+  text-align: center;
+}
+
+div {
+  resize: both;
+  overflow: auto;
 }
 
 h1 {
@@ -56,21 +55,22 @@ h1 {
 
 #div-button {
   margin-bottom: 2ch;
-   margin: auto;
+  margin: auto;
 }
+
 input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: none;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.70);
-    font-size: 14px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.70);
+  font-size: 14px;
 }
 
 #submit {
-    background-color: rgba(0, 0, 0, 0.70);
+  background-color: rgba(0, 0, 0, 0.70);
   color: #fff8de;
   min-width: 210px;
   max-width: 430px;
@@ -87,9 +87,7 @@ input {
   margin-left: auto;
   margin-bottom: 2ch;
   margin-right: auto;
-
 }
-
 
 #submit:hover, #submit:focus {
 	background: #434a53;
@@ -105,9 +103,3 @@ a {
   color: red;
   margin-top: 2ch;
 }
-
-
-
-
-
-
