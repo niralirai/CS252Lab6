@@ -28,10 +28,11 @@
       <!-- Loop through dates (create a <table> for each) -->
       <% for(var i=22; i < data.length; i+=22) { %>
         <div class="log">
-          <h2 style="color: bisque;" style="text-shadow: dimgrey;"><%= data[i] %></h2>
-          <table style="background-color: rgba(127, 255, 212, 0.486);">
+         <h2 style="color: bisque;" style="text-shadow: dimgrey;"><%= data[i] %></h2>
+         <div class="table-responsive">
+          <table style="background-color: rgba(127, 255, 212, 0.486);"  class="table table-bordered;">
             <!-- Header row -->
-            <tr id="table-headers", style="background-color:rgb(255, 255, 255);">
+            <tr id="table-headers", style="background-color:rgba(255, 255, 255, 0.459);">
               <th></th>
               <th>Mortgage/Rent</th>
               <th>Utilities</th>
@@ -46,7 +47,7 @@
             </tr>
           
             <!-- Planned row -->
-            <tr style="background-color: rgb(194, 243, 227);">
+            <tr style="background-color: rgb(194, 243, 227);", class="active">
               <td><strong>Planned</strong></td>
 
               <!-- Loop through data for given date (starts 21 indices earlier) -->
@@ -56,7 +57,7 @@
             </tr>
 
             <!-- Actual row -->
-            <tr style="background-color: rgb(87, 241, 190);">
+            <tr class="active" style="background-color: rgb(87, 241, 190);">
               <td><strong>Actual</strong></td>
 
               <!-- Loop through data for given date (starts 11 indices earlier) -->
@@ -75,6 +76,7 @@
               <% } %>
             </tr>
           </table>
+         </div>
         </div>
       <% } %>
     </div>

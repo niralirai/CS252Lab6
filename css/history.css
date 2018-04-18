@@ -14,7 +14,6 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  
 }
 
 .body-history {
@@ -29,13 +28,18 @@ table {
   margin-bottom: 20px;
   border: 1px solid black;
   box-shadow: 10px 10px 5px rgb(11, 45, 51);
+  border-collapse: separate;
 }
 
 table th:nth-child(even){
-  background-color: bisque;
+  background-color: rgba(255, 228, 196, 0.37);
 }
 
-tr:hover {
+table td:last-child{
+  background-color: #228073; 
+}
+
+tbody tr:hover {
   background-color: #f1e9e9;
 }
 
@@ -47,4 +51,11 @@ tr:hover {
   padding-bottom: 1ch;
   color: bisque;
   text-shadow: 2px 2px 5px rgb(12, 36, 31);
+}
+.table-responsive{
+  /* max-width: 1200px;
+  margin-top:-220px;
+  margin-left:200px;
+  max-width: auto; */
+ color: black;
 }
