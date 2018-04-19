@@ -15,27 +15,12 @@
     <title>Where'd It Go?!</title>
     <link rel="stylesheet" href="../css/history.css">
     
-    <!-- PDF Download -->
+    <!-- Medthod to pring the page as a PDF -->
     <script type="text/javascript">
-      $(function () {
-        var specialElementHandlers = {
-         '#editor': function (element,renderer) {
-            return true;
-          }
-        };
-      $('#pdfview').click(function () {
-       var doc = new jsPDF('landscape', 'pt', 'letter');
-       doc.fromHTML(
-         $('#main').html(), 15, 15, 
-         { 'width': 170, 'elementHandlers': specialElementHandlers }, 
-         function(){ doc.save('MyResults.pdf'); }
-       );
-      });  
-     });
-     </script>
- 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
- 
+      function printPDF() {
+        window.print();
+      }
+    </script> 
   </head>
 
   <body id="body-history">
@@ -47,74 +32,75 @@
     </div>
 
     <div class="container center-block">
+      <button id="pdfview" onclick="printPDF()">Download PDF</button> 
+
       <!-- Loop through dates (create a <table> for each) -->
       <div id="main">
-      <% for(var i=22; i < data.length; i+=22) { %>
-        <div class="log">
-          <!-- Header -->
-          <div id="hdr2">
-           <h2 style="color: bisque;"><i><%= data[i] %></i></h2>
-          </div>
+        <% for(var i=22; i < data.length; i+=22) { %>
+          <div class="log">
+            <!-- Header -->
+            <div id="hdr2">
+            <h2 style="color: bisque;"><i><%= data[i] %></i></h2>
+            </div>
 
-          <!-- Table -->
-          <div class="table-responsive">
-            <table style="background-color: rgba(127, 255, 212, 0.486);"  class="table table-hover">
-              <tbody>
-                <!-- Header row -->
-                <tr id="table-headers", style="background-color:rgba(255, 255, 255, 0.459);">
-                  <th></th>
-                  <th>Mortgage/Rent</th>
-                  <th>Utilities</th>
-                  <th>Credit Cards</th>
-                  <th>Auto Insurance</th>
-                  <th>Internet Services</th>
-                  <th>Food</th>
-                  <th>Clothing</th>
-                  <th>Travel</th>
-                  <th>Misc.</th>
-                  <th bgcolor= "#033738"><font color="#fff">Total</th>
-                </tr>
-              
-                <!-- Planned row -->
-                <tr style="background-color: rgb(194, 243, 227);", class="active">
-                  <td><strong>Planned</strong></td>
+            <!-- Table -->
+            <div class="table-responsive">
+              <table style="background-color: rgba(127, 255, 212, 0.486);"  class="table table-hover">
+                <tbody>
+                  <!-- Header row -->
+                  <tr id="table-headers", style="background-color:rgba(255, 255, 255, 0.459);">
+                    <th></th>
+                    <th>Mortgage/Rent</th>
+                    <th>Utilities</th>
+                    <th>Credit Cards</th>
+                    <th>Auto Insurance</th>
+                    <th>Internet Services</th>
+                    <th>Food</th>
+                    <th>Clothing</th>
+                    <th>Travel</th>
+                    <th>Misc.</th>
+                    <th bgcolor= "#033738"><font color="#fff">Total</th>
+                  </tr>
+                
+                  <!-- Planned row -->
+                  <tr style="background-color: rgb(194, 243, 227);", class="active">
+                    <td><strong>Planned</strong></td>
 
-                  <!-- Loop through data for given date (starts 21 indices earlier) -->
-                  <% for(var j=i-21; j < i-11; j++) { %>
-                    <td>$<%= data[j] %></td>
-                  <% } %>
-                </tr>
-
-                <!-- Actual row -->
-                <tr class="active" style="background-color: rgb(87, 241, 190);">
-                  <td><strong>Actual</strong></td>
-
-                  <!-- Loop through data for given date (starts 11 indices earlier) -->
-                  <% for(var j=i-11; j < i-1; j++) { %>
-                    <td>$<%= data[j] %></td>
-                  <% } %>
-                </tr>
-
-                <!-- Difference row -->
-                <tr style="background-color: rgb(8, 197, 134);">
-                  <td><strong>Difference</strong></td>
-
-                  <!-- Loop through data for given date -->
-                  <% for(var j=i-21; j < i-11; j++) { %>
-                    <% if(data[j]-data[j+10] < 0) { %>
-                      <td style="color: rgb(248, 8, 8);">-$<%= (data[j]-data[j+10]) * -1 %></td>
-                    <% } else { %>
-                      <td style="color: rgb(5, 41, 5);">$<%= data[j]-data[j+10] %></td>
+                    <!-- Loop through data for given date (starts 21 indices earlier) -->
+                    <% for(var j=i-21; j < i-11; j++) { %>
+                      <td>$<%= data[j] %></td>
                     <% } %>
-                  <% } %>
-                </tr>
-              </tbody>
-            </table>
+                  </tr>
+
+                  <!-- Actual row -->
+                  <tr class="active" style="background-color: rgb(87, 241, 190);">
+                    <td><strong>Actual</strong></td>
+
+                    <!-- Loop through data for given date (starts 11 indices earlier) -->
+                    <% for(var j=i-11; j < i-1; j++) { %>
+                      <td>$<%= data[j] %></td>
+                    <% } %>
+                  </tr>
+
+                  <!-- Difference row -->
+                  <tr style="background-color: rgb(8, 197, 134);">
+                    <td><strong>Difference</strong></td>
+
+                    <!-- Loop through data for given date -->
+                    <% for(var j=i-21; j < i-11; j++) { %>
+                      <% if(data[j]-data[j+10] < 0) { %>
+                        <td style="color: rgb(248, 8, 8);">-$<%= (data[j]-data[j+10]) * -1 %></td>
+                      <% } else { %>
+                        <td style="color: rgb(5, 41, 5);">$<%= data[j]-data[j+10] %></td>
+                      <% } %>
+                    <% } %>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-      <% } %>
+        <% } %>
       </div>  
-      <button id="pdfview">Download PDF</button>   
     </div>
   </body>
 </html>

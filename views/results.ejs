@@ -16,7 +16,6 @@
     <%- include partials/head %>
     
     <!-- Script to get ejs values -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <script>
       function  getEJS(input) {
         let e = document.createElement('div');
@@ -55,15 +54,15 @@
           data: [{
             type: "doughnut",
             dataPoints: [
-            {  y: rent, indexLabel: "Mortgage/Rent", color: "LightPink" },
-            {  y: utilities, indexLabel: "Utilities", color: "Aqua"},
-            {  y: cards, indexLabel: "Credit Cards", color: "#66a3ff" },
-            {  y: auto, indexLabel: "Auto Insurance", color: "Crimson"},
-            {  y: internet, indexLabel: "Internet Services", color: "#ffff66" },
-            {  y: food, indexLabel: "Food", color: "DarkOrchid"},
-            {  y: clothing, indexLabel: "Clothing", color: "#ccb3ff"},
-            {  y: travel, indexLabel: "Travel", color: "Teal"},
-            {  y: misc, indexLabel: "Miscellaneous", color: "Black"}
+            { y: rent, indexLabel: "Mortgage/Rent", color: "LightPink" },
+            { y: utilities, indexLabel: "Utilities", color: "Aqua" },
+            { y: cards, indexLabel: "Credit Cards", color: "#66a3ff" },
+            { y: auto, indexLabel: "Auto Insurance", color: "Crimson" },
+            { y: internet, indexLabel: "Internet Services", color: "#ffff66" },
+            { y: food, indexLabel: "Food", color: "DarkOrchid" },
+            { y: clothing, indexLabel: "Clothing", color: "#ccb3ff" },
+            { y: travel, indexLabel: "Travel", color: "Teal" },
+            { y: misc, indexLabel: "Miscellaneous", color: "Black" }
             ]
           }]
         });
@@ -71,27 +70,14 @@
         chart.render();
       }
     </script>
-
-    <script type="text/javascript">
-
-      $(function () {
-        var specialElementHandlers = {
-          '#editor': function (element,renderer) {
-            return true;
-          }
-        };
-        $('#pdfview').click(function () {
-          var doc = new jsPDF();
-          doc.fromHTML(
-            $('#main').html(), 15, 15, 
-            { 'width': 170, 'elementHandlers': specialElementHandlers }, 
-            function(){ doc.save('MyResults.pdf'); }
-          );
-        });  
-      });
-    </script>
-
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <!-- Medthod to pring the page as a PDF -->
+    <script type="text/javascript">
+      function printPDF() {
+        window.print();
+      }
+    </script>
 
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
@@ -110,24 +96,27 @@
       <!-- Budget results -->
       <div id="page2-div">
         <div id="main">
-        <!-- Budget -->
-        <div class="form-group">
-          <h3>Your <em> budget</em> totaled to <strong>$<%= budget %></strong></h3>
+          <!-- Budget -->
+          <div class="form-group">
+            <h3>Your <em> budget</em> totaled to <strong>$<%= budget %></strong></h3>
+          </div>
+
+          <!-- What you actually spent -->
+          <div class="form-group">
+            <h3>You <em>actually spent</em> <strong>$<%= spent %></strong></h3>
+          </div>
+
+          <!-- Over or under -->
+          <div class="form-group">
+            <h3>You have <strong><%= diff %></strong> remaining</h3>
+            <h3><strong><%= msg %></strong></h3>
+          </div>
         </div>
 
-        <!-- What you actually spent -->
-        <div class="form-group">
-          <h3>You <em>actually spent</em> <strong>$<%= spent %></strong></h3>
-        </div>
-
-        <!-- Over or under -->
-        <div class="form-group">
-          <h3>You have <strong><%= diff %></strong> remaining</h3>
-          <h3><strong><%= msg %></strong></h3>
-        </div>
-        </div>
+        <!-- Doughnut chart -->
         <div id="chartContainer" style="height: 300px; width: 100%;"></div>
         <p></p>
+
         <!-- Again -->
         <form id="options-form" method="POST">
           <input type="submit" class="input-options" name="again" value="Calculate another budget">
@@ -135,7 +124,8 @@
           <p></p>
         </form>
        
-       <button id="pdfview">Download PDF</button>           
+        <!-- Download button -->
+        <button id="pdfview" onclick="printPDF()">Download PDF</button>           
       </div>
     </div>
   </body>
