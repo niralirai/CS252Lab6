@@ -86,7 +86,6 @@
         { 'width': 170, 'elementHandlers': specialElementHandlers }, 
         function(){ doc.save('MyResults.pdf'); }
       );
-
      });  
     });
     </script>
@@ -106,9 +105,10 @@
       <h1 align="center" style="font-family:georgia;"><strong>Here's where it went...</strong></h1>
     </div>
 
-    <div id= "main" class="container center-block">
+    <div class="container center-block">
       <!-- Budget results -->
       <div id="page2-div">
+        <div id="main">
         <!-- Budget -->
         <div class="form-group">
           <h3>Your <em> budget</em> totaled to <strong>$<%= budget %></strong></h3>
@@ -124,7 +124,7 @@
           <h3>You have <strong><%= diff %></strong> remaining</h3>
           <h3><strong><%= msg %></strong></h3>
         </div>
-
+        </div>
         <div id="chartContainer" style="height: 300px; width: 100%;"></div>
         <p></p>
         <!-- Again -->

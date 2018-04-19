@@ -14,6 +14,28 @@
     <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
     <link rel="stylesheet" href="../css/history.css">
+    
+    <!-- PDF Download -->
+    <script type="text/javascript">
+      $(function () {
+        var specialElementHandlers = {
+         '#editor': function (element,renderer) {
+            return true;
+          }
+        };
+      $('#pdfview').click(function () {
+       var doc = new jsPDF();
+       doc.fromHTML(
+         $('#main').html(), 15, 15, 
+         { 'width': 170, 'elementHandlers': specialElementHandlers }, 
+         function(){ doc.save('MyResults.pdf'); }
+       );
+      });  
+     });
+     </script>
+ 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+ 
   </head>
 
   <body id="body-history">
@@ -26,6 +48,7 @@
 
     <div class="container center-block">
       <!-- Loop through dates (create a <table> for each) -->
+      <div id="main">
       <% for(var i=22; i < data.length; i+=22) { %>
         <div class="log">
          <div id="hdr2">
@@ -87,6 +110,8 @@
          </div>
         </div>
       <% } %>
+      </div>  
+      <button id="pdfview">Download PDF</button>   
     </div>
   </body>
 </html>
