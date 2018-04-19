@@ -24,7 +24,7 @@
           }
         };
       $('#pdfview').click(function () {
-       var doc = new jsPDF();
+       var doc = new jsPDF('landscape', 'pt', 'letter');
        doc.fromHTML(
          $('#main').html(), 15, 15, 
          { 'width': 170, 'elementHandlers': specialElementHandlers }, 
