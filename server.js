@@ -398,7 +398,7 @@ app.post('/main', function(request, response) {
       const diff = total0 - total1;
       
       let dollarDiff = (diff >= 0 ? "$" + diff : "-$" + (diff * -1));
-      let msg = (diff >= 0 ? "You're right on track! :)" : "You overspent this term. :(");
+      let msg = (diff >= 0 ? "You're right on track! :)" : "You overspent this term :(");
   
       // Date.now() = milliseconds since the epoch; toString() --> [day] [month] [date] [year] [time] [time zone]
       const time = (new Date(Date.now())).toString();

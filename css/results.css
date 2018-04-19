@@ -11,8 +11,8 @@ html {
 #page2-div {
   background-color: #C0C0C0;
   background:rgba(0,0,0,0.1);
-  min-width: 300px;
-  max-width: 530px;
+  min-width: 400px;
+  max-width: 700px;
   padding: 5%;
   
     
@@ -22,11 +22,11 @@ html {
   right: 10%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3ch;
+  margin-top: 2ch;
   margin-bottom: 2ch;
 }
 #hdr {
-  background-color: #978aaf;
+  background-color: #978aafe7;
   padding-top: 1ch;
   padding-bottom: 1ch;
   color: lightyellow;

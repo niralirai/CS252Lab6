@@ -89,28 +89,29 @@
       <div id="page2-div">
         <!-- Budget -->
         <div class="form-group">
-          <p><i><strong>Your budget totaled to $<%= budget %></strong></i></p>
+          <h3>Your <em> budget</em> totaled to <strong>$<%= budget %></strong></h3>
         </div>
 
         <!-- What you actually spent -->
         <div class="form-group">
-          <p><i><strong>You actually spent $<%= spent %></strong></i></p>
+          <h3>You <em>actually spent</em> <strong>$<%= spent %></strong></h3>
         </div>
 
         <!-- Over or under -->
         <div class="form-group">
-          <p><i><strong>You have <%= diff %> remaining</strong></i></p>
-          <p><strong><%= msg %></strong></p>
+          <h3>You have <strong><%= diff %></strong> remaining</h3>
+          <h3><strong><%= msg %></strong></h3>
         </div>
 
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        <p> </p>
         <!-- Again -->
         <form id="options-form" method="POST">
           <input type="submit" class="input-options" name="again" value="Calculate another budget">
           <input type="submit" class="input-options" name="history" value="View history">
         </form>
-        <p> </p>
-        <div id="chartContainer" style="height: 300px; width: 100%;">
-        </div>
+        
+        
       </div>
       
     </div>  
