@@ -119,6 +119,14 @@ app.get('/account', needsLoggedIn, function(request, response) {
   console.log("\n");
 });
 
+app.get('/about', needsLoggedIn, function(request, response) {
+  response.render("about");
+  console.log("GET /about");
+  console.log(request.headers);
+  console.log(request.mySession);
+  console.log("\n");
+});
+
 app.get('/history', needsLoggedIn, function(request, response) {
   pool.getConnection(function(connectionError, connection) {
     if (connectionError) {
