@@ -43,6 +43,9 @@ body{
   margin-left: auto;
   margin-bottom: 2ch;
   margin-right: auto;
+
+  align-content: center;
+  align-items: center;
 }
 
 .div-main {
@@ -78,4 +81,13 @@ input {
   align-self: center;
   align-content: center;
   align-items: center;
+}
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: rgb(100, 162, 115);
+  border: wheat;
+}
+
+.btn-primary:hover{
+  background-color: tomato;
+  border: wheat;
 }

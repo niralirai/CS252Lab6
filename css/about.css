@@ -16,15 +16,16 @@ body {
   margin-right: auto;
   background: rgba(255, 250, 250, 0.048); */
   background-color: #C0C0C0;
-  background:#ffffff80;
-  min-width: 430px;
-  max-width:auto;
-  padding-top: 2ch;
-  padding-left: 5%;
-  padding-bottom: 2ch;
-  padding-right: 5%;
+  background:#ffffff8a;
+  position: absolute;
+  left: 10%;
+  right: 10%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2ch;
+  margin-bottom: 2ch;
+  padding-bottom: 4ch;
+
 }
 
 .body-history {
@@ -35,21 +36,19 @@ body {
 }
 
 #hdrs {
-  background-color: #c92c5bb2;
+  background-color: #c92c5bea;
   padding-top: 1ch;
   padding-bottom: 1ch;
   color: bisque;
   text-shadow: 2px 2px 5px rgb(12, 36, 31);
 }
 #hdr2 {
+  background-color: rgba(228, 193, 154, 0.5);
   padding-top: 1ch;
   padding-bottom: 1ch;
-  text-shadow: 3px 3px 6px rgb(238, 247, 245);
+  text-shadow: 4px 4px 7px rgb(238, 247, 245);
   min-width: 430px;
   max-width:auto;
-  padding-top: 2ch;
-  padding-left: 5%;
-  padding-bottom: 2ch;
-  padding-right: 5%;
+  
 }
 
