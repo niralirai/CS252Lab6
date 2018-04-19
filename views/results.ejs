@@ -73,22 +73,21 @@
     </script>
 
     <script type="text/javascript">
-     $(function () {
-       var specialElementHandlers = {
-        '#editor': function (element,renderer) {
-           return true;
-         }
-       };
-     $('#pdfview').click(function () {
-      var doc = new jsPDF();
-      doc.fromHTML(
-        $('#main').html(), 15, 15, 
-        { 'width': 170, 'elementHandlers': specialElementHandlers }, 
-        function(){ doc.save('MyResults.pdf'); }
-      );
-
-     });  
-    });
+      $(function () {
+        var specialElementHandlers = {
+          '#editor': function (element,renderer) {
+            return true;
+          }
+        };
+        $('#pdfview').click(function () {
+          var doc = new jsPDF();
+          doc.fromHTML(
+            $('#main').html(), 15, 15, 
+            { 'width': 170, 'elementHandlers': specialElementHandlers }, 
+            function(){ doc.save('MyResults.pdf'); }
+          );
+        });  
+      });
     </script>
 
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -136,8 +135,6 @@
        
        <button id="pdfview">Download PDF</button>           
       </div>
-      
-    </div>  
-    
+    </div>
   </body>
 </html>
