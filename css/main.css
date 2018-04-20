@@ -28,7 +28,7 @@ body{
 #main-form{
   background-color: #C0C0C0;
   background:#ffffff80;
-  min-width: 430px;
+  min-width: auto;
   max-width: 860px;
   padding-top: 2ch;
   padding-left: 5%;

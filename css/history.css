@@ -62,3 +62,19 @@ table td:last-child{
   color: bisque;
   text-shadow: 2px 2px 5px rgb(12, 36, 31);
 }
+#pdfButton{
+  padding-top: 1ch;
+  margin: 15px 0 0 0;
+  display: inline-block;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: rgb(47, 126, 113);
+  border: wheat;
+}
+
+.btn-primary:hover{
+  background-color: rgb(255, 148, 129);
+  border: wheat;
+}
+

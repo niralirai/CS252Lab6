@@ -32,8 +32,9 @@
     </div>
 
     <div class="container center-block">
-      <button id="pdfview" onclick="printPDF()">Download PDF</button> 
-
+      <div id="pdfButton">
+        <button id="pdfview" class="btn btn-primary btn-sx" onclick="printPDF()">Download PDF</button> 
+      </div>
       <!-- Loop through dates (create a <table> for each) -->
       <div id="main">
         <% for(var i=22; i < data.length; i+=22) { %>

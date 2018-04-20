@@ -11,7 +11,7 @@ html {
 #page2-div {
   background-color: #C0C0C0;
   background:rgba(0,0,0,0.1);
-  min-width: 400px;
+  min-width: auto;
   max-width: 700px;
   padding: 5%;
   
@@ -55,4 +55,14 @@ input {
   border-radius: 12px;
   font-family: Georgia;
 }  
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: rgba(65, 68, 66, 0.541);
+  border: wheat;
+}
+
+.btn-primary:hover{
+  background-color: rgb(188, 143, 189);
+  border: wheat;
+  color: black;
+}
   
