@@ -16,12 +16,34 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
+      <script type="text/javascript" src="jspdf.min.js"></script>
+  
+ <script type="text/javascript" src="jquery-git.js"></script>
+    
       <%- include partials/head %>
 
       <!-- Stuff we actually wrote -->
       <title>Where'd It Go?!</title>
       <link rel="stylesheet" href="../../css/main.css">
+       <script type="text/javascript">
+        $(window).on('load', function() {
+        var doc = new jsPDF();
+        var specialElementHandlers = {
+            '#editor': function (element, renderer) {
+                return true;
+            }
+        };
+        $('#pdfview').click(function () {
+            doc.fromHTML($('#pdfdiv').html(), 15, 15, {
+                'width': 700,
+                    'elementHandlers': specialElementHandlers
+            });
+            doc.save('file.pdf');
+        });
+        });
+    </script>
     </head>
+   
 
     <body id="body-main">
       <!-- Bootstrap navbar -->
@@ -36,6 +58,7 @@
       <div class="container center-block">
         <!-- Budget form -->
         <form id="main-form" method="POST">
+          <div id="pdfdiv">
           <div id="div-input-fields">
             <!-- Budget -->
             <div class="form-group">
@@ -90,12 +113,16 @@
               <input type="number" class="form-control" name="travel" min="0" placeholder="0">
             </div>
           </div>
+        </div>
           <!-- Calculate button -->
           <div id="div-button" class="form-group">
             <label for="calculate" class="col-form-label"><i><strong>Total Your Costs!</strong></i></label>
             <button type="submit" class="form-control" id="submit">Calculate!</button>
           </div>
+          <div id="editor"></div>
+          <button id="pdfview">Download PDF</button>
         </form>
       </div>
     </body>
+
     </html>

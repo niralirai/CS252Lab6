@@ -1,39 +1,38 @@
 /* References:
-  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations */
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations */
+html { 
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
+
+}
+body{
+  text-align: center;
+  min-width: 200px;
+}
+.body-splash {
+  resize: both;
+  overflow: visible;
+  position: absolute;
+  scroll-behavior: auto;
+}
 .middle {
-    background-color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    color: white;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 .whole {
-    background-color: black;
-}
-#mockup{
-    width: 50%;
-    height: auto;
-    position: absolute;
-    bottom: 0px;
-}
-html, body {
-  font-family: Open Sans;
-  font-size: 18px;
-  line-height: 28px;
+  background-color: black;
 }
 
-h1 {
-  letter-spacing: -15px;
-  font-family: Open Sans;
-  color: white;
-  text-align: center;
-  font-size: 200px;
-  font-weight: 800;
-  line-height: 200px;
-}
+
 
 .MainContainer {
   perspective: 1px;
@@ -63,6 +62,7 @@ p {
 #title-ani{
   animation-duration: 5s;
   animation-name: slidein;
+
 }
 
 @keyframes slidein {
@@ -90,4 +90,162 @@ p {
 }
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
+
+
+/* ==========================================================================
+   Parallax Scroll
+   ========================================================================== */
+
+
+
+   section {
+    min-width: 200px;
+    opacity: 0;
+  }
+  .loaded section,
+  .no-js section {
+    opacity: 1;
+    -webkit-transition: opacity 300ms ease-out;
+    -moz-transition: opacity 300ms ease-out;
+    transition: opacity 300ms ease-out;
+  }
+
+  #preload {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .bcg {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  .hsContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hsContent {
+    max-width: 1000px;
+    position: absolute;
+
+
+    left: 10%;
+    right: 10%;
+    margin-top: 2ch;
+    margin-left: auto;
+    margin-bottom: 2ch;
+    margin-right: auto;
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-top: 3%;
+    padding-bottom: 2%;
+
+  }
+  .hsContent h2  {
+    color: #fff8de;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 13vw;
+    line-height: 15vw;
+    margin-bottom: 12px;
+    text-align: center;
+
+    
+
+
+  }
+  .hsContent h3  {
+ 
+    color: #fff8de;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 7vw;
+    line-height: 11vw;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .hsContent h4  {
+
+    color: #fff8de;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 7vw;
+    line-height: 11vw;
+    margin-bottom: 6px;
+    text-align: center;
+
+  }
+  .hsContent p {
+   color: #fff8de;
+   background-color: rgba(0,0,0,0.5);
+   margin-bottom: 12px;
+   text-align: center;
+   
+   padding: 10px 5px;
+    font-size: 2vw;
+    line-height: 4vw;
+   
+
+ }
+ .hsContent a {
+  color: #b2b2b2;
+  text-decoration: underline;
+}
+
+/* Slide 1 */
+#slide-1 .bcg {background-image:url('../assets/Snowy.jpg')}
+#slide-1 .hsContent {
+  bottom: 200px;
+  top: auto;
+}
+
+/* Slide 2 */
+#slide-2 .bcg {background-image:url('../assets/WaterfallForest.jpg')}
+#slide-2 .hsContent {
+  bottom: 200px;
+  top: auto;
+}
+
+
+
+/* Slide 3 */
+#slide-3 .bcg {
+  background-image:url('../assets/sunrise.jpg')
+}
+#slide-3 .hsContent {
+
+  bottom: 200px;
+  top: auto;
+
+}
+#slide-3 h2 {
+  color: #f2ead6;
+  background-color: rgba(0,0,0,0.6);
+}
+
+
+.button {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 3vw;
+  cursor: pointer;
+  position:relative;
+  color: #fff8de;
+  background-color: rgba(0,0,0,0.75);
+  padding: 1.0rem;
+  border: 2vw;
+  width: 20vw;
+  margin: 1rem;
+  margin-left: 1.5rem;
+
+}
+
 

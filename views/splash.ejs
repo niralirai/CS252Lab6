@@ -7,41 +7,23 @@
     <title>Where'd It Go?!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-    <script type="text/javascript" src="js/splash.js"></script>
-    <link rel="stylesheet" href="helper_files/css/main.css">
-    <script src="helper_files/vendor/modernizr-2.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/splash.js"></script>
+    <script src="../helper_files/vendor/modernizr-2.7.1.min.js"></script>
+    <link rel="stylesheet" href="../css/splash.css">
 
     <!-- Styling -->
-    <style type="text/css">
-      body {
-        font-family: 'Open Sans', sans-serif;
-        top:0;
-        bottom:0;
-        left:0;
-        right:0;
-        width: 100%;
-        height: 100%;
-        min-width: 1000px;
-        min-height: 1000px;
-      }
-      
-      html {
-        top:0;
-        bottom:0;
-        left:0;
-        right:0;
-      }
-    </style>
+    
   </head>
 
-  <body class="loading">
+  <body id="body-splash">
     <div id="preload">
-      <img src="assets/Snowy.jpg">
-      <img src="assets/WaterfallForest.jpg">
-      <img src="assets/sunrise.jpg">
+      <img src="../assets/Snowy.jpg">
+      <img src="../assets/WaterfallForest.jpg">
+      <img src="../assets/sunrise.jpg">
     </div>
     
-    <main>
+    <main class="container center-block">
+
       <section id="slide-1" class="homeSlide">
         <div class="bcg">
           <div class="hsContainer">
@@ -54,12 +36,14 @@
           </div>
         </div>
       </section>
-    
+
       <section id="slide-2" class="homeSlide">
         <div class="bcg">
           <div class="hsContainer">
             <div class="hsContent">
+              <div id="title-ani">
               <h3>Great stories come from great adventures, and we can help you get there!</h3>
+            </div>
             </div>
           </div>
         </div>
@@ -69,8 +53,10 @@
         <div class="bcg">
           <div class="hsContainer">
             <div class="hsContent">
+              <div id="title-ani">
               <h4>Pick one of the following and lets get started!</h4>
-              <div>
+            </div>
+              <div >
                 <button type="button" class="button" onclick="signup()">Sign Up</button>
                 <button type="button" class="button" onclick="login()">Login</button>
               </div>
@@ -80,9 +66,9 @@
       </section>
     </main>
 
-    <script>window.jQuery || document.write('<script src="helper_files/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-    <script src="helper_files/imagesloaded.js"></script>
-    <script src="helper_files/_main.js"></script>
+    <script>window.jQuery || document.write('<script src="../helper_files/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+    <script src="../helper_files/imagesloaded.js"></script>
+    <script src="../helper_files/_main.js"></script>
 
   </body>
 </html>

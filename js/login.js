@@ -32,3 +32,5 @@ function login() {
 function login() {
   window.location.href = "splash.html";
 }
+
+
