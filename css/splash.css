@@ -134,14 +134,6 @@ p {
     position: relative;
 
 
-    margin-top: auto;
-    margin-left: auto;
-    margin-bottom: auto;
-    margin-right: auto;
-    padding-right: 3%;
-    padding-left: 3%;
-    padding-top: 3%;
-    padding-bottom: 2%;
   }
 
   .hsContent {
@@ -151,22 +143,20 @@ p {
 
     left: 10%;
     right: 10%;
-    margin-top: auto;
-    margin-left: auto;
-    margin-bottom: auto;
-    margin-right: auto;
+   
     padding-right: 3%;
     padding-left: 3%;
-    padding-top: 3%;
+    padding-top: 30%;
     padding-bottom: 2%;
-
+border: 100px;
   }
   .hsContent h2  {
     color: #fff8de;
     background-color: rgba(0,0,0,0.5);
-    font-size: 13vw;
+    font-size: 12vw;
     line-height: 15vw;
-    margin-bottom: 12px;
+    margin-bottom: 1px;
+    margin-top: 12px;
     text-align: center;
 
     
@@ -179,8 +169,7 @@ p {
     background-color: rgba(0,0,0,0.5);
     font-size: 7vw;
     line-height: 11vw;
-    margin-bottom: 6px;   
-    
+    margin-bottom: 6px;
     text-align: center;
   }
   .hsContent h4  {
@@ -258,5 +247,4 @@ p {
   margin-left: 1.5rem;
 
 }
-
 
