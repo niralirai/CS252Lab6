@@ -202,14 +202,14 @@ border: 100px;
 /* Slide 1 */
 #slide-1 .bcg {background-image:url('../assets/Snowy.jpg')}
 #slide-1 .hsContent {
-  bottom: 200px;
+  bottom: 100px;
   top: auto;
 }
 
 /* Slide 2 */
 #slide-2 .bcg {background-image:url('../assets/WaterfallForest.jpg')}
 #slide-2 .hsContent {
-  bottom: 200px;
+  bottom: 100px;
   top: auto;
 }
 
@@ -221,7 +221,7 @@ border: 100px;
 }
 #slide-3 .hsContent {
 
-  bottom: 200px;
+  bottom: 100px;
   top: auto;
 
 }
@@ -247,4 +247,3 @@ border: 100px;
   margin-left: 1.5rem;
 
 }
-
