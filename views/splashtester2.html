@@ -1,0 +1,44 @@
+<!--
+  References:
+    - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
+    - https://getbootstrap.com/docs/4.0/components/navbar/
+    - http://ejs.co
+    -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include partials/head %>
+
+    <!-- Stuff we actually wrote -->
+    <title>Where'd It Go?! | Signup</title>
+    <link rel="stylesheet" href="../css/splash2.css">
+  </head>
+
+  <body id="body-signup">
+    <div class="container center-block">
+      <!-- Budget form -->
+      <form id="signup-form" method="POST">
+        <h1></h1>
+
+
+        
+            <div id="title-ani">
+          <h2>WHERE'D IT GO?!</h2>
+  
+               <p>Click Sign Up or Login to get started!</p>
+
+        
+      </div>
+
+        <!-- Signup button -->
+        <div id="div-button" class="form-group">
+          <button type="button" id="submit" class="form-control" onclick="signup()">Sign Up</button>
+          <button type="button" id="submit" class="form-control" onclick="login()">Login</button>
+        </div>
+
+      </form>
+    </div>
+  </body>
+</html>
