@@ -18,14 +18,14 @@ body{
    
 
 }
-.body-signup {
+.body-splash {
   resize: both;
      overflow: visible;
  position: absolute;
  scroll-behavior: auto;
 }
 
-#signup-form{
+#splash-form{
   color: #fff8de;
   background-color: rgba(0,0,0,0.5);
   
@@ -51,12 +51,12 @@ h1 {
   text-align: center;
 }
 
-.div-signup {
+.div-splash {
   margin-bottom: 2ch;
   font-size: 16px;
 }
 
-.signup-input-title {
+.splash-input-title {
   margin-bottom: 0ch;
   font-size: 16px;
 }
@@ -78,15 +78,15 @@ input {
 #submit {
   background-color: rgba(0, 0, 0, 0.70);
   color: #fff8de;
-  min-width: 4vw;
-  min-height: 3vw;
+  min-width: 210px;
+  max-width: 430px;
   
   padding-top: 2ch;
   padding-left: 5%;
   padding-bottom: 2ch;
   padding-right: 5%;
   
-  font-size: 1vw;
+  font-size: 16px;
   /* Center the form */
   position: center;
   left: 10%;
@@ -137,11 +137,15 @@ p {
   }
 
 
-.signup-input-title #title-ani{
+.title-ani {
   animation-duration: 5s;
   animation-name: slidein;
+  color: #fff8de;
+   
+   
 
 }
+
 
 @keyframes slidein {
   from {
