@@ -29,6 +29,7 @@ body{
   color: #fff8de;
   background-color: rgba(0,0,0,0.5);
   
+  min-width: 210px;
 
  padding-right: 5%;
   padding-left: 5%;
@@ -39,9 +40,9 @@ body{
   position: absolute;
   left: 10%;
   right: 10%;
-  margin-top: 2ch;
+  margin-top: 10ch;
   margin-left: auto;
-  margin-bottom: 2ch;
+  margin-bottom: 10ch;
   margin-right: auto;
 
 }
