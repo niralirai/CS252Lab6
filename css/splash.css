@@ -32,15 +32,22 @@ body{
   background-color: black;
 }
 
+.jumbotron {
+  background-position: center;
+  text-align: center;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
 
 
+/* 
 .MainContainer {
   perspective: 1px;
   transform-style: preserve-3d;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
-}
+} */
 
 .ContentContainer {
   position: relative;
@@ -80,6 +87,8 @@ p {
   display: flex;
   flex: 1 0 auto;
   position: relative;
+  background-position: center;
+  background-size: cover;
   z-index: -1;
   height: 100vh;
   justify-content: center;
@@ -87,6 +96,11 @@ p {
   transform: translateZ(-1px) scale(2);
   background: url(assests/Snowy.jpg);
   background-color: rgb(250,228, 216);
+}
+@media only screen and (max-device-width: 1366px) {
+  .ParallaxContainer {
+      background-attachment: scroll;
+  }
 }
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
@@ -132,31 +146,26 @@ p {
     height: 100%;
     overflow: hidden;
     position: relative;
-
-
   }
 
-  .hsContent {
+   .hsContent {
     max-width: 1000px;
-    position: absolute;
-
-
+    /* position: absolute; */
     left: 10%;
-    right: 10%;
-   
+    right: 10%; 
     padding-right: 3%;
     padding-left: 3%;
-    padding-top: 30%;
+    padding-top: 3%;
     padding-bottom: 2%;
-border: 100px;
-  }
+    /* border: 100px;  */
+  } 
   .hsContent h2  {
     color: #fff8de;
     background-color: rgba(0,0,0,0.5);
-    font-size: 12vw;
-    line-height: 15vw;
+    font-size: 10vw;
+    /* line-height: 15vw; */
     margin-bottom: 1px;
-    margin-top: 12px;
+    margin-top: 1px;
     text-align: center;
 
     
@@ -168,8 +177,9 @@ border: 100px;
     color: #fff8de;
     background-color: rgba(0,0,0,0.5);
     font-size: 7vw;
-    line-height: 11vw;
+    /* line-height: 11vw; */
     margin-bottom: 6px;
+    margin-top: 8px;
     text-align: center;
   }
   .hsContent h4  {
@@ -177,10 +187,10 @@ border: 100px;
     color: #fff8de;
     background-color: rgba(0,0,0,0.5);
     font-size: 7vw;
-    line-height: 11vw;
+    /* line-height: 11vw; */
     margin-bottom: 6px;
     text-align: center;
-
+    margin-top: 8px;
   }
   .hsContent p {
    color: #fff8de;
@@ -231,7 +241,7 @@ border: 100px;
 }
 
 
-.button {
+.btn-primary {
   text-align: center;
   text-decoration: none;
   display: inline-block;
