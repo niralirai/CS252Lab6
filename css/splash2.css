@@ -150,3 +150,16 @@ h3 {
     width: 100%;
   }
 }
+.ct-btn-scroll {
+  width: 49px;
+  height: 49px;
+ 
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding-top: 500px;
+  border-radius: 50%;
+  -webkit-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
+} 
