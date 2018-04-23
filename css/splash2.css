@@ -29,21 +29,21 @@ body{
   color: #fff8de;
   background-color: rgba(0,0,0,0.5);
   
-  min-width: 210px;
+  min-width: 10vw;
 
- padding-right: 5%;
+ /*padding-right: 5%;
   padding-left: 5%;
   padding-top: 3%;
-  padding-bottom: 2%;
+  padding-bottom: 2%;*/
     
   /* Center the form */
   position: absolute;
   left: 10%;
   right: 10%;
-  margin-top: 10ch;
+ /* margin-top: 10ch;
   margin-left: auto;
   margin-bottom: 10ch;
-  margin-right: auto;
+  margin-right: auto;*/
 
 }
 
@@ -79,15 +79,16 @@ input {
 #submit {
   background-color: rgba(0, 0, 0, 0.70);
   color: #fff8de;
-  min-width: 210px;
-  max-width: 430px;
+ /* min-width: 220px;
+  max-width: 430px;*/
   
+ 
   padding-top: 2ch;
-  padding-left: 5%;
+  padding-left: 4%;
   padding-bottom: 2ch;
-  padding-right: 5%;
+  padding-right: 4%;
   
-  font-size: 16px;
+  font-size: 3vw;
   /* Center the form */
   position: center;
   left: 10%;
@@ -119,7 +120,7 @@ a {
 p {
    color: #fff8de;
    
-    font-size: 2vw;
+    font-size: 5vw;
     /* line-height: 15vw; */
     margin-bottom: 1px;
     margin-top: 1px;
@@ -129,11 +130,23 @@ p {
  h2  {
     color: #fff8de;
    
-    font-size: 10vw;
+    font-size: 15vw;
     /* line-height: 15vw; */
     margin-bottom: 1px;
     margin-top: 1px;
     text-align: center;
+
+
+  }
+h3  {
+    color: transparent;
+   
+    font-size: 4vw;
+    /* line-height: 15vw; */
+    margin-bottom: 1px;
+    margin-top: 1px;
+    text-align: center;
+
 
   }
 
