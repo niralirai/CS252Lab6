@@ -35,6 +35,10 @@ body{
   text-align: center;
 }
 
+.container {
+  width: auto;
+}
+
 div {
   resize: both;
   overflow: auto;
