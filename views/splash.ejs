@@ -1,74 +1,42 @@
+<!--
+  References:
+    - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    - http://www.youcandealwithit.com/borrowers/calculators-and-resources/calculators/budget-calculator.shtml
+    - https://getbootstrap.com/docs/4.0/components/navbar/
+    - http://ejs.co
+-->
+
 <!DOCTYPE html>
-<html class="no-js"> 
+<html lang="en">
   <head>
-    <!-- Default meta tags -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <%- include partials/head %>
+
+    <!-- Stuff we actually wrote -->
     <title>Where'd It Go?!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
+    <link rel="stylesheet" href="../css/splash2.css">
     <script type="text/javascript" src="../js/splash.js"></script>
-    <script src="../helper_files/vendor/modernizr-2.7.1.min.js"></script>
-    <link rel="stylesheet" href="../css/splash.css">
-
-    <!-- Styling -->
-    
   </head>
 
   <body id="body-splash">
-    <div id="preload">
-      <img src="../assets/Snowy.jpg">
-      <img src="../assets/WaterfallForest.jpg">
-      <img src="../assets/sunrise.jpg">
+    <div class="container center-block">
+      <!-- Form -->
+      <form id="splash-form" method="POST">
+        <div class="title-ani">
+          <h2>WHERE'D</h2>
+          <h2>IT GO?!</h2>
+          <h3>         .          </h3>
+          <p>Click Sign Up or Login</p>
+          <p>and let's get started!</p>
+          <h3>           .            </h3>
+        </div>
+
+        <!-- Buttons -->
+        <div id="div-button" class="form-group">
+          <button type="button" class="submitbut" class="form-control" onclick="signup()">Sign Up</button>
+          <button type="button" class="submitbut" class="form-control" onclick="login()">Login</button>
+        </div>
+
+      </form>
     </div>
-    
-    <main class="container center-block">
-
-      <section id="slide-1" class="homeSlide">
-        <div class="bcg">
-          <div class="hsContainer">
-            <div class="hsContent">
-                <div id="title-ani" class="jumbotron">
-                  <h2>WHERE'D IT GO?!</h2>
-                  <p>Scroll down to learn more and to login!</p>
-                </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="slide-2" class="homeSlide">
-        <div class="bcg">
-          <div class="hsContainer">
-            <div class="hsContent">
-              <div id="title-ani">
-              <h3>Great stories come from great adventures, and we can help you get there!</h3>
-            </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="slide-3" class="homeSlide">
-        <div class="bcg">
-          <div class="hsContainer">
-            <div class="hsContent">
-              <div id="title-ani">
-              <h4>Pick one of the following and lets get started!</h4>
-            </div>
-              <div >
-                <button type="button" class="btn btn-primary btn-sx" onclick="signup()">Sign Up</button>
-                <button type="button" class="btn btn-primary btn-sx" onclick="login()">Login</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <script>window.jQuery || document.write('<script src="../helper_files/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-    <script src="../helper_files/imagesloaded.js"></script>
-    <script src="../helper_files/_main.js"></script>
-
   </body>
 </html>

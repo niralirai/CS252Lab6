@@ -1,50 +1,45 @@
 html { 
-  background: url('../assets/WaterfallForest.jpg') no-repeat center center fixed;
+  background: url('../assets/bcg_slide-1.jpg') no-repeat center center fixed;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-   
-
 }
+
 body{
   text-align: center;
 }
+
 .center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
-   
-
 }
+
 .body-splash {
   resize: both;
-     overflow: visible;
- position: absolute;
- scroll-behavior: auto;
+  overflow: visible;
+  position: absolute;
+  scroll-behavior: auto;
 }
 
 #splash-form{
   color: #fff8de;
   background-color: rgba(0,0,0,0.5);
-  
-  min-width: 10vw;
-
- /*padding-right: 5%;
+  min-width: 210px;
+  padding-right: 5%;
   padding-left: 5%;
   padding-top: 3%;
-  padding-bottom: 2%;*/
-    
+  padding-bottom: 2%;
   /* Center the form */
   position: absolute;
   left: 10%;
   right: 10%;
- /* margin-top: 10ch;
+  margin-top: 2ch;
   margin-left: auto;
-  margin-bottom: 10ch;
-  margin-right: auto;*/
-
+  margin-bottom: 2ch;
+  margin-right: auto;
 }
 
 h1 {
@@ -61,44 +56,39 @@ h1 {
   margin-bottom: 0ch;
   font-size: 16px;
 }
+
 input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: none;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.70);
-    font-size: 14px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.70);
+  font-size: 14px;
 }
+
 #div-button {
   margin-bottom: 2ch;
-   margin: auto;
-   } 
+  margin: auto;
+} 
 
-#submit {
+.submitbut {
   background-color: rgba(0, 0, 0, 0.70);
   color: #fff8de;
- /* min-width: 220px;
-  max-width: 430px;*/
-  
- 
-  padding-top: 2ch;
-  padding-left: 4%;
-  padding-bottom: 2ch;
-  padding-right: 4%;
-  
-  font-size: 3vw;
+  padding-top: 1ch;
+  padding-left: 5%;
+  padding-bottom: 1ch;
+  padding-right: 5%;
+  font-size: 5vw;
   /* Center the form */
   position: center;
   left: 10%;
   right: 10%;
   margin-top: 2ch;
-  margin-left: auto;
+  margin-left: 2ch;
   margin-bottom: 2ch;
-  margin-right: auto;
-
-
+  margin-right: 2ch;
 }
 
 #submit:hover, #submit:focus {
@@ -116,50 +106,38 @@ a {
   margin-top: 2ch;
 }
 
-
 p {
-   color: #fff8de;
-   
-    font-size: 5vw;
-    /* line-height: 15vw; */
-    margin-bottom: 1px;
-    margin-top: 1px;
-    text-align: center;
+  color: #fff8de;
+  font-size: 5vw;
+  /* line-height: 15vw; */
+  margin-bottom: 1px;
+  margin-top: 1px;
+  text-align: center;
 }
 
- h2  {
-    color: #fff8de;
-   
-    font-size: 15vw;
-    /* line-height: 15vw; */
-    margin-bottom: 1px;
-    margin-top: 1px;
-    text-align: center;
+h2 {
+  color: #fff8de;
+  font-size: 15vw;
+  /* line-height: 15vw; */
+  margin-bottom: 1px;
+  margin-top: 1px;
+  text-align: center;
+}
 
-
-  }
-h3  {
-    color: transparent;
-   
-    font-size: 4vw;
-    /* line-height: 15vw; */
-    margin-bottom: 1px;
-    margin-top: 1px;
-    text-align: center;
-
-
-  }
-
+h3 {
+  color: transparent;
+  font-size: 4vw;
+  /* line-height: 15vw; */
+  margin-bottom: 1px;
+  margin-top: 1px;
+  text-align: center;
+}
 
 .title-ani {
   animation-duration: 5s;
   animation-name: slidein;
   color: #fff8de;
-   
-   
-
 }
-
 
 @keyframes slidein {
   from {
