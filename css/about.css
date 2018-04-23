@@ -25,7 +25,8 @@ body {
   margin-top: 2ch;
   margin-bottom: 2ch;
   padding-bottom: 4ch;
-  padding-top: 2ch; 
+  padding-top: 2ch;
+  width: auto;
 
 }
 
@@ -48,8 +49,8 @@ body {
   padding-top: 1ch;
   padding-bottom: 1ch;
   text-shadow: 4px 4px 7px rgb(238, 247, 245);
-  min-width: 430px;
-  max-width:auto;
+  /*min-width: 430px;
+  max-width:auto;*/
   
 }
 #pdfButton{
